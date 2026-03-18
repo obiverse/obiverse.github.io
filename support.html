@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Support — Obiverse</title>
+  <meta name="description" content="Get help with the Obiverse app. FAQs, troubleshooting, and contact information.">
+  <link rel="icon" href="logo.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="/" class="logo-link">
+      <img src="logo.png" alt="Obiverse">
+      <span class="logo-text">Obiverse</span>
+    </a>
+    <nav class="header-nav">
+      <a href="/app.html" class="nav-link">App</a>
+      <a href="/privacy.html" class="nav-link">Privacy</a>
+      <a href="/terms.html" class="nav-link">Terms</a>
+    </nav>
+  </header>
+
+  <section class="legal-hero">
+    <div class="glow"></div>
+    <div class="diamond-pattern" style="top:0;left:0;right:0;bottom:0;"></div>
+    <h1 style="font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--color-fire-gold);letter-spacing:0.15em;text-transform:uppercase;position:relative;">Support</h1>
+    <p style="font-size:13px;color:var(--color-text-dim);margin-top:var(--phi-8);position:relative;">Help with the Obiverse app</p>
+  </section>
+
+  <article class="legal-article">
+
+    <div class="legal-tldr">
+      <div class="tldr-title">Contact</div>
+      <ul>
+        <li>Email: <a href="mailto:admin@obiverse.net">admin@obiverse.net</a></li>
+        <li>Response time: within 48 hours</li>
+      </ul>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-head">
+        <span class="section-num">1</span>
+        <span class="section-title-sm">Getting Started</span>
+      </div>
+      <div class="section-body">
+        <p><strong>How do I create a wallet?</strong><br>
+        Open the app and tap "Create Wallet." You will be shown a 12-word seed phrase. Write these words down on paper and store them safely. This phrase is the only way to recover your wallet.</p>
+        <p><strong>How do I restore a wallet?</strong><br>
+        Tap "Restore from Seed" on the welcome screen and enter your 12-word seed phrase. Your identity, wallet, and Lightning address will be restored.</p>
+        <p><strong>What is a Mobi?</strong><br>
+        Your Mobi is a human-readable identity number (like 879-044-656-584) derived from your cryptographic keys. Share it with others so they can send you payments.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-head">
+        <span class="section-num">2</span>
+        <span class="section-title-sm">Wallet & Payments</span>
+      </div>
+      <div class="section-body">
+        <p><strong>How do I receive Bitcoin?</strong><br>
+        Tap "Receive" in the Vault tab. Share your Spark address, Lightning invoice, or on-chain Bitcoin address. Your Mobi also works as a Lightning address.</p>
+        <p><strong>How do I send Bitcoin?</strong><br>
+        Tap "Send" in the Vault tab. Enter a Mobi, Lightning address, Lightning invoice, or on-chain address. Review the amount and tap Confirm Send.</p>
+        <p><strong>What currencies are supported?</strong><br>
+        The app displays balances in sats, BTC, or fiat currencies including Nigerian Naira (NGN), US Dollar (USD), Euro (EUR), and others. Tap the unit label to cycle through options.</p>
+        <p><strong>Why is my balance not updating?</strong><br>
+        Pull down on the Vault tab to force a sync. If you are on a slow connection, the app may take a moment to connect to the Spark network. The app caches your last known balance for offline use.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-head">
+        <span class="section-num">3</span>
+        <span class="section-title-sm">Security</span>
+      </div>
+      <div class="section-body">
+        <p><strong>How is my wallet secured?</strong><br>
+        Your seed phrase is encrypted with AES-256-GCM using a key derived from your PIN via Argon2id. The encrypted data is stored in the iOS Keychain. Your PIN is never stored — only a verifier hash.</p>
+        <p><strong>What if I forget my PIN?</strong><br>
+        You can restore your wallet using your 12-word seed phrase. There is no way to recover a forgotten PIN without the seed phrase. This is by design.</p>
+        <p><strong>Can Obiverse access my funds?</strong><br>
+        No. Obiverse is a self-custody wallet. Your private keys never leave your device. We cannot access, freeze, or recover your funds.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-head">
+        <span class="section-num">4</span>
+        <span class="section-title-sm">GATE & Authentication</span>
+      </div>
+      <div class="section-body">
+        <p><strong>What is GATE?</strong><br>
+        GATE turns your phone into a hardware authenticator. Scan a QR code on a website to sign in using your Nostr identity. Your private key stays on your device — the website receives only a signed proof.</p>
+        <p><strong>How do I sign out of a GATE session?</strong><br>
+        Open Tools > GATE. You will see your active sessions. Tap "Sign Out" on any session to revoke access.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-head">
+        <span class="section-num">5</span>
+        <span class="section-title-sm">Troubleshooting</span>
+      </div>
+      <div class="section-body">
+        <p><strong>The app shows "Connection issue"</strong><br>
+        Check your internet connection. The app needs network access to sync with the Lightning network and Nostr relays. It will retry automatically when connectivity is restored.</p>
+        <p><strong>Payment failed</strong><br>
+        Common causes: insufficient balance, destination unreachable, or network timeout. Check the error message for details. Lightning payments require the recipient to be online.</p>
+        <p><strong>Camera not working for QR scan</strong><br>
+        Go to iOS Settings > Obiverse > Camera and ensure permission is granted. Restart the app after enabling.</p>
+      </div>
+    </div>
+
+  </article>
+
+  <footer class="site-footer">
+    <div class="footer-left">
+      <img src="logo.png" alt="">
+      <span>&copy; 2026 Obiverse LLC</span>
+    </div>
+    <div class="footer-right">
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/app.html">App</a>
+    </div>
+  </footer>
+
+</body>
+</html>
