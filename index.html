@@ -304,6 +304,8 @@
           <div><label class="fl2" for="qt">Timeline</label><select id="qt" class="fi"><option>ASAP (7 days)</option><option>1&ndash;2 weeks</option><option>This month</option><option>Just exploring</option></select></div>
           <div class="ff"><label class="fl2" for="qm">Project Details</label><textarea id="qm" class="fi" placeholder="What do you want to build? What problem does it solve?" maxlength="2000"></textarea></div>
 
+          <!-- Status -->
+          <p id="form-status" class="ff" role="alert" style="display:none;font-family:var(--f);font-size:11px;font-weight:600;letter-spacing:.06em;text-align:center;margin-top:4px"></p>
           <!-- Submit -->
           <div class="ff" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px">
             <button type="submit" class="btn" style="flex:1;min-width:160px;padding:12px 28px">&#x25C7; SEND VIA WHATSAPP</button>
@@ -420,9 +422,15 @@
 /* Pricing tab switcher */
 function sw(i){document.querySelectorAll('.op').forEach(function(p){p.style.display='none'});document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('on')});document.getElementById('o'+i).style.display='block';document.querySelectorAll('.tab')[i].classList.add('on')}
 
-/* Gather form data into an object */
+/* ━━━ FORM SYSTEM ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Gather all form fields */
 function gatherForm() {
-  var v = function(id) { return (document.getElementById(id).value || '').trim(); };
+  function v(id) {
+    var el = document.getElementById(id);
+    if (!el) return '';
+    return (el.value || '').trim();
+  }
   return {
     name: v('qn'),
     business: v('qb'),
@@ -436,98 +444,149 @@ function gatherForm() {
   };
 }
 
-/* Build rich WhatsApp message with formatting */
+/* Navigate to URL reliably on both mobile and desktop.
+   Uses a hidden <a> click (avoids popup blockers) with
+   location.href fallback. */
+function navigateTo(url) {
+  var a = document.createElement('a');
+  a.href = url;
+  a.target = '_blank';
+  a.rel = 'noopener';
+  a.style.display = 'none';
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(function() { document.body.removeChild(a); }, 100);
+}
+
+/* Build WhatsApp message.
+   Rules for reliable rendering:
+   - Use literal emoji (not surrogate escape sequences)
+   - *bold* must have no space after opening * or before closing *
+   - _italic_ same rule
+   - No > blockquote (not supported on older clients)
+   - Keep total URL under 4000 chars after encoding
+   - Use simple Unicode box chars that render on all devices */
 function buildWhatsApp(d) {
-  var lines = [];
+  var m = '';
 
-  // Header with Adinkra-inspired unicode framing
-  lines.push('\u25C7\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u25C7');
-  lines.push('       *OBIVERSE*');
-  lines.push('    _New Project Inquiry_');
-  lines.push('\u25C7\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u25C7');
-  lines.push('');
+  m += '\u25C7\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u25C7\n';
+  m += '        *OBIVERSE*\n';
+  m += '   _New Project Inquiry_\n';
+  m += '\u25C7\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u25C7\n';
+  m += '\n';
 
-  // Client section
-  lines.push('\uD83D\uDC64 *Client*');
-  lines.push('\u25B8 ' + d.name);
-  if (d.business) lines.push('\u25B8 ' + d.business);
-  lines.push('\u25B8 ' + d.phone);
-  if (d.email) lines.push('\u25B8 ' + d.email);
-  lines.push('');
+  // Client
+  m += '*CLIENT*\n';
+  m += '\u2022 Name: ' + d.name + '\n';
+  if (d.business) m += '\u2022 Business: ' + d.business + '\n';
+  m += '\u2022 Phone: ' + d.phone + '\n';
+  if (d.email) m += '\u2022 Email: ' + d.email + '\n';
+  m += '\n';
 
-  // Project section
-  lines.push('\u26A1 *Project*');
-  lines.push('\u25B8 *Service:* ' + d.service);
-  if (d.industry) lines.push('\u25B8 *Industry:* ' + d.industry);
-  lines.push('\u25B8 *Budget:* ' + d.budget);
-  lines.push('\u25B8 *Timeline:* ' + d.timeline);
+  // Project
+  m += '*PROJECT*\n';
+  m += '\u2022 Service: ' + d.service + '\n';
+  if (d.industry) m += '\u2022 Industry: ' + d.industry + '\n';
+  m += '\u2022 Budget: ' + d.budget + '\n';
+  m += '\u2022 Timeline: ' + d.timeline + '\n';
 
-  // Details as blockquote
+  // Details (trim to keep URL safe)
   if (d.details) {
-    lines.push('');
-    lines.push('\uD83D\uDCCB *Details*');
-    // Split into lines and prefix each with > for WhatsApp blockquote
-    var detailLines = d.details.split('\n');
-    for (var i = 0; i < detailLines.length; i++) {
-      lines.push('> ' + detailLines[i]);
-    }
+    var det = d.details;
+    if (det.length > 500) det = det.substring(0, 497) + '...';
+    m += '\n';
+    m += '*DETAILS*\n';
+    m += det + '\n';
   }
 
-  // Footer
-  lines.push('');
-  lines.push('\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500');
-  lines.push('_Sent from_ https://obiverse.github.io');
+  m += '\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n';
+  m += '_obiverse.github.io_';
 
-  return lines.join('\n');
+  return m;
 }
 
-/* Build email body (plain text, no markdown) */
+/* Build email body */
 function buildEmail(d) {
-  var lines = [];
-  lines.push('OBIVERSE — New Project Inquiry');
-  lines.push('================================');
-  lines.push('');
-  lines.push('CLIENT');
-  lines.push('Name: ' + d.name);
-  if (d.business) lines.push('Business: ' + d.business);
-  lines.push('Phone: ' + d.phone);
-  if (d.email) lines.push('Email: ' + d.email);
-  lines.push('');
-  lines.push('PROJECT');
-  lines.push('Service: ' + d.service);
-  if (d.industry) lines.push('Industry: ' + d.industry);
-  lines.push('Budget: ' + d.budget);
-  lines.push('Timeline: ' + d.timeline);
+  var m = '';
+  m += 'OBIVERSE \u2014 New Project Inquiry\n';
+  m += '================================\n\n';
+  m += 'CLIENT\n';
+  m += 'Name: ' + d.name + '\n';
+  if (d.business) m += 'Business: ' + d.business + '\n';
+  m += 'Phone: ' + d.phone + '\n';
+  if (d.email) m += 'Email: ' + d.email + '\n';
+  m += '\nPROJECT\n';
+  m += 'Service: ' + d.service + '\n';
+  if (d.industry) m += 'Industry: ' + d.industry + '\n';
+  m += 'Budget: ' + d.budget + '\n';
+  m += 'Timeline: ' + d.timeline + '\n';
   if (d.details) {
-    lines.push('');
-    lines.push('DETAILS');
-    lines.push(d.details);
+    m += '\nDETAILS\n';
+    m += d.details + '\n';
   }
-  lines.push('');
-  lines.push('---');
-  lines.push('Sent from obiverse.github.io');
-  return lines.join('\n');
+  m += '\n---\nSent from obiverse.github.io';
+  return m;
 }
 
-/* WhatsApp submit handler */
+/* Validate required fields. Returns error message or empty string. */
+function validateForm(d) {
+  if (!d.name) return 'Please enter your name.';
+  if (!d.phone) return 'Please enter your phone number.';
+  if (!d.service) return 'Please select a service.';
+  return '';
+}
+
+/* Show inline error on form */
+function showFormError(msg) {
+  var el = document.getElementById('form-status');
+  if (!el) return;
+  el.textContent = msg;
+  el.style.color = '#e74c3c';
+  el.style.display = 'block';
+}
+
+/* Show success message */
+function showFormSuccess(msg) {
+  var el = document.getElementById('form-status');
+  if (!el) return;
+  el.textContent = msg;
+  el.style.color = 'var(--fg)';
+  el.style.display = 'block';
+  setTimeout(function() { el.style.display = 'none'; }, 5000);
+}
+
+/* WhatsApp submit */
 function go(e) {
   e.preventDefault();
   var d = gatherForm();
-  if (!d.name || !d.phone || !d.service) { return; } /* browser required handles this, but guard */
+  var err = validateForm(d);
+  if (err) { showFormError(err); return; }
+
   var msg = buildWhatsApp(d);
-  window.open('https://wa.me/12404916726?text=' + encodeURIComponent(msg), '_blank');
+  var url = 'https://wa.me/12404916726?text=' + encodeURIComponent(msg);
+
+  /* Safety: wa.me URLs should stay under ~4000 encoded chars */
+  if (url.length > 4000) {
+    /* Retry without details */
+    d.details = '';
+    msg = buildWhatsApp(d);
+    url = 'https://wa.me/12404916726?text=' + encodeURIComponent(msg);
+  }
+
+  showFormSuccess('Opening WhatsApp...');
+  navigateTo(url);
 }
 
-/* Email submit handler */
+/* Email submit */
 function sendEmail() {
   var d = gatherForm();
-  if (!d.name || !d.phone || !d.service) {
-    alert('Please fill in your name, phone, and service needed.');
-    return;
-  }
-  var subject = 'Quote Request' + (d.business ? ' — ' + d.business : '') + ' — ' + d.service;
+  var err = validateForm(d);
+  if (err) { showFormError(err); return; }
+
+  var subject = 'Quote Request' + (d.business ? ' \u2014 ' + d.business : '') + ' \u2014 ' + d.service;
   var body = buildEmail(d);
-  window.open('mailto:admin@obiverse.net?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body));
+  showFormSuccess('Opening email...');
+  navigateTo('mailto:admin@obiverse.net?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body));
 }
 </script>
 </body>
