@@ -169,6 +169,7 @@
     <a href="#pricing" class="nl">Pricing</a>
     <a href="/app.html" class="nl">App</a>
     <a href="/wasmverse/" class="nl">Library</a>
+    <a href="#nostr" class="nl">Nostr</a>
     <a href="#quote" class="btn" style="font-size:9px;padding:5px 14px;margin-left:4px">GET A QUOTE</a>
     <button onclick="obiThemeCycle()" aria-label="Toggle theme" style="background:none;border:1px solid var(--vb);border-radius:50%;width:26px;height:26px;cursor:pointer;color:var(--fg);font-size:13px;display:flex;align-items:center;justify-content:center;margin-left:4px;transition:border-color .2s ease" title="Toggle theme"><span class="theme-icon" aria-hidden="true">&#x25D0;</span></button>
   </nav>
@@ -410,6 +411,38 @@
   </div>
 </section>
 
+<!-- ━━━ NOSTR ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section id="nostr" style="padding:21px;max-width:920px;margin:0 auto">
+  <div class="divider"></div>
+  <div class="sh"><h2 class="tag">NOSTR</h2><p class="sub">Sovereign identity on the open web</p></div>
+
+  <!-- Identity card -->
+  <div id="nostr-identity" class="c" style="padding:13px;margin-bottom:10px;display:flex;align-items:center;gap:13px;flex-wrap:wrap">
+    <div style="flex:1;min-width:200px">
+      <p style="font-family:var(--f);font-size:9px;font-weight:700;letter-spacing:.14em;color:var(--fg);text-transform:uppercase;margin-bottom:2px">YOUR IDENTITY</p>
+      <p id="nostr-npub" style="font-family:var(--m);font-size:11px;color:var(--td);word-break:break-all">Connecting...</p>
+    </div>
+    <div id="nostr-status" style="display:flex;align-items:center;gap:6px">
+      <span id="nostr-dot" style="width:8px;height:8px;border-radius:50%;background:var(--tg);display:inline-block"></span>
+      <span id="nostr-status-text" style="font-family:var(--f);font-size:9px;letter-spacing:.1em;color:var(--tg);text-transform:uppercase">CONNECTING</span>
+    </div>
+  </div>
+
+  <!-- Compose -->
+  <div class="c" style="padding:13px;margin-bottom:10px">
+    <div style="display:flex;gap:8px;align-items:flex-end">
+      <textarea id="nostr-compose" class="fi" style="flex:1;min-height:42px;resize:vertical;font-size:12px" placeholder="Post a note to the Nostr network..." maxlength="500"></textarea>
+      <button id="nostr-post-btn" onclick="nostrPost()" class="btn" style="padding:10px 18px;font-size:10px;white-space:nowrap" disabled>POST</button>
+    </div>
+    <p id="nostr-post-status" style="font-size:10px;color:var(--td);margin-top:4px;display:none"></p>
+  </div>
+
+  <!-- Feed -->
+  <div id="nostr-feed" style="display:flex;flex-direction:column;gap:6px">
+    <noscript><p style="font-size:11px;color:var(--td)">Enable JavaScript to connect to Nostr.</p></noscript>
+  </div>
+</section>
+
 </main>
 
 <!-- ━━━ FOOTER ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
@@ -588,6 +621,116 @@ function sendEmail() {
   showFormSuccess('Opening email...');
   navigateTo('mailto:admin@obiverse.net?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body));
 }
+</script>
+
+<!-- Nostr module (ES module for dynamic import of crypto libs) -->
+<script type="module">
+import { init, postNote, fetchGlobalNotes, getNpub, npubEncode, timeAgo } from './nostr.js';
+
+const MAX_FEED = 30;
+const feed = [];
+
+function escapeHtml(s) {
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+function truncateNpub(npub) {
+  if (!npub || npub.length < 20) return npub || '';
+  return npub.slice(0, 12) + '...' + npub.slice(-6);
+}
+
+function renderNote(evt) {
+  const npub = npubEncode(evt.pubkey);
+  const isMine = getNpub() === npub;
+  return '<div class="c" style="padding:10px 13px">'
+    + '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">'
+    + '<span style="font-family:var(--m);font-size:9px;color:' + (isMine ? 'var(--fg)' : 'var(--tg)') + '">'
+    + (isMine ? 'you' : truncateNpub(npub)) + '</span>'
+    + '<span style="font-family:var(--f);font-size:9px;color:var(--tg)">' + timeAgo(evt.created_at) + '</span>'
+    + '</div>'
+    + '<p style="font-size:12px;color:var(--t);line-height:1.5;word-break:break-word">' + escapeHtml(evt.content) + '</p>'
+    + '</div>';
+}
+
+function renderFeed() {
+  const container = document.getElementById('nostr-feed');
+  if (!container) return;
+  // Sort by newest first
+  feed.sort(function(a, b) { return b.created_at - a.created_at; });
+  const html = feed.slice(0, MAX_FEED).map(renderNote).join('');
+  container.innerHTML = html || '<p style="font-size:11px;color:var(--tg);text-align:center">No notes yet. Be the first to post.</p>';
+}
+
+function setStatus(connected, relayCount) {
+  const dot = document.getElementById('nostr-dot');
+  const text = document.getElementById('nostr-status-text');
+  if (!dot || !text) return;
+  if (connected) {
+    dot.style.background = '#2ecc40';
+    text.textContent = relayCount + ' RELAY' + (relayCount > 1 ? 'S' : '');
+    text.style.color = 'var(--td)';
+  } else {
+    dot.style.background = '#e74c3c';
+    text.textContent = 'OFFLINE';
+    text.style.color = '#e74c3c';
+  }
+}
+
+// Initialize
+try {
+  const result = await init();
+  if (result.ok) {
+    // Show identity
+    document.getElementById('nostr-npub').textContent = result.npub;
+    document.getElementById('nostr-post-btn').disabled = false;
+    setStatus(true, result.relays);
+
+    // Fetch global feed
+    fetchGlobalNotes(MAX_FEED, function(evt) {
+      feed.push(evt);
+      renderFeed();
+    });
+  } else {
+    document.getElementById('nostr-npub').textContent = 'Could not connect (' + result.error + ')';
+    setStatus(false, 0);
+  }
+} catch (e) {
+  console.error('[nostr-ui]', e);
+  document.getElementById('nostr-npub').textContent = 'Connection error';
+  setStatus(false, 0);
+}
+
+// Expose post function to global scope for onclick
+window.nostrPost = async function() {
+  const textarea = document.getElementById('nostr-compose');
+  const status = document.getElementById('nostr-post-status');
+  const btn = document.getElementById('nostr-post-btn');
+  if (!textarea || !textarea.value.trim()) return;
+
+  btn.disabled = true;
+  btn.textContent = '...';
+  status.style.display = 'none';
+
+  try {
+    const result = await postNote(textarea.value.trim());
+    textarea.value = '';
+    feed.unshift(result.event);
+    renderFeed();
+    status.textContent = 'Posted to ' + result.relays + ' relay' + (result.relays > 1 ? 's' : '');
+    status.style.color = 'var(--fg)';
+    status.style.display = 'block';
+    setTimeout(function() { status.style.display = 'none'; }, 3000);
+  } catch (e) {
+    status.textContent = 'Failed: ' + e.message;
+    status.style.color = '#e74c3c';
+    status.style.display = 'block';
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'POST';
+};
 </script>
 </body>
 </html>
