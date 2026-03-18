@@ -52,8 +52,8 @@
 
   <script src="theme.js"></script>
   <style>
-    :root,:root[data-theme="dark"]{--vd:#0a1628;--vm:#0f1f38;--vs:#162a4a;--vb:#1e3a5c;--fd2:#8b5e1a;--fg:#c97d1d;--fb2:#d4922a;--fz:#e8a830;--t:#c8b89a;--tb:#e8d8b8;--td:#8a7d6a;--tg:#3a5070;--btn-text:#060d18;--header-bg:rgba(10,22,40,.94);--header-border:rgba(30,58,92,.5);--input-bg:rgba(6,13,24,.6);--glow-color:rgba(201,125,29,.08);--hover-bg:rgba(201,125,29,.06);--focus-ring:rgba(201,125,29,.1);--card-gradient-a:#0f1f38;--card-gradient-b:rgba(10,22,40,.85);--f:'Rajdhani',sans-serif;--b:'IBM Plex Sans',sans-serif;--m:'JetBrains Mono',monospace}
-    :root[data-theme="light"]{--vd:#f5efe6;--vm:#ebe4d8;--vs:#e0d6c6;--vb:#c8bca8;--fd2:#a07030;--fg:#9e6b1b;--fb2:#b87a22;--fz:#c98e30;--t:#4a4035;--tb:#2a2018;--td:#6a5d4e;--tg:#8a7d6e;--btn-text:#fff;--header-bg:rgba(245,239,230,.94);--header-border:rgba(200,188,168,.5);--input-bg:rgba(235,228,216,.6);--glow-color:rgba(158,107,27,.06);--hover-bg:rgba(158,107,27,.06);--focus-ring:rgba(158,107,27,.12);--card-gradient-a:#ebe4d8;--card-gradient-b:rgba(245,239,230,.85)}
+    :root,:root[data-theme="dark"]{--vd:#0a1628;--vm:#0f1f38;--vs:#162a4a;--vb:#1e3a5c;--fd2:#8b5e1a;--fg:#c97d1d;--fb2:#d4922a;--fz:#e8a830;--t:#c8b89a;--tb:#e8d8b8;--td:#8a7d6a;--tg:#3a5070;--btn-text:#060d18;--header-bg:rgba(10,22,40,.94);--header-border:rgba(30,58,92,.5);--input-bg:rgba(6,13,24,.6);--glow-color:rgba(201,125,29,.08);--hover-bg:rgba(201,125,29,.06);--focus-ring:rgba(201,125,29,.35);--card-gradient-a:#0f1f38;--card-gradient-b:rgba(10,22,40,.85);--f:'Rajdhani',sans-serif;--b:'IBM Plex Sans',sans-serif;--m:'JetBrains Mono',monospace}
+    :root[data-theme="light"]{--vd:#f5efe6;--vm:#ebe4d8;--vs:#e0d6c6;--vb:#c8bca8;--fd2:#a07030;--fg:#9e6b1b;--fb2:#b87a22;--fz:#c98e30;--t:#4a4035;--tb:#2a2018;--td:#6a5d4e;--tg:#8a7d6e;--btn-text:#fff;--header-bg:rgba(245,239,230,.94);--header-border:rgba(200,188,168,.5);--input-bg:rgba(235,228,216,.6);--glow-color:rgba(158,107,27,.06);--hover-bg:rgba(158,107,27,.06);--focus-ring:rgba(158,107,27,.35);--card-gradient-a:#ebe4d8;--card-gradient-b:rgba(245,239,230,.85)}
     *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
     body{background:var(--vd);color:var(--t);font-family:var(--b);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased;transition:background .3s ease,color .3s ease}
     a{color:var(--fg);text-decoration:none}a:hover{color:var(--fb2)}img{max-width:100%;height:auto}
@@ -75,6 +75,7 @@
 
     /* Sacred geometry */
     .dia{position:absolute;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' fill='none' stroke='%23c97d1d' stroke-width='.8'/%3E%3C/svg%3E");background-repeat:repeat}
+    [data-theme="light"] .dia{filter:brightness(.5);opacity:.06!important}
     .glow{position:absolute;pointer-events:none;border-radius:50%}
 
     /* Section */
@@ -169,10 +170,11 @@
     <a href="/app.html" class="nl">App</a>
     <a href="/wasmverse/" class="nl">Library</a>
     <a href="#quote" class="btn" style="font-size:9px;padding:5px 14px;margin-left:4px">GET A QUOTE</a>
-    <button onclick="obiThemeCycle()" style="background:none;border:1px solid var(--vb);border-radius:50%;width:26px;height:26px;cursor:pointer;color:var(--fg);font-size:13px;display:flex;align-items:center;justify-content:center;margin-left:4px;transition:border-color .2s ease" title="Toggle theme"><span class="theme-icon">&#x25D0;</span></button>
+    <button onclick="obiThemeCycle()" aria-label="Toggle theme" style="background:none;border:1px solid var(--vb);border-radius:50%;width:26px;height:26px;cursor:pointer;color:var(--fg);font-size:13px;display:flex;align-items:center;justify-content:center;margin-left:4px;transition:border-color .2s ease" title="Toggle theme"><span class="theme-icon" aria-hidden="true">&#x25D0;</span></button>
   </nav>
 </header>
 
+<main>
 <!-- ━━━ HERO ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 <section style="position:relative;overflow:hidden;padding:34px 21px 21px;text-align:center">
   <div class="glow" style="top:-40%;left:50%;transform:translateX(-50%);width:700px;height:400px;background:radial-gradient(ellipse,var(--glow-color) 0%,transparent 70%)"></div>
@@ -289,18 +291,18 @@
         <div class="fg">
           <!-- Who you are -->
           <p class="ff" style="font-family:var(--f);font-size:9px;font-weight:700;letter-spacing:.18em;color:var(--fg);text-transform:uppercase;margin-bottom:-4px;margin-top:4px">&#x25B8; ABOUT YOU</p>
-          <div><label class="fl2">Your Name *</label><input type="text" id="qn" class="fi" placeholder="Full name" required></div>
-          <div><label class="fl2">Business Name</label><input type="text" id="qb" class="fi" placeholder="Company or brand"></div>
-          <div><label class="fl2">Phone / WhatsApp *</label><input type="tel" id="qp" class="fi" placeholder="+234..." required></div>
-          <div><label class="fl2">Email</label><input type="email" id="qe" class="fi" placeholder="you@business.com"></div>
+          <div><label class="fl2" for="qn">Your Name <abbr title="required">*</abbr></label><input type="text" id="qn" class="fi" placeholder="Full name" required aria-required="true" autocomplete="name"></div>
+          <div><label class="fl2" for="qb">Business Name</label><input type="text" id="qb" class="fi" placeholder="Company or brand" autocomplete="organization"></div>
+          <div><label class="fl2" for="qp">Phone / WhatsApp <abbr title="required">*</abbr></label><input type="tel" id="qp" class="fi" placeholder="+234..." required aria-required="true" inputmode="tel" autocomplete="tel"></div>
+          <div><label class="fl2" for="qe">Email</label><input type="email" id="qe" class="fi" placeholder="you@business.com" autocomplete="email"></div>
 
           <!-- What you need -->
           <p class="ff" style="font-family:var(--f);font-size:9px;font-weight:700;letter-spacing:.18em;color:var(--fg);text-transform:uppercase;margin-bottom:-4px;margin-top:8px">&#x25B8; YOUR PROJECT</p>
-          <div><label class="fl2">Service Needed *</label><select id="qs" class="fi" required><option value="">Select...</option><option>Website &amp; Landing Page</option><option>Mobile App (iOS/Android)</option><option>Business System (CRM, Invoices)</option><option>Payment Integration</option><option>Institution Portal (School/Church)</option><option>Digital Marketing &amp; SEO</option><option>Monthly Managed Presence</option><option>Other / Custom</option></select></div>
-          <div><label class="fl2">Industry</label><select id="qi" class="fi"><option value="">Select...</option><option>Manufacturing</option><option>Education / School</option><option>Church / Religious</option><option>Healthcare / Clinic</option><option>Hospitality / Hotel</option><option>Restaurant / Food</option><option>Retail / Supermarket</option><option>Wholesale / Distribution</option><option>Energy / Filling Station</option><option>Pharmacy</option><option>Transport / Logistics</option><option>Cooperative / Community</option><option>Technology</option><option>Other</option></select></div>
-          <div><label class="fl2">Budget Range</label><select id="qd" class="fi"><option>Not sure yet</option><option>$100 &ndash; $250</option><option>$250 &ndash; $500</option><option>$500+</option><option>Monthly plan ($15&ndash;$60/mo)</option></select></div>
-          <div><label class="fl2">Timeline</label><select id="qt" class="fi"><option>ASAP (7 days)</option><option>1&ndash;2 weeks</option><option>This month</option><option>Just exploring</option></select></div>
-          <div class="ff"><label class="fl2">Project Details</label><textarea id="qm" class="fi" placeholder="What do you want to build? What problem does it solve?"></textarea></div>
+          <div><label class="fl2" for="qs">Service Needed <abbr title="required">*</abbr></label><select id="qs" class="fi" required aria-required="true"><option value="">Select...</option><option>Website &amp; Landing Page</option><option>Mobile App (iOS/Android)</option><option>Business System (CRM, Invoices)</option><option>Payment Integration</option><option>Institution Portal (School/Church)</option><option>Digital Marketing &amp; SEO</option><option>Monthly Managed Presence</option><option>Other / Custom</option></select></div>
+          <div><label class="fl2" for="qi">Industry</label><select id="qi" class="fi"><option value="">Select...</option><option>Manufacturing</option><option>Education / School</option><option>Church / Religious</option><option>Healthcare / Clinic</option><option>Hospitality / Hotel</option><option>Restaurant / Food</option><option>Retail / Supermarket</option><option>Wholesale / Distribution</option><option>Energy / Filling Station</option><option>Pharmacy</option><option>Transport / Logistics</option><option>Cooperative / Community</option><option>Technology</option><option>Other</option></select></div>
+          <div><label class="fl2" for="qd">Budget Range</label><select id="qd" class="fi"><option>Not sure yet</option><option>$100 &ndash; $250</option><option>$250 &ndash; $500</option><option>$500+</option><option>Monthly plan ($15&ndash;$60/mo)</option></select></div>
+          <div><label class="fl2" for="qt">Timeline</label><select id="qt" class="fi"><option>ASAP (7 days)</option><option>1&ndash;2 weeks</option><option>This month</option><option>Just exploring</option></select></div>
+          <div class="ff"><label class="fl2" for="qm">Project Details</label><textarea id="qm" class="fi" placeholder="What do you want to build? What problem does it solve?" maxlength="2000"></textarea></div>
 
           <!-- Submit -->
           <div class="ff" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px">
@@ -406,6 +408,8 @@
   </div>
 </section>
 
+</main>
+
 <!-- ━━━ FOOTER ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 <footer>
   <div style="display:flex;align-items:center;gap:6px"><img src="logo.png" alt="" style="width:14px;height:14px"><span>OBIVERSE LLC</span></div>
@@ -509,6 +513,7 @@ function buildEmail(d) {
 function go(e) {
   e.preventDefault();
   var d = gatherForm();
+  if (!d.name || !d.phone || !d.service) { return; } /* browser required handles this, but guard */
   var msg = buildWhatsApp(d);
   window.open('https://wa.me/12404916726?text=' + encodeURIComponent(msg), '_blank');
 }

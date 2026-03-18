@@ -22,7 +22,7 @@
   --color-header-border: rgba(30, 58, 92, 0.5);
   --color-input-bg: rgba(6, 13, 24, 0.6);
   --color-glow: rgba(201, 125, 29, 0.12);
-  --color-focus-ring: rgba(201, 125, 29, 0.1);
+  --color-focus-ring: rgba(201, 125, 29, 0.35);
   --font-display: 'Rajdhani', sans-serif;
   --font-body: 'IBM Plex Sans', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
@@ -50,7 +50,7 @@
   --color-header-border: rgba(200, 188, 168, 0.5);
   --color-input-bg: rgba(235, 228, 216, 0.6);
   --color-glow: rgba(158, 107, 27, 0.06);
-  --color-focus-ring: rgba(158, 107, 27, 0.12);
+  --color-focus-ring: rgba(158, 107, 27, 0.35);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -169,6 +169,8 @@ img { max-width: 100%; height: auto; }
 .theme-toggle:hover { border-color: var(--color-fire-gold); }
 
 /* ── Sacred geometry ──────────────────────────────────────────── */
+[data-theme="light"] .diamond-pattern,
+[data-theme="light"] .diamond-concentric { opacity: 0.08; filter: brightness(0.6); }
 .diamond-pattern {
   position: absolute;
   opacity: 0.04;
