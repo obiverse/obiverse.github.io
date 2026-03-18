@@ -7,6 +7,20 @@
   <meta name="description" content="Your keys, your identity, your money. Obiverse is a sovereign Bitcoin Lightning wallet with Nostr identity, built for Africa.">
   <link rel="icon" href="logo.png">
   <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Obiverse",
+    "operatingSystem": "iOS",
+    "applicationCategory": "FinanceApplication",
+    "description": "Sovereign identity and Lightning wallet for the age of agents. Your keys, your identity, your money.",
+    "url": "https://obiverse.github.io/app.html",
+    "downloadUrl": "https://apps.apple.com/app/obiverse/id6742437082",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+    "author": {"@type": "Organization", "name": "Obiverse LLC", "url": "https://obiverse.github.io"}
+  }
+  </script>
   <style>
     .app-hero {
       text-align: center;
@@ -93,9 +107,10 @@
       <span class="logo-text">Obiverse</span>
     </a>
     <nav class="header-nav">
-      <a href="/" class="nav-link">Home</a>
-      <a href="/privacy.html" class="nav-link">Privacy</a>
-      <a href="/terms.html" class="nav-link">Terms</a>
+      <a href="/" class="nav-link">Studio</a>
+      <a href="/wasmverse/" class="nav-link">Library</a>
+      <a href="/support.html" class="nav-link">Support</a>
+      <a href="https://apps.apple.com/app/obiverse/id6742437082" class="obi-btn">Get App</a>
     </nav>
   </header>
 
@@ -160,6 +175,22 @@
     </div>
   </section>
 
+  <section style="max-width:680px;margin:0 auto;padding:var(--phi-34) var(--phi-21);border-top:1px solid var(--color-void-border);">
+    <div style="display:flex;align-items:center;gap:var(--phi-21);flex-wrap:wrap">
+      <div style="flex:1;min-width:240px">
+        <p style="font-family:var(--font-display);font-size:10px;font-weight:600;letter-spacing:0.2em;color:var(--color-fire-gold);text-transform:uppercase;margin-bottom:var(--phi-5)">THE EPISTOLARY LIBRARY</p>
+        <p style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--color-text-bright);margin-bottom:var(--phi-8)">Learn the Technology Behind the App</p>
+        <p style="font-size:13px;color:var(--color-text);line-height:1.6;margin-bottom:var(--phi-13)">Explore our open treatises on Bitcoin, WebAssembly, Rust, and PWA engineering. Interactive WASM demos. Written in the spirit of Euler's letters.</p>
+        <a href="/wasmverse/" class="obi-btn-outline" style="font-size:11px;padding:8px 21px;">EXPLORE THE LIBRARY &rarr;</a>
+      </div>
+      <div style="flex:0 0 auto;display:flex;flex-direction:column;gap:var(--phi-5)">
+        <a href="/wasmverse/read.html?book=bitcoin" style="font-size:11px;color:var(--color-text-dim);font-family:var(--font-display);letter-spacing:0.05em;text-transform:uppercase;padding:var(--phi-5) var(--phi-8);border:1px solid var(--color-void-border);border-radius:4px;text-decoration:none;transition:border-color 200ms ease" onmouseover="this.style.borderColor='var(--color-fire-gold)'" onmouseout="this.style.borderColor=''">&#9889; Letters on Bitcoin</a>
+        <a href="/wasmverse/read.html?book=rust" style="font-size:11px;color:var(--color-text-dim);font-family:var(--font-display);letter-spacing:0.05em;text-transform:uppercase;padding:var(--phi-5) var(--phi-8);border:1px solid var(--color-void-border);border-radius:4px;text-decoration:none;transition:border-color 200ms ease" onmouseover="this.style.borderColor='var(--color-fire-gold)'" onmouseout="this.style.borderColor=''">&#128296; Letters on Rust</a>
+        <a href="/wasmverse/read.html?book=wasm" style="font-size:11px;color:var(--color-text-dim);font-family:var(--font-display);letter-spacing:0.05em;text-transform:uppercase;padding:var(--phi-5) var(--phi-8);border:1px solid var(--color-void-border);border-radius:4px;text-decoration:none;transition:border-color 200ms ease" onmouseover="this.style.borderColor='var(--color-fire-gold)'" onmouseout="this.style.borderColor=''">&#9881; Letters on WebAssembly</a>
+      </div>
+    </div>
+  </section>
+
   <section class="app-cta">
     <h2>Take Sovereignty</h2>
     <p>Available on iOS. Your keys. Your identity. Your money.</p>
@@ -172,9 +203,11 @@
       <span>&copy; 2026 Obiverse LLC</span>
     </div>
     <div class="footer-right">
+      <a href="/">Studio</a>
+      <a href="/wasmverse/">Library</a>
+      <a href="/support.html">Support</a>
       <a href="/privacy.html">Privacy</a>
       <a href="/terms.html">Terms</a>
-      <a href="/support.html">Support</a>
     </div>
   </footer>
 
