@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy &mdash; OBIVERSE</title>
+  <meta name="description" content="How OBIVERSE protects your data. Your keys, your data, your rules.">
+  <meta name="theme-color" content="#c97d1d">
+  <link rel="icon" href="logo.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="/" class="logo-link">
+      <img src="logo.png" alt="OBIVERSE">
+      <span class="logo-text">OBIVERSE</span>
+    </a>
+    <nav>
+      <a href="https://apps.apple.com/app/obiverse/id6742592971" class="obi-btn">GET THE APP</a>
+    </nav>
+  </header>
+
+  <section class="legal-hero">
+    <div class="glow"></div>
+    <div style="position: relative; z-index: 1;">
+      <p class="section-tag">PRIVACY POLICY</p>
+      <h1 style="font-family: var(--font-display); font-weight: 600; font-size: clamp(24px, 4vw, 36px); color: var(--color-text-bright); line-height: 1.2; margin-bottom: var(--phi-8);">
+        Your keys. Your data. <span style="color: var(--color-fire-gold);">Your rules.</span>
+      </h1>
+      <p style="font-size: 13px; color: var(--color-text-dim);">Effective: March 1, 2026 &middot; Obiverse LLC</p>
+    </div>
+  </section>
+
+  <article class="legal-article">
+    <div class="legal-tldr">
+      <p class="tldr-title">TL;DR</p>
+      <ul>
+        <li>We identify you by Nostr public key &mdash; not your name or email</li>
+        <li>Your private keys and seed phrase never leave your device</li>
+        <li>No tracking cookies, no analytics pixels, no telemetry</li>
+        <li>Your wallet data stays on your device</li>
+        <li>You can walk away any time &mdash; your identity is yours</li>
+      </ul>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-head"><span class="section-num">01</span><h2 class="section-title">WHAT WE COLLECT</h2></div>
+      <div class="section-body">
+        <p><strong>Nostr public key.</strong> When you sign in via GATE, we receive your Nostr public key (a 64-character hex string). This is your user identifier. We do not collect names, emails, phone numbers, or physical addresses through GATE authentication.</p>
+        <p><strong>Email (optional).</strong> If you choose magic-link authentication, we collect your email address solely to send one-time login links. We do not use it for marketing.</p>
+        <p><strong>Session data.</strong> We issue a JWT session token stored as an httpOnly cookie. It contains your public key and expiration time. No tracking cookies or analytics pixels.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-head"><span class="section-num">02</span><h2 class="section-title">WHAT WE DO NOT COLLECT</h2></div>
+      <div class="section-body">
+        <ul>
+          <li>Private keys (never leave your device)</li>
+          <li>Wallet balances or transaction history</li>
+          <li>Mnemonic seed phrases</li>
+          <li>Location data</li>
+          <li>Device identifiers or fingerprints</li>
+          <li>Usage analytics or telemetry</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-head"><span class="section-num">03</span><h2 class="section-title">LOCAL STORAGE</h2></div>
+      <div class="section-body">
+        <p>The Obiverse mobile app stores your encrypted seed phrase, PIN hash, and wallet data exclusively on your device using platform-secure storage (iOS Keychain, Android Keystore). This data is never transmitted to our servers.</p>
+        <p>The web app uses IndexedDB for local scroll storage. This data stays in your browser.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-head"><span class="section-num">04</span><h2 class="section-title">RELAY COMMUNICATION</h2></div>
+      <div class="section-body">
+        <p>Authentication events are transmitted via Nostr relays (relay.damus.io, nos.lol). These relays are operated by third parties. Event content is encrypted with NIP-44 (XChaCha20-Poly1305) before transmission. Relay operators cannot read encrypted content but can observe event metadata (kind, timestamp, public key tags).</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-head"><span class="section-num">05</span><h2 class="section-title">THIRD-PARTY SERVICES</h2></div>
+      <div class="section-body">
+        <ul>
+          <li><strong>Breez SDK (Spark):</strong> Lightning/Bitcoin transactions are processed by the Breez SDK running locally on your device. Breez may receive transaction data necessary for Lightning Network operation.</li>
+          <li><strong>Nostr relays:</strong> relay.damus.io, nos.lol carry encrypted authentication events.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-head"><span class="section-num">06</span><h2 class="section-title">DATA RETENTION</h2></div>
+      <div class="section-body">
+        <p>Session scrolls are deleted on logout. Challenge scrolls expire after 5 minutes and are deleted on first use. We do not maintain long-term user profiles or activity logs.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-head"><span class="section-num">07</span><h2 class="section-title">YOUR RIGHTS</h2></div>
+      <div class="section-body">
+        <p>Your identity is your Nostr keypair. You can revoke access at any time by logging out (which deletes your session). Since we identify you only by public key, there is no account to delete &mdash; simply stop using the service.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-head"><span class="section-num">08</span><h2 class="section-title">CHILDREN</h2></div>
+      <div class="section-body">
+        <p>Obiverse is not directed at children under 13. We do not knowingly collect data from children.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-head"><span class="section-num">09</span><h2 class="section-title">CHANGES</h2></div>
+      <div class="section-body">
+        <p>We may update this policy. Changes will be posted at this URL. Continued use after changes constitutes acceptance.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-head"><span class="section-num">10</span><h2 class="section-title">CONTACT</h2></div>
+      <div class="section-body">
+        <p>Obiverse LLC &middot; <a href="mailto:admin@obiverse.net">admin@obiverse.net</a></p>
+      </div>
+    </div>
+  </article>
+
+  <footer class="site-footer">
+    <div class="footer-left">
+      <a href="/"><img src="logo.png" alt=""></a>
+      <span>OBIVERSE LLC</span>
+    </div>
+    <div class="footer-right">
+      <a href="terms.html">Terms of Service</a>
+      <a href="/">Home</a>
+    </div>
+  </footer>
+
+</body>
+</html>
