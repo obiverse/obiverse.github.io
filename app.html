@@ -24,79 +24,66 @@
   <style>
     .app-hero {
       text-align: center;
-      padding: var(--phi-89) var(--phi-21) var(--phi-55);
+      padding: var(--phi-34) var(--phi-21) var(--phi-21);
       position: relative;
       overflow: hidden;
     }
-    .app-hero .glow { top: -30%; left: 50%; transform: translateX(-50%); width: 600px; height: 400px; }
-    .app-logo { width: 120px; height: 120px; margin: 0 auto var(--phi-21); }
+    .app-hero .glow { top: -40%; left: 50%; transform: translateX(-50%); width: 500px; height: 300px; }
+    .app-logo { width: 72px; height: 72px; margin: 0 auto var(--phi-13); }
     .app-title {
       font-family: var(--font-display);
-      font-size: 28px;
+      font-size: 24px;
       font-weight: 700;
       color: var(--color-fire-gold);
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      margin-bottom: var(--phi-8);
+      margin-bottom: var(--phi-5);
     }
     .app-subtitle {
-      font-size: 14px;
+      font-size: 13px;
       color: var(--color-text);
-      margin-bottom: var(--phi-34);
-      max-width: 400px;
+      margin-bottom: var(--phi-13);
+      max-width: 380px;
       margin-left: auto;
       margin-right: auto;
     }
-    .app-badges { display: flex; gap: var(--phi-13); justify-content: center; flex-wrap: wrap; }
-    .app-badges .obi-btn { font-size: 12px; }
-    .features-section { max-width: 680px; margin: 0 auto; padding: 0 var(--phi-21) var(--phi-55); }
-    .feature-block {
+    .app-badges { display: flex; gap: var(--phi-8); justify-content: center; flex-wrap: wrap; }
+    .app-badges .obi-btn { font-size: 11px; }
+    .feat-grid {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 var(--phi-21) var(--phi-21);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--phi-8);
+    }
+    .feat {
       display: flex;
-      gap: var(--phi-21);
+      gap: var(--phi-8);
       align-items: flex-start;
-      padding: var(--phi-21) 0;
-      border-bottom: 1px solid var(--color-void-border);
+      padding: var(--phi-13);
+      border: 1px solid var(--color-void-border);
+      border-radius: 6px;
+      background: var(--color-void-medium);
+      transition: border-color 200ms ease;
     }
-    .feature-block:last-child { border-bottom: none; }
-    .feature-icon-lg {
-      font-size: 28px;
-      flex-shrink: 0;
-      width: 48px;
-      text-align: center;
-    }
-    .feature-block h3 {
+    .feat:hover { border-color: var(--color-fire-dim); }
+    .feat-icon { font-size: 20px; flex-shrink: 0; line-height: 1; }
+    .feat h3 {
       font-family: var(--font-display);
-      font-size: 13px;
+      font-size: 11px;
       font-weight: 600;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       color: var(--color-fire-gold);
       text-transform: uppercase;
-      margin-bottom: var(--phi-5);
+      margin-bottom: 2px;
     }
-    .feature-block p {
-      font-size: 13px;
-      color: var(--color-text);
-      line-height: 1.6;
-    }
-    .app-cta {
-      text-align: center;
-      padding: var(--phi-55) var(--phi-21);
-      border-top: 1px solid var(--color-void-border);
-    }
-    .app-cta h2 {
-      font-family: var(--font-display);
-      font-size: 18px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      color: var(--color-text-bright);
-      text-transform: uppercase;
-      margin-bottom: var(--phi-8);
-    }
-    .app-cta p {
-      font-size: 13px;
+    .feat p {
+      font-size: 11px;
       color: var(--color-text-dim);
-      margin-bottom: var(--phi-21);
+      line-height: 1.4;
     }
+    @media (max-width: 560px) { .feat-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -119,83 +106,34 @@
     <div class="diamond-concentric" style="top:0;left:0;right:0;bottom:0;"></div>
     <img src="logo.png" alt="Obiverse" class="app-logo" style="position:relative;">
     <h1 class="app-title" style="position:relative;">Obiverse</h1>
-    <p class="app-subtitle" style="position:relative;">Sovereign identity and Lightning wallet for the age of agents. Your keys, your identity, your money.</p>
+    <p class="app-subtitle" style="position:relative;">Sovereign identity &amp; Lightning wallet. Your keys, your identity, your money.</p>
     <div class="app-badges" style="position:relative;">
-      <a href="https://testflight.apple.com/join/GwwPuv4W" class="obi-btn">Join the TestFlight Beta</a>
+      <a href="https://testflight.apple.com/join/GwwPuv4W" class="obi-btn">Join TestFlight Beta</a>
     </div>
   </section>
 
-  <section class="features-section">
-    <div class="feature-block">
-      <div class="feature-icon-lg">&#9889;</div>
-      <div>
-        <h3>Lightning Wallet</h3>
-        <p>Send and receive Bitcoin over Lightning in seconds. Built on the Spark protocol with automatic channel management. Display balances in sats, BTC, or your local currency including Nigerian Naira.</p>
-      </div>
-    </div>
+  <div class="feat-grid">
+    <div class="feat"><span class="feat-icon">&#9889;</span><div><h3>Lightning Wallet</h3><p>Send &amp; receive Bitcoin in seconds. Spark protocol. Sats, BTC, or Naira.</p></div></div>
+    <div class="feat"><span class="feat-icon">&#128272;</span><div><h3>Sovereign Identity</h3><p>Your Mobi: human-readable, key-derived. No email, no phone, no authority.</p></div></div>
+    <div class="feat"><span class="feat-icon">&#128737;</span><div><h3>GATE Auth</h3><p>Scan QR to sign in. Phone as hardware key. NIP-46 remote signing.</p></div></div>
+    <div class="feat"><span class="feat-icon">&#127912;</span><div><h3>African Design</h3><p>Bogolan, Adinkra, Nsibidi patterns. Fibonacci sacred geometry.</p></div></div>
+    <div class="feat"><span class="feat-icon">&#128274;</span><div><h3>Self-Custody</h3><p>Argon2id + AES-256-GCM. Biometric unlock. Keys never leave device.</p></div></div>
+    <div class="feat"><span class="feat-icon">&#129302;</span><div><h3>Agent-Ready</h3><p>9S scroll substrate. Nostr relay connections. All gated by your approval.</p></div></div>
+  </div>
 
-    <div class="feature-block">
-      <div class="feature-icon-lg">&#128272;</div>
-      <div>
-        <h3>Sovereign Identity</h3>
-        <p>Your Mobi is a human-readable identity derived from your cryptographic keys. No email, no phone number, no central authority. You own your identity through your seed phrase.</p>
-      </div>
+  <div style="max-width:680px;margin:0 auto;padding:var(--phi-13) var(--phi-21) var(--phi-21);border-top:1px solid var(--color-void-border);display:flex;align-items:center;gap:var(--phi-13);flex-wrap:wrap">
+    <div style="flex:1;min-width:200px">
+      <p style="font-family:var(--font-display);font-size:9px;font-weight:600;letter-spacing:0.18em;color:var(--color-fire-gold);text-transform:uppercase;margin-bottom:3px">THE EPISTOLARY LIBRARY</p>
+      <p style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--color-text-bright);margin-bottom:5px">Learn the Technology Behind the App</p>
+      <p style="font-size:11px;color:var(--color-text-dim);line-height:1.5">Open treatises on Bitcoin, Rust, WebAssembly &amp; PWAs. Interactive WASM demos.</p>
     </div>
-
-    <div class="feature-block">
-      <div class="feature-icon-lg">&#128737;</div>
-      <div>
-        <h3>GATE Authenticator</h3>
-        <p>Sign in to websites by scanning a QR code. Your phone becomes a hardware security key using Nostr NIP-46 remote signing. Your private key never leaves your device.</p>
-      </div>
+    <div style="display:flex;gap:var(--phi-5);flex-wrap:wrap">
+      <a href="/wasmverse/read.html?book=bitcoin" class="obi-btn-outline" style="font-size:9px;padding:5px 10px">Bitcoin</a>
+      <a href="/wasmverse/read.html?book=rust" class="obi-btn-outline" style="font-size:9px;padding:5px 10px">Rust</a>
+      <a href="/wasmverse/read.html?book=wasm" class="obi-btn-outline" style="font-size:9px;padding:5px 10px">WASM</a>
+      <a href="/wasmverse/" class="obi-btn" style="font-size:9px;padding:5px 10px">ALL 6 &rarr;</a>
     </div>
-
-    <div class="feature-block">
-      <div class="feature-icon-lg">&#127912;</div>
-      <div>
-        <h3>African Design</h3>
-        <p>Eight ancestral art patterns from Bogolan to Adinkra to Nsibidi. Sacred geometry spacing based on the Fibonacci sequence. A design system rooted in African mathematical traditions.</p>
-      </div>
-    </div>
-
-    <div class="feature-block">
-      <div class="feature-icon-lg">&#128274;</div>
-      <div>
-        <h3>Self-Custody Security</h3>
-        <p>Argon2id key derivation, AES-256-GCM encryption, biometric unlock, PIN rate-limiting. Your seed phrase is encrypted on-device. No server ever sees your keys.</p>
-      </div>
-    </div>
-
-    <div class="feature-block">
-      <div class="feature-icon-lg">&#129302;</div>
-      <div>
-        <h3>Agent-Ready</h3>
-        <p>Built on the 9S scroll substrate. External agents and apps connect via Nostr relays. Read wallet state, request payments, install tools. All gated by your approval.</p>
-      </div>
-    </div>
-  </section>
-
-  <section style="max-width:680px;margin:0 auto;padding:var(--phi-34) var(--phi-21);border-top:1px solid var(--color-void-border);">
-    <div style="display:flex;align-items:center;gap:var(--phi-21);flex-wrap:wrap">
-      <div style="flex:1;min-width:240px">
-        <p style="font-family:var(--font-display);font-size:10px;font-weight:600;letter-spacing:0.2em;color:var(--color-fire-gold);text-transform:uppercase;margin-bottom:var(--phi-5)">THE EPISTOLARY LIBRARY</p>
-        <p style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--color-text-bright);margin-bottom:var(--phi-8)">Learn the Technology Behind the App</p>
-        <p style="font-size:13px;color:var(--color-text);line-height:1.6;margin-bottom:var(--phi-13)">Explore our open treatises on Bitcoin, WebAssembly, Rust, and PWA engineering. Interactive WASM demos. Written in the spirit of Euler's letters.</p>
-        <a href="/wasmverse/" class="obi-btn-outline" style="font-size:11px;padding:8px 21px;">EXPLORE THE LIBRARY &rarr;</a>
-      </div>
-      <div style="flex:0 0 auto;display:flex;flex-direction:column;gap:var(--phi-5)">
-        <a href="/wasmverse/read.html?book=bitcoin" style="font-size:11px;color:var(--color-text-dim);font-family:var(--font-display);letter-spacing:0.05em;text-transform:uppercase;padding:var(--phi-5) var(--phi-8);border:1px solid var(--color-void-border);border-radius:4px;text-decoration:none;transition:border-color 200ms ease" onmouseover="this.style.borderColor='var(--color-fire-gold)'" onmouseout="this.style.borderColor=''">&#9889; Letters on Bitcoin</a>
-        <a href="/wasmverse/read.html?book=rust" style="font-size:11px;color:var(--color-text-dim);font-family:var(--font-display);letter-spacing:0.05em;text-transform:uppercase;padding:var(--phi-5) var(--phi-8);border:1px solid var(--color-void-border);border-radius:4px;text-decoration:none;transition:border-color 200ms ease" onmouseover="this.style.borderColor='var(--color-fire-gold)'" onmouseout="this.style.borderColor=''">&#128296; Letters on Rust</a>
-        <a href="/wasmverse/read.html?book=wasm" style="font-size:11px;color:var(--color-text-dim);font-family:var(--font-display);letter-spacing:0.05em;text-transform:uppercase;padding:var(--phi-5) var(--phi-8);border:1px solid var(--color-void-border);border-radius:4px;text-decoration:none;transition:border-color 200ms ease" onmouseover="this.style.borderColor='var(--color-fire-gold)'" onmouseout="this.style.borderColor=''">&#9881; Letters on WebAssembly</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="app-cta">
-    <h2>Take Sovereignty</h2>
-    <p>Available on iOS via TestFlight. Your keys. Your identity. Your money.</p>
-    <a href="https://testflight.apple.com/join/GwwPuv4W" class="obi-btn obi-btn-lg">Join TestFlight Beta</a>
-  </section>
+  </div>
 
   <footer class="site-footer">
     <div class="footer-left">
