@@ -277,24 +277,35 @@
   <div class="divider"></div>
   <div style="max-width:580px;margin:0 auto;padding:28px;border-radius:8px;border:1px solid var(--fd2);background:linear-gradient(135deg,var(--vm) 0%,var(--card-gradient-b) 100%);position:relative;overflow:hidden">
     <div class="glow" style="top:-40%;left:50%;transform:translateX(-50%);width:350px;height:250px;background:radial-gradient(ellipse,var(--glow-color) 0%,transparent 70%)"></div>
+    <div class="dia" style="top:-10px;right:-10px;width:120px;height:120px;opacity:.03"></div>
+    <div class="dia" style="bottom:-10px;left:-10px;width:80px;height:80px;opacity:.02"></div>
     <div style="position:relative;z-index:1">
       <div style="text-align:center;margin-bottom:18px">
-        <p class="tag" style="margin-bottom:3px;font-size:9px">START YOUR PROJECT</p>
-        <h2 style="font-family:var(--f);font-size:20px;font-weight:700;color:var(--tb);margin-bottom:3px">Get a free quote in 24 hours</h2>
-        <p style="font-size:12px;color:var(--td)">Tell us what you need. No commitment.</p>
+        <p style="font-size:16px;margin-bottom:4px">&#x25C7;</p>
+        <h2 style="font-family:var(--f);font-size:18px;font-weight:700;color:var(--tb);margin-bottom:2px">Start Your Project</h2>
+        <p style="font-size:11px;color:var(--td)">Free quote in 24 hours. No commitment.</p>
       </div>
       <form onsubmit="go(event)">
         <div class="fg">
+          <!-- Who you are -->
+          <p class="ff" style="font-family:var(--f);font-size:9px;font-weight:700;letter-spacing:.18em;color:var(--fg);text-transform:uppercase;margin-bottom:-4px;margin-top:4px">&#x25B8; ABOUT YOU</p>
           <div><label class="fl2">Your Name *</label><input type="text" id="qn" class="fi" placeholder="Full name" required></div>
           <div><label class="fl2">Business Name</label><input type="text" id="qb" class="fi" placeholder="Company or brand"></div>
           <div><label class="fl2">Phone / WhatsApp *</label><input type="tel" id="qp" class="fi" placeholder="+234..." required></div>
-          <div><label class="fl2">Service Needed *</label><select id="qs" class="fi" required><option value="">Select...</option><option>Website</option><option>Mobile App</option><option>Business Tools</option><option>Digital Presence</option><option>Payment Integration</option><option>School/Church Portal</option><option>Other</option></select></div>
-          <div><label class="fl2">Budget Range</label><select id="qd" class="fi"><option>Not sure yet</option><option>$100 – $250</option><option>$250 – $500</option><option>$500+</option><option>Monthly plan</option></select></div>
-          <div><label class="fl2">Timeline</label><select id="qt" class="fi"><option>ASAP</option><option>1–2 weeks</option><option>This month</option><option>Just exploring</option></select></div>
-          <div class="ff"><label class="fl2">Project Details</label><textarea id="qm" class="fi" placeholder="Describe your project..."></textarea></div>
-          <div class="ff" style="display:flex;gap:8px;flex-wrap:wrap">
-            <button type="submit" class="btn" style="flex:1;min-width:180px;padding:12px 28px">SEND VIA WHATSAPP</button>
-            <a href="mailto:admin@obiverse.net?subject=Quote%20Request" class="bo" style="flex:1;min-width:180px;padding:12px 28px">EMAIL US</a>
+          <div><label class="fl2">Email</label><input type="email" id="qe" class="fi" placeholder="you@business.com"></div>
+
+          <!-- What you need -->
+          <p class="ff" style="font-family:var(--f);font-size:9px;font-weight:700;letter-spacing:.18em;color:var(--fg);text-transform:uppercase;margin-bottom:-4px;margin-top:8px">&#x25B8; YOUR PROJECT</p>
+          <div><label class="fl2">Service Needed *</label><select id="qs" class="fi" required><option value="">Select...</option><option>Website &amp; Landing Page</option><option>Mobile App (iOS/Android)</option><option>Business System (CRM, Invoices)</option><option>Payment Integration</option><option>Institution Portal (School/Church)</option><option>Digital Marketing &amp; SEO</option><option>Monthly Managed Presence</option><option>Other / Custom</option></select></div>
+          <div><label class="fl2">Industry</label><select id="qi" class="fi"><option value="">Select...</option><option>Manufacturing</option><option>Education / School</option><option>Church / Religious</option><option>Healthcare / Clinic</option><option>Hospitality / Hotel</option><option>Restaurant / Food</option><option>Retail / Supermarket</option><option>Wholesale / Distribution</option><option>Energy / Filling Station</option><option>Pharmacy</option><option>Transport / Logistics</option><option>Cooperative / Community</option><option>Technology</option><option>Other</option></select></div>
+          <div><label class="fl2">Budget Range</label><select id="qd" class="fi"><option>Not sure yet</option><option>$100 &ndash; $250</option><option>$250 &ndash; $500</option><option>$500+</option><option>Monthly plan ($15&ndash;$60/mo)</option></select></div>
+          <div><label class="fl2">Timeline</label><select id="qt" class="fi"><option>ASAP (7 days)</option><option>1&ndash;2 weeks</option><option>This month</option><option>Just exploring</option></select></div>
+          <div class="ff"><label class="fl2">Project Details</label><textarea id="qm" class="fi" placeholder="What do you want to build? What problem does it solve?"></textarea></div>
+
+          <!-- Submit -->
+          <div class="ff" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px">
+            <button type="submit" class="btn" style="flex:1;min-width:160px;padding:12px 28px">&#x25C7; SEND VIA WHATSAPP</button>
+            <button type="button" onclick="sendEmail()" class="bo" style="flex:1;min-width:160px;padding:12px 28px">&#x2709; EMAIL US</button>
           </div>
         </div>
       </form>
@@ -402,8 +413,117 @@
 </footer>
 
 <script>
+/* Pricing tab switcher */
 function sw(i){document.querySelectorAll('.op').forEach(function(p){p.style.display='none'});document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('on')});document.getElementById('o'+i).style.display='block';document.querySelectorAll('.tab')[i].classList.add('on')}
-function go(e){e.preventDefault();var t='Hi OBIVERSE, I need a quote.\n\nName: '+document.getElementById('qn').value;var b=document.getElementById('qb').value;if(b)t+='\nBusiness: '+b;t+='\nPhone: '+document.getElementById('qp').value+'\nService: '+document.getElementById('qs').value+'\nBudget: '+document.getElementById('qd').value+'\nTimeline: '+document.getElementById('qt').value;var m=document.getElementById('qm').value;if(m)t+='\n\n'+m;window.open('https://wa.me/12404916726?text='+encodeURIComponent(t),'_blank')}
+
+/* Gather form data into an object */
+function gatherForm() {
+  var v = function(id) { return (document.getElementById(id).value || '').trim(); };
+  return {
+    name: v('qn'),
+    business: v('qb'),
+    phone: v('qp'),
+    email: v('qe'),
+    service: v('qs'),
+    industry: v('qi'),
+    budget: v('qd'),
+    timeline: v('qt'),
+    details: v('qm')
+  };
+}
+
+/* Build rich WhatsApp message with formatting */
+function buildWhatsApp(d) {
+  var lines = [];
+
+  // Header with Adinkra-inspired unicode framing
+  lines.push('\u25C7\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u25C7');
+  lines.push('       *OBIVERSE*');
+  lines.push('    _New Project Inquiry_');
+  lines.push('\u25C7\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u25C7');
+  lines.push('');
+
+  // Client section
+  lines.push('\uD83D\uDC64 *Client*');
+  lines.push('\u25B8 ' + d.name);
+  if (d.business) lines.push('\u25B8 ' + d.business);
+  lines.push('\u25B8 ' + d.phone);
+  if (d.email) lines.push('\u25B8 ' + d.email);
+  lines.push('');
+
+  // Project section
+  lines.push('\u26A1 *Project*');
+  lines.push('\u25B8 *Service:* ' + d.service);
+  if (d.industry) lines.push('\u25B8 *Industry:* ' + d.industry);
+  lines.push('\u25B8 *Budget:* ' + d.budget);
+  lines.push('\u25B8 *Timeline:* ' + d.timeline);
+
+  // Details as blockquote
+  if (d.details) {
+    lines.push('');
+    lines.push('\uD83D\uDCCB *Details*');
+    // Split into lines and prefix each with > for WhatsApp blockquote
+    var detailLines = d.details.split('\n');
+    for (var i = 0; i < detailLines.length; i++) {
+      lines.push('> ' + detailLines[i]);
+    }
+  }
+
+  // Footer
+  lines.push('');
+  lines.push('\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500');
+  lines.push('_Sent from_ https://obiverse.github.io');
+
+  return lines.join('\n');
+}
+
+/* Build email body (plain text, no markdown) */
+function buildEmail(d) {
+  var lines = [];
+  lines.push('OBIVERSE — New Project Inquiry');
+  lines.push('================================');
+  lines.push('');
+  lines.push('CLIENT');
+  lines.push('Name: ' + d.name);
+  if (d.business) lines.push('Business: ' + d.business);
+  lines.push('Phone: ' + d.phone);
+  if (d.email) lines.push('Email: ' + d.email);
+  lines.push('');
+  lines.push('PROJECT');
+  lines.push('Service: ' + d.service);
+  if (d.industry) lines.push('Industry: ' + d.industry);
+  lines.push('Budget: ' + d.budget);
+  lines.push('Timeline: ' + d.timeline);
+  if (d.details) {
+    lines.push('');
+    lines.push('DETAILS');
+    lines.push(d.details);
+  }
+  lines.push('');
+  lines.push('---');
+  lines.push('Sent from obiverse.github.io');
+  return lines.join('\n');
+}
+
+/* WhatsApp submit handler */
+function go(e) {
+  e.preventDefault();
+  var d = gatherForm();
+  var msg = buildWhatsApp(d);
+  window.open('https://wa.me/12404916726?text=' + encodeURIComponent(msg), '_blank');
+}
+
+/* Email submit handler */
+function sendEmail() {
+  var d = gatherForm();
+  if (!d.name || !d.phone || !d.service) {
+    alert('Please fill in your name, phone, and service needed.');
+    return;
+  }
+  var subject = 'Quote Request' + (d.business ? ' — ' + d.business : '') + ' — ' + d.service;
+  var body = buildEmail(d);
+  window.open('mailto:admin@obiverse.net?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body));
+}
 </script>
 </body>
 </html>
