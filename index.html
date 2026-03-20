@@ -15,13 +15,14 @@
   <meta name="twitter:title" content="OBIVERSE — Digital Tools That Grow Your Business">
   <meta name="twitter:description" content="Websites, apps, and business systems. Designed, built, and launched in 7 days. Starting at $100.">
   <meta name="theme-color" content="#c97d1d">
-  <link rel="icon" href="logo.png">
+  <link rel="icon" href="logo-64.png" type="image/png">
   <link rel="apple-touch-icon" href="icon-512.png">
   <link rel="canonical" href="https://obiverse.github.io">
   <link rel="manifest" href="manifest.json">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=IBM+Plex+Sans:wght@400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=IBM+Plex+Sans:wght@400&display=swap" rel="stylesheet"></noscript>
 
   <!-- Structured Data for SEO -->
   <script type="application/ld+json">
@@ -52,7 +53,7 @@
 
   <script src="theme.js"></script>
   <style>
-    :root,:root[data-theme="dark"]{--vd:#0a1628;--vm:#0f1f38;--vs:#162a4a;--vb:#1e3a5c;--fd2:#8b5e1a;--fg:#c97d1d;--fb2:#d4922a;--fz:#e8a830;--t:#c8b89a;--tb:#e8d8b8;--td:#8a7d6a;--tg:#3a5070;--btn-text:#060d18;--header-bg:rgba(10,22,40,.94);--header-border:rgba(30,58,92,.5);--input-bg:rgba(6,13,24,.6);--glow-color:rgba(201,125,29,.08);--hover-bg:rgba(201,125,29,.06);--focus-ring:rgba(201,125,29,.35);--card-gradient-a:#0f1f38;--card-gradient-b:rgba(10,22,40,.85);--f:'Rajdhani',sans-serif;--b:'IBM Plex Sans',sans-serif;--m:'JetBrains Mono',monospace}
+    :root,:root[data-theme="dark"]{--vd:#0a1628;--vm:#0f1f38;--vs:#162a4a;--vb:#1e3a5c;--fd2:#8b5e1a;--fg:#c97d1d;--fb2:#d4922a;--fz:#e8a830;--t:#c8b89a;--tb:#e8d8b8;--td:#8a7d6a;--tg:#3a5070;--btn-text:#060d18;--header-bg:rgba(10,22,40,.94);--header-border:rgba(30,58,92,.5);--input-bg:rgba(6,13,24,.6);--glow-color:rgba(201,125,29,.08);--hover-bg:rgba(201,125,29,.06);--focus-ring:rgba(201,125,29,.35);--card-gradient-a:#0f1f38;--card-gradient-b:rgba(10,22,40,.85);--f:'Rajdhani',sans-serif;--b:'IBM Plex Sans',sans-serif;--m:ui-monospace,'SF Mono',monospace}
     :root[data-theme="light"]{--vd:#f5efe6;--vm:#ebe4d8;--vs:#e0d6c6;--vb:#c8bca8;--fd2:#a07030;--fg:#9e6b1b;--fb2:#b87a22;--fz:#c98e30;--t:#4a4035;--tb:#2a2018;--td:#6a5d4e;--tg:#8a7d6e;--btn-text:#fff;--header-bg:rgba(245,239,230,.94);--header-border:rgba(200,188,168,.5);--input-bg:rgba(235,228,216,.6);--glow-color:rgba(158,107,27,.06);--hover-bg:rgba(158,107,27,.06);--focus-ring:rgba(158,107,27,.35);--card-gradient-a:#ebe4d8;--card-gradient-b:rgba(245,239,230,.85)}
     *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
     body{background:var(--vd);color:var(--t);font-family:var(--b);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased;transition:background .3s ease,color .3s ease}
@@ -163,7 +164,7 @@
 
 <!-- ━━━ HEADER ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 <header>
-  <a href="/" class="logo"><img src="logo.png" alt="OBIVERSE"><span>OBIVERSE</span></a>
+  <a href="/" class="logo"><picture><source srcset="logo-64.webp" type="image/webp"><img src="logo-64.png" alt="OBIVERSE" width="24" height="24"></picture><span>OBIVERSE</span></a>
   <nav>
     <a href="#services" class="nl">Services</a>
     <a href="#pricing" class="nl">Pricing</a>
@@ -447,7 +448,7 @@
 
 <!-- ━━━ FOOTER ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 <footer>
-  <div style="display:flex;align-items:center;gap:6px"><img src="logo.png" alt="" style="width:14px;height:14px"><span>OBIVERSE LLC</span></div>
+  <div style="display:flex;align-items:center;gap:6px"><img src="logo-64.png" alt="" width="14" height="14" style="width:14px;height:14px"><span>OBIVERSE LLC</span></div>
   <div style="display:flex;gap:12px;flex-wrap:wrap"><a href="/app.html">App</a><a href="/wasmverse/">Library</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="mailto:admin@obiverse.net">Contact</a></div>
 </footer>
 
@@ -625,7 +626,25 @@ function sendEmail() {
 
 <!-- Nostr module (ES module for dynamic import of crypto libs) -->
 <script type="module">
-import { init, postNote, fetchGlobalNotes, getNpub, npubEncode, timeAgo } from './nostr.js';
+/* Lazy-load Nostr: only connect when section scrolls into view */
+let nostrLoaded = false;
+const nostrSection = document.getElementById('nostr');
+if (nostrSection && 'IntersectionObserver' in window) {
+  const observer = new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting && !nostrLoaded) {
+      nostrLoaded = true;
+      observer.disconnect();
+      bootNostr();
+    }
+  }, { rootMargin: '200px' }); /* start loading 200px before visible */
+  observer.observe(nostrSection);
+} else if (nostrSection) {
+  /* Fallback: load after 3s if no IntersectionObserver */
+  setTimeout(bootNostr, 3000);
+}
+
+async function bootNostr() {
+const { init, postNote, fetchGlobalNotes, getNpub, npubEncode, timeAgo } = await import('./nostr.js');
 
 const MAX_FEED = 30;
 const feed = [];
@@ -731,6 +750,7 @@ window.nostrPost = async function() {
   btn.disabled = false;
   btn.textContent = 'POST';
 };
+} /* end bootNostr */
 </script>
 </body>
 </html>

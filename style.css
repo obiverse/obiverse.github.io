@@ -1,5 +1,5 @@
 /* OBIVERSE Design System — Full Storefront */
-@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500&family=JetBrains+Mono:wght@400&display=swap');
+/* Fonts loaded via <link> in HTML for non-blocking render */
 
 :root, :root[data-theme="dark"] {
   --color-void-deepest: #060d18;
@@ -25,7 +25,7 @@
   --color-focus-ring: rgba(201, 125, 29, 0.35);
   --font-display: 'Rajdhani', sans-serif;
   --font-body: 'IBM Plex Sans', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-mono: ui-monospace, 'SF Mono', monospace;
   --phi-3: 3px; --phi-5: 5px; --phi-8: 8px; --phi-13: 13px;
   --phi-21: 21px; --phi-34: 34px; --phi-55: 55px; --phi-89: 89px;
 }
