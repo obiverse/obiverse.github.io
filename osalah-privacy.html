@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy &mdash; oSalah</title>
+  <meta name="description" content="oSalah privacy policy. Your data stays on your device.">
+  <meta name="theme-color" content="#C9A84C">
+  <link rel="icon" href="logo-64.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=IBM+Plex+Sans:wght@400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="style.css">
+  <script src="theme.js"></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="/" class="logo-link">
+      <picture><source srcset="logo-64.webp" type="image/webp"><img src="logo-64.png" alt="OBIVERSE" width="28" height="28"></picture>
+      <span class="logo-text">oSalah</span>
+    </a>
+    <nav class="header-nav">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/osalah.html" class="nav-link">App</a>
+      <button class="theme-toggle" onclick="obiThemeCycle()" aria-label="Toggle theme"><span class="theme-icon" aria-hidden="true">&#x25D0;</span></button>
+    </nav>
+  </header>
+
+  <main>
+  <section class="legal-hero">
+    <div class="glow"></div>
+    <div style="position: relative; z-index: 1;">
+      <p class="section-tag">PRIVACY POLICY</p>
+      <h1 style="font-family: var(--font-display); font-weight: 600; font-size: clamp(24px, 4vw, 36px); color: var(--color-text-bright); line-height: 1.2; margin-bottom: var(--phi-8);">
+        Your data stays on <span style="color: #C9A84C;">your device.</span>
+      </h1>
+      <p style="font-size: 13px; color: var(--color-text-dim);">Effective: April 8, 2026 &middot; Obiverse LLC</p>
+    </div>
+  </section>
+
+  <article class="legal-article">
+    <div class="legal-tldr">
+      <p class="tldr-title">TL;DR</p>
+      <ul>
+        <li>oSalah works entirely offline &mdash; no internet connection required</li>
+        <li>Your location is used only to calculate prayer times and Qibla direction</li>
+        <li>Location data never leaves your device &mdash; it is cached locally</li>
+        <li>No analytics, no tracking, no telemetry, no ads</li>
+        <li>No accounts, no sign-ups, no personal information collected</li>
+      </ul>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-head"><span class="section-num">01</span><h2 class="section-title">WHAT WE COLLECT</h2></div>
+      <div class="section-body">
+        <p><strong>Nothing.</strong> oSalah does not collect, transmit, or store any personal data on external servers. The app has no backend, no analytics service, and no network calls.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-head"><span class="section-num">02</span><h2 class="section-title">DEVICE PERMISSIONS</h2></div>
+      <div class="section-body">
+        <ul>
+          <li><strong>Location (when in use):</strong> Used to calculate accurate prayer times for your position and the compass bearing to the Kaaba (Qibla direction). Your coordinates are cached on-device in SharedPreferences and are never transmitted anywhere.</li>
+          <li><strong>Motion / Compass:</strong> Used to read the device magnetometer for the real-time Qibla compass. Heading data is processed in memory only.</li>
+        </ul>
+        <p>Both permissions are optional. The app will prompt you on first use and respect your choice. You can change permissions at any time in your device Settings.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-head"><span class="section-num">03</span><h2 class="section-title">LOCAL STORAGE</h2></div>
+      <div class="section-body">
+        <p>oSalah stores the following on your device only:</p>
+        <ul>
+          <li>Cached GPS coordinates (for offline prayer time calculation)</li>
+          <li>Prayer calculation method and Asr school preference</li>
+          <li>Last-read Quran surah bookmark</li>
+          <li>Quran font size and translation language preference</li>
+          <li>Onboarding completion flag</li>
+          <li>Haptic feedback preference</li>
+        </ul>
+        <p>All data is stored in SharedPreferences (key-value storage) and a bundled read-only SQLite database (Quran text). No data is encrypted because no data is sensitive &mdash; these are user preferences only.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-head"><span class="section-num">04</span><h2 class="section-title">THIRD-PARTY SERVICES</h2></div>
+      <div class="section-body">
+        <p><strong>None.</strong> oSalah makes no network requests. There are no analytics SDKs, no crash reporters, no ad networks, and no social media integrations. The Quran database is bundled with the app.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-head"><span class="section-num">05</span><h2 class="section-title">CHILDREN</h2></div>
+      <div class="section-body">
+        <p>oSalah does not collect any data from any user, including children. The app is suitable for all ages.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-head"><span class="section-num">06</span><h2 class="section-title">CHANGES</h2></div>
+      <div class="section-body">
+        <p>We may update this policy. Changes will be posted at this URL. Continued use after changes constitutes acceptance.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-head"><span class="section-num">07</span><h2 class="section-title">CONTACT</h2></div>
+      <div class="section-body">
+        <p>Obiverse LLC &middot; <a href="mailto:admin@obiverse.net">admin@obiverse.net</a></p>
+      </div>
+    </div>
+  </article>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-left">
+      <a href="/"><img src="logo-64.png" alt="" width="16" height="16"></a>
+      <span>OBIVERSE LLC</span>
+    </div>
+    <div class="footer-right">
+      <a href="/">Home</a>
+      <a href="/osalah.html">App</a>
+      <a href="/osalah-support.html">Support</a>
+      <a href="/osalah-privacy.html">Privacy</a>
+    </div>
+  </footer>
+
+</body>
+</html>

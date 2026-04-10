@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support &mdash; oSalah</title>
+  <meta name="description" content="Get help with oSalah — prayer times, Qibla compass, Quran reader, and more.">
+  <meta name="theme-color" content="#C9A84C">
+  <link rel="icon" href="logo-64.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=IBM+Plex+Sans:wght@400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="style.css">
+  <script src="theme.js"></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="/" class="logo-link">
+      <picture><source srcset="logo-64.webp" type="image/webp"><img src="logo-64.png" alt="OBIVERSE" width="28" height="28"></picture>
+      <span class="logo-text">oSalah</span>
+    </a>
+    <nav class="header-nav">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/osalah.html" class="nav-link">App</a>
+      <button class="theme-toggle" onclick="obiThemeCycle()" aria-label="Toggle theme"><span class="theme-icon" aria-hidden="true">&#x25D0;</span></button>
+    </nav>
+  </header>
+
+  <main>
+  <section class="legal-hero">
+    <div class="glow"></div>
+    <div style="position: relative; z-index: 1;">
+      <p class="section-tag">SUPPORT</p>
+      <h1 style="font-family: var(--font-display); font-weight: 600; font-size: clamp(24px, 4vw, 36px); color: var(--color-text-bright); line-height: 1.2; margin-bottom: var(--phi-8);">
+        Help &amp; <span style="color: #C9A84C;">FAQ</span>
+      </h1>
+    </div>
+  </section>
+
+  <article class="legal-article">
+
+    <div class="legal-section">
+      <div class="section-head"><span class="section-num">01</span><h2 class="section-title">PRAYER TIMES</h2></div>
+      <div class="section-body">
+        <p><strong>Q: My prayer times seem wrong.</strong></p>
+        <p>A: Go to Settings and check your calculation method. Different regions use different methods:</p>
+        <ul>
+          <li><strong>MWL</strong> (Muslim World League) &mdash; Europe, Far East</li>
+          <li><strong>ISNA</strong> &mdash; North America</li>
+          <li><strong>Egyptian</strong> &mdash; Africa, Middle East</li>
+          <li><strong>Umm al-Qura</strong> &mdash; Saudi Arabia, Gulf</li>
+          <li><strong>Karachi</strong> &mdash; South Asia</li>
+        </ul>
+        <p>Also check that the correct Asr school is selected (Shafi'i or Hanafi).</p>
+        <p><strong>Q: Prayer times don't update.</strong></p>
+        <p>A: Make sure location permission is granted. Open Settings &gt; Privacy &gt; Location Services and ensure oSalah is set to "While Using the App." If GPS is unavailable, the app uses your last known location.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-head"><span class="section-num">02</span><h2 class="section-title">QIBLA COMPASS</h2></div>
+      <div class="section-body">
+        <p><strong>Q: The compass is spinning or inaccurate.</strong></p>
+        <p>A: Your device's magnetometer may need calibration. Move your phone slowly in a figure-8 pattern several times. Avoid using the compass near metal objects, magnets, or electronic devices.</p>
+        <p><strong>Q: The compass shows "Unavailable."</strong></p>
+        <p>A: Some devices or protective cases may interfere with the compass sensor. Remove any magnetic case and try again.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-head"><span class="section-num">03</span><h2 class="section-title">QURAN READER</h2></div>
+      <div class="section-body">
+        <p><strong>Q: How do I change the font size?</strong></p>
+        <p>A: Go to More &gt; Prayer Settings and adjust the Quran font size slider.</p>
+        <p><strong>Q: How do I switch translations?</strong></p>
+        <p>A: While reading a surah, tap the language buttons (EN / FR / HA) at the top of the reader. You can also toggle translations on or off with the eye icon.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-head"><span class="section-num">04</span><h2 class="section-title">DHIKR COUNTER</h2></div>
+      <div class="section-body">
+        <p><strong>Gestures:</strong></p>
+        <ul>
+          <li><strong>Tap</strong> or <strong>swipe up</strong> &mdash; Count</li>
+          <li><strong>Swipe down</strong> &mdash; Reset</li>
+          <li><strong>Swipe left</strong> &mdash; Next phrase</li>
+          <li><strong>Swipe right</strong> &mdash; Previous phrase</li>
+          <li><strong>Long press</strong> &mdash; Show meaning</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-head"><span class="section-num">05</span><h2 class="section-title">ZAKAT CALCULATOR</h2></div>
+      <div class="section-body">
+        <p><strong>Q: What is nisab?</strong></p>
+        <p>A: Nisab is the minimum amount of wealth a Muslim must possess for zakat to be obligatory. oSalah uses the gold standard: 85 grams of gold at current market value.</p>
+        <p><strong>Q: Is the gold price accurate?</strong></p>
+        <p>A: The gold price is an approximate reference value. For precise zakat calculations, verify the current gold price for your region and consult a local scholar.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-head"><span class="section-num">06</span><h2 class="section-title">CONTACT</h2></div>
+      <div class="section-body">
+        <p>For questions, feedback, or issues not covered here:</p>
+        <p><strong>Email:</strong> <a href="mailto:admin@obiverse.net">admin@obiverse.net</a></p>
+        <p>We typically respond within 48 hours. JazakAllah khair for using oSalah.</p>
+      </div>
+    </div>
+
+  </article>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-left">
+      <a href="/"><img src="logo-64.png" alt="" width="16" height="16"></a>
+      <span>OBIVERSE LLC</span>
+    </div>
+    <div class="footer-right">
+      <a href="/">Home</a>
+      <a href="/osalah.html">App</a>
+      <a href="/osalah-support.html">Support</a>
+      <a href="/osalah-privacy.html">Privacy</a>
+    </div>
+  </footer>
+
+</body>
+</html>
