@@ -36,7 +36,7 @@
     "priceRange": "$100 - $700",
     "address": {"@type": "PostalAddress", "addressCountry": "US"},
     "email": "admin@obiverse.net",
-    "telephone": "+12404916726",
+    "telephone": "+12409750431",
     "areaServed": {"@type": "GeoShape", "name": "Worldwide"},
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
@@ -191,7 +191,7 @@
     </p>
     <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:18px">
       <a href="#quote" class="btn" style="padding:10px 34px">START A PROJECT</a>
-      <a href="https://wa.me/12404916726?text=Hi%20OBIVERSE%2C%20I%20need%20a%20website%20for%20my%20business" target="_blank" rel="noopener" class="bo" style="padding:10px 34px">WHATSAPP US</a>
+      <a href="https://wa.me/12409750431?text=Hi%20OBIVERSE%2C%20I%20need%20a%20website%20for%20my%20business" target="_blank" rel="noopener" class="bo" style="padding:10px 34px">WHATSAPP US</a>
       <a href="/app.html" class="bo" style="padding:10px 21px">OUR APP</a>
     </div>
     <!-- Trust strip -->
@@ -593,6 +593,40 @@ function showFormSuccess(msg) {
   setTimeout(function() { el.style.display = 'none'; }, 5000);
 }
 
+/* Web3Forms access key - replace with your key from https://web3forms.com (free, 60 sec signup) */
+var WEB3FORMS_KEY = 'REPLACE_WITH_YOUR_WEB3FORMS_ACCESS_KEY';
+
+/* Silently capture lead to Web3Forms (fire-and-forget, non-blocking) */
+function captureLead(d, channel) {
+  if (!WEB3FORMS_KEY || WEB3FORMS_KEY.indexOf('REPLACE_') === 0) return;
+  try {
+    var payload = {
+      access_key: WEB3FORMS_KEY,
+      subject: 'OBIVERSE Lead — ' + (d.business || d.name) + ' — ' + d.service,
+      from_name: 'OBIVERSE Website',
+      name: d.name,
+      business: d.business || '',
+      phone: d.phone,
+      email: d.email || '',
+      service: d.service,
+      industry: d.industry || '',
+      budget: d.budget,
+      timeline: d.timeline,
+      details: d.details || '',
+      channel: channel || 'web',
+      source_url: location.href
+    };
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+      body: JSON.stringify(payload)
+    }).catch(function(){});
+  } catch(e){}
+  /* GA4 / Meta pixel event */
+  if (typeof gtag === 'function') gtag('event', 'generate_lead', {channel: channel});
+  if (typeof fbq === 'function') fbq('track', 'Lead', {channel: channel});
+}
+
 /* WhatsApp submit */
 function go(e) {
   e.preventDefault();
@@ -600,15 +634,17 @@ function go(e) {
   var err = validateForm(d);
   if (err) { showFormError(err); return; }
 
+  captureLead(d, 'whatsapp');
+
   var msg = buildWhatsApp(d);
-  var url = 'https://wa.me/12404916726?text=' + encodeURIComponent(msg);
+  var url = 'https://wa.me/12409750431?text=' + encodeURIComponent(msg);
 
   /* Safety: wa.me URLs should stay under ~4000 encoded chars */
   if (url.length > 4000) {
     /* Retry without details */
     d.details = '';
     msg = buildWhatsApp(d);
-    url = 'https://wa.me/12404916726?text=' + encodeURIComponent(msg);
+    url = 'https://wa.me/12409750431?text=' + encodeURIComponent(msg);
   }
 
   showFormSuccess('Opening WhatsApp...');
@@ -620,6 +656,8 @@ function sendEmail() {
   var d = gatherForm();
   var err = validateForm(d);
   if (err) { showFormError(err); return; }
+
+  captureLead(d, 'email');
 
   var subject = 'Quote Request' + (d.business ? ' \u2014 ' + d.business : '') + ' \u2014 ' + d.service;
   var body = buildEmail(d);

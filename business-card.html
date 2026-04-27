@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>OBIVERSE — Business Card · Brian M M</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=Cinzel:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#0a1628;
+    --void-deep:#050b14;
+    --void-mid:#0f1e34;
+    --gold:#c97d1d;
+    --gold-blaze:#e8a830;
+    --gold-soft:#f4c96b;
+    --gold-pale:#fbe3a7;
+    --ink:#0a0a0a;
+    --paper:#fdfaf3;
+
+    /* Card geometry — trim 3.5" x 2", bleed 0.125" each side */
+    --trim-w: 3.5in;
+    --trim-h: 2in;
+    --bleed: 0.125in;
+    --card-w: 3.75in;   /* trim + bleed */
+    --card-h: 2.25in;
+    --safe: 0.25in;     /* from bleed edge = 0.125" inside trim */
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#141414;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#eee}
+  body{padding:48px 20px;min-height:100vh;display:flex;flex-direction:column;align-items:center;gap:36px}
+  .hint{max-width:760px;text-align:center;color:#9a9a9a;font-size:13px;line-height:1.65}
+  .hint b{color:#e8a830;font-weight:600}
+  .hint code{background:#222;padding:1px 6px;border-radius:3px;color:#f4c96b;font-size:12px}
+  .stage{display:flex;flex-wrap:wrap;gap:56px;justify-content:center;align-items:center}
+
+  /* ---------- CARD SHELL (includes bleed + crop marks) ---------- */
+  .card{
+    width:var(--card-w);
+    height:var(--card-h);
+    position:relative;
+    box-shadow:0 30px 70px rgba(0,0,0,.65), 0 6px 20px rgba(0,0,0,.4);
+    page-break-after:always;
+    break-after:page;
+  }
+  .bleed{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+  }
+  /* Crop marks — drawn just outside trim edge */
+  .crop{
+    position:absolute;
+    background:#000;
+    z-index:10;
+  }
+  .crop.tl-h{top:var(--bleed);left:0;width:calc(var(--bleed) - 2pt);height:0.5pt}
+  .crop.tl-v{top:0;left:var(--bleed);width:0.5pt;height:calc(var(--bleed) - 2pt)}
+  .crop.tr-h{top:var(--bleed);right:0;width:calc(var(--bleed) - 2pt);height:0.5pt}
+  .crop.tr-v{top:0;right:var(--bleed);width:0.5pt;height:calc(var(--bleed) - 2pt)}
+  .crop.bl-h{bottom:var(--bleed);left:0;width:calc(var(--bleed) - 2pt);height:0.5pt}
+  .crop.bl-v{bottom:0;left:var(--bleed);width:0.5pt;height:calc(var(--bleed) - 2pt)}
+  .crop.br-h{bottom:var(--bleed);right:0;width:calc(var(--bleed) - 2pt);height:0.5pt}
+  .crop.br-v{bottom:0;right:var(--bleed);width:0.5pt;height:calc(var(--bleed) - 2pt)}
+
+  /* ---------- FRONT ---------- */
+  .face{
+    position:absolute;
+    inset:0;
+    padding:var(--safe);
+    overflow:hidden;
+  }
+  .front-bg{
+    position:absolute;inset:0;
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 35%, rgba(232,168,48,.22) 0%, transparent 65%),
+      radial-gradient(ellipse 100% 80% at 15% 110%, rgba(201,125,29,.18) 0%, transparent 70%),
+      radial-gradient(ellipse 80% 60% at 100% -10%, rgba(232,168,48,.12) 0%, transparent 60%),
+      linear-gradient(160deg, var(--void-deep) 0%, var(--void-mid) 55%, var(--void) 100%);
+  }
+  /* Sacred-geometry SVG overlay — crisp at any print resolution */
+  .front-geom{position:absolute;inset:0;opacity:.18;mix-blend-mode:screen}
+  .front-frame{
+    position:absolute;
+    inset:calc(var(--bleed) + 6pt);
+    border:0.6pt solid rgba(232,168,48,.35);
+    pointer-events:none;
+  }
+  .hizb{
+    position:absolute;
+    width:14pt;height:14pt;
+    pointer-events:none;
+    z-index:3;
+  }
+  .hizb.tl{top:calc(var(--bleed) - 1pt); left:calc(var(--bleed) - 1pt)}
+  .hizb.tr{top:calc(var(--bleed) - 1pt); right:calc(var(--bleed) - 1pt)}
+  .hizb.bl{bottom:calc(var(--bleed) - 1pt); left:calc(var(--bleed) - 1pt)}
+  .hizb.br{bottom:calc(var(--bleed) - 1pt); right:calc(var(--bleed) - 1pt)}
+  .hizb.front path{fill:none;stroke:var(--gold-blaze);stroke-width:0.9}
+  .hizb.front circle{fill:var(--gold-blaze)}
+  .hizb.front .plate{fill:var(--void-deep);stroke:none}
+  .hizb.back path{fill:none;stroke:var(--void-deep);stroke-width:0.9}
+  .hizb.back circle{fill:var(--void-deep)}
+  .hizb.back .plate{fill:var(--gold-pale);stroke:none}
+  .front-inner{
+    position:relative;
+    z-index:2;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:space-between;
+    text-align:center;
+    padding:6pt 12pt;
+  }
+  .logo-wrap{
+    display:flex;flex-direction:column;align-items:center;gap:4pt;
+  }
+  .logo{
+    height:0.82in;
+    width:auto;
+    filter:
+      drop-shadow(0 0 16px rgba(232,168,48,.45))
+      drop-shadow(0 2px 4px rgba(0,0,0,.4));
+  }
+  .tagline{
+    font-family:'Rajdhani',sans-serif;
+    font-weight:500;
+    font-size:7.5pt;
+    letter-spacing:.4em;
+    text-transform:uppercase;
+    white-space:nowrap;
+    color:var(--gold-soft);
+  }
+  .tagline .sep{color:var(--gold-blaze);margin:0 6pt;opacity:.9}
+  .person{
+    display:flex;flex-direction:column;align-items:center;gap:3pt;
+  }
+  .divider{
+    width:42pt;height:0.6pt;
+    background:linear-gradient(90deg, transparent 0%, var(--gold-blaze) 50%, transparent 100%);
+    margin-bottom:2pt;
+  }
+  .name{
+    font-family:'Cinzel',serif;
+    font-weight:600;
+    font-size:13pt;
+    letter-spacing:.12em;
+    color:var(--gold-pale);
+    text-transform:uppercase;
+    line-height:1;
+  }
+  .title{
+    font-family:'IBM Plex Sans',sans-serif;
+    font-weight:400;
+    font-size:7pt;
+    letter-spacing:.3em;
+    text-transform:uppercase;
+    color:var(--gold-soft);
+    margin-top:1pt;
+  }
+  .title .sep{opacity:.5;margin:0 5pt}
+  .forge{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:6pt;
+    margin-top:3pt;
+  }
+  .forge-rule{
+    width:18pt;height:0.5pt;
+    background:linear-gradient(90deg, transparent 0%, var(--gold-blaze) 100%);
+  }
+  .forge-rule.right{
+    background:linear-gradient(90deg, var(--gold-blaze) 0%, transparent 100%);
+  }
+  .forge-orn{
+    width:9pt;height:9pt;
+    flex-shrink:0;
+    filter:drop-shadow(0 0 4px rgba(232,168,48,.6));
+  }
+  .forge-orn path, .forge-orn line{stroke:var(--gold-blaze);stroke-width:0.8;fill:none}
+  .forge-orn .gem{fill:var(--gold-pale);stroke:var(--gold-pale)}
+  .forge-title{
+    font-family:'Cinzel',serif;
+    font-weight:600;
+    font-size:8.5pt;
+    letter-spacing:.38em;
+    text-transform:uppercase;
+    color:var(--gold-blaze);
+    padding-left:.38em;
+    line-height:1;
+  }
+
+  /* ---------- BACK ---------- */
+  .back-bg{
+    position:absolute;inset:0;
+    background:
+      radial-gradient(ellipse 70% 70% at 25% 80%, rgba(255,225,150,.45) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 50% at 90% 20%, rgba(180,100,20,.35) 0%, transparent 60%),
+      linear-gradient(135deg, #d4891f 0%, var(--gold) 45%, #a65e12 100%);
+  }
+  .back-geom{position:absolute;inset:0;opacity:.1}
+  .back-frame{
+    position:absolute;
+    inset:calc(var(--bleed) + 6pt);
+    border:0.6pt solid rgba(10,22,40,.35);
+  }
+  .back-inner{
+    position:relative;
+    z-index:2;
+    height:100%;
+    display:grid;
+    grid-template-columns: 1fr 0.95in;
+    gap:10pt;
+    padding:10pt 14pt;
+  }
+  .back-left{display:flex;flex-direction:column;justify-content:space-between;min-width:0}
+  .back-head{
+    font-family:'Cinzel',serif;
+    font-weight:600;
+    font-size:12pt;
+    letter-spacing:.18em;
+    color:var(--void-deep);
+    line-height:1;
+  }
+  .back-sub{
+    font-family:'Rajdhani',sans-serif;
+    font-weight:500;
+    font-size:6.5pt;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:rgba(10,22,40,.75);
+    margin-top:3pt;
+  }
+  .services-title{
+    font-family:'Rajdhani',sans-serif;
+    font-weight:600;
+    font-size:6.5pt;
+    letter-spacing:.3em;
+    text-transform:uppercase;
+    color:var(--void-deep);
+    margin-bottom:2pt;
+    position:relative;
+    padding-left:10pt;
+  }
+  .services-title::before{
+    content:"";position:absolute;left:0;top:50%;
+    width:6pt;height:0.6pt;background:var(--void-deep);
+    transform:translateY(-50%);
+  }
+  .services{
+    font-family:'IBM Plex Sans',sans-serif;
+    font-size:6.6pt;
+    line-height:1.55;
+    color:rgba(10,22,40,.9);
+    font-weight:400;
+  }
+  .contact{
+    font-family:'IBM Plex Sans',sans-serif;
+    font-size:7pt;
+    line-height:1.5;
+    color:var(--void-deep);
+    font-weight:500;
+    display:flex;flex-direction:column;gap:2pt;
+  }
+  .contact .row{display:flex;align-items:center;gap:6pt}
+  .contact svg{flex-shrink:0;width:8pt;height:8pt;fill:var(--void-deep)}
+  .contact .num{font-variant-numeric:tabular-nums;letter-spacing:.02em}
+  .contact .label{font-weight:600;font-size:6.2pt;letter-spacing:.2em;text-transform:uppercase;opacity:.7;margin-right:2pt}
+  .back-right{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:4pt;
+  }
+  .qr{
+    width:0.9in;height:0.9in;
+    background:var(--paper);
+    padding:3pt;
+    border:0.6pt solid var(--void-deep);
+    box-shadow:0 2px 6px rgba(10,22,40,.25);
+  }
+  .qr img{width:100%;height:100%;display:block}
+  .qr-label{
+    font-family:'Rajdhani',sans-serif;
+    font-size:5.8pt;
+    letter-spacing:.32em;
+    text-transform:uppercase;
+    color:var(--void-deep);
+    font-weight:700;
+    text-align:center;
+    line-height:1.2;
+  }
+  .qr-label em{font-style:normal;color:var(--void);font-weight:600;opacity:.75;display:block;font-size:5.2pt;letter-spacing:.26em;margin-top:1pt}
+
+  /* ---------- PRINT ---------- */
+  @page{
+    size: 3.75in 2.25in;   /* trim + bleed */
+    margin: 0;
+  }
+  @media print{
+    html,body{background:#fff;padding:0;margin:0}
+    .hint{display:none}
+    .stage{display:block;gap:0}
+    .card{
+      box-shadow:none;
+      margin:0;
+    }
+    *{
+      print-color-adjust:exact !important;
+      -webkit-print-color-adjust:exact !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="hint">
+  <b>Print-ready file.</b> Trim size <b>3.5 × 2 in</b>, with <b>0.125 in bleed</b> on all sides (total <b>3.75 × 2.25 in</b>) and crop marks. Export: File → Print → <b>Save as PDF</b> → Paper: <b>3.75 × 2 in</b> custom (or <code>3.75in × 2.25in</code>) → Margins: <b>None</b> → Background graphics: <b>On</b>. Upload the 2-page PDF to any pro printer (VistaPrint, MOO, Printful, local shop). Recommended spec: <b>16pt or 18pt soft-touch / matte</b> stock, <b>full bleed</b>, <b>CMYK</b>, spot-gloss on the logo if available.
+</div>
+
+<div class="stage">
+  <!-- =========================== FRONT =========================== -->
+  <div class="card">
+    <div class="bleed">
+      <div class="face">
+        <div class="front-bg"></div>
+
+        <!-- Sacred geometry backdrop -->
+        <svg class="front-geom" viewBox="0 0 375 225" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="diamondGrid" width="22" height="22" patternUnits="userSpaceOnUse">
+              <path d="M 11 0 L 22 11 L 11 22 L 0 11 Z" stroke="#e8a830" stroke-width="0.4" fill="none"/>
+            </pattern>
+            <radialGradient id="centerGlow" cx="50%" cy="40%" r="40%">
+              <stop offset="0%" stop-color="#e8a830" stop-opacity="0.5"/>
+              <stop offset="100%" stop-color="#e8a830" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <rect width="375" height="225" fill="url(#diamondGrid)"/>
+          <!-- concentric diamonds, center -->
+          <g transform="translate(187.5,112.5)" stroke="#f4c96b" fill="none" stroke-width="0.5" opacity="0.55">
+            <path d="M0,-80 L80,0 L0,80 L-80,0 Z"/>
+            <path d="M0,-60 L60,0 L0,60 L-60,0 Z"/>
+            <path d="M0,-40 L40,0 L0,40 L-40,0 Z"/>
+            <circle r="30" stroke-dasharray="1,2"/>
+          </g>
+          <rect width="375" height="225" fill="url(#centerGlow)"/>
+        </svg>
+
+        <div class="front-frame"></div>
+
+        <div class="front-inner">
+          <div class="logo-wrap">
+            <img class="logo" src="logo.png" alt="Obiverse">
+            <div class="tagline">We build it <span class="sep">◆</span> You grow</div>
+          </div>
+
+          <div class="person">
+            <div class="divider"></div>
+            <div class="name">Brian M M</div>
+            <div class="forge">
+              <div class="forge-rule"></div>
+              <svg class="forge-orn" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <!-- radiating sparks -->
+                <line x1="10" y1="1" x2="10" y2="4"/>
+                <line x1="10" y1="16" x2="10" y2="19"/>
+                <line x1="1" y1="10" x2="4" y2="10"/>
+                <line x1="16" y1="10" x2="19" y2="10"/>
+                <line x1="3.5" y1="3.5" x2="5.5" y2="5.5"/>
+                <line x1="14.5" y1="14.5" x2="16.5" y2="16.5"/>
+                <line x1="3.5" y1="16.5" x2="5.5" y2="14.5"/>
+                <line x1="14.5" y1="5.5" x2="16.5" y2="3.5"/>
+                <!-- central forged diamond -->
+                <path class="gem" d="M10 5 L14 10 L10 15 L6 10 Z"/>
+              </svg>
+              <div class="forge-title">Forgemaster</div>
+              <svg class="forge-orn" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <line x1="10" y1="1" x2="10" y2="4"/>
+                <line x1="10" y1="16" x2="10" y2="19"/>
+                <line x1="1" y1="10" x2="4" y2="10"/>
+                <line x1="16" y1="10" x2="19" y2="10"/>
+                <line x1="3.5" y1="3.5" x2="5.5" y2="5.5"/>
+                <line x1="14.5" y1="14.5" x2="16.5" y2="16.5"/>
+                <line x1="3.5" y1="16.5" x2="5.5" y2="14.5"/>
+                <line x1="14.5" y1="5.5" x2="16.5" y2="3.5"/>
+                <path class="gem" d="M10 5 L14 10 L10 15 L6 10 Z"/>
+              </svg>
+              <div class="forge-rule right"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Rub el Hizb corner ornaments -->
+    <svg class="hizb front tl" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2 L18 10 L10 18 L2 10 Z"/><path d="M4 4 L16 4 L16 16 L4 16 Z"/><circle cx="10" cy="10" r="1"/></svg>
+    <svg class="hizb front tr" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2 L18 10 L10 18 L2 10 Z"/><path d="M4 4 L16 4 L16 16 L4 16 Z"/><circle cx="10" cy="10" r="1"/></svg>
+    <svg class="hizb front bl" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2 L18 10 L10 18 L2 10 Z"/><path d="M4 4 L16 4 L16 16 L4 16 Z"/><circle cx="10" cy="10" r="1"/></svg>
+    <svg class="hizb front br" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2 L18 10 L10 18 L2 10 Z"/><path d="M4 4 L16 4 L16 16 L4 16 Z"/><circle cx="10" cy="10" r="1"/></svg>
+    <!-- crop marks -->
+    <div class="crop tl-h"></div><div class="crop tl-v"></div>
+    <div class="crop tr-h"></div><div class="crop tr-v"></div>
+    <div class="crop bl-h"></div><div class="crop bl-v"></div>
+    <div class="crop br-h"></div><div class="crop br-v"></div>
+  </div>
+
+  <!-- =========================== BACK =========================== -->
+  <div class="card">
+    <div class="bleed">
+      <div class="face">
+        <div class="back-bg"></div>
+
+        <svg class="back-geom" viewBox="0 0 375 225" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="diamondGridDark" width="20" height="20" patternUnits="userSpaceOnUse">
+              <path d="M 10 0 L 20 10 L 10 20 L 0 10 Z" stroke="#0a1628" stroke-width="0.4" fill="none"/>
+            </pattern>
+          </defs>
+          <rect width="375" height="225" fill="url(#diamondGridDark)"/>
+          <g transform="translate(310,50)" stroke="#0a1628" fill="none" stroke-width="0.4" opacity="0.4">
+            <circle r="30"/>
+            <circle r="22"/>
+            <path d="M0,-30 L30,0 L0,30 L-30,0 Z"/>
+          </g>
+        </svg>
+
+        <div class="back-frame"></div>
+
+        <div class="back-inner">
+          <div class="back-left">
+            <div>
+              <div class="back-head">OBIVERSE</div>
+              <div class="back-sub">Launched in 7 days · Built to grow</div>
+              <div style="margin-top:8pt">
+                <div class="services-title">What we build</div>
+                <div class="services">
+                  Websites · Mobile apps · Business desks<br>
+                  Payments · Bitcoin &amp; Nostr · Institution portals
+                </div>
+              </div>
+            </div>
+
+            <div class="contact">
+              <div class="row">
+                <!-- WhatsApp icon -->
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01c-1.52 0-3.01-.41-4.31-1.18l-.31-.18-3.2.84.85-3.12-.2-.32a8.22 8.22 0 0 1-1.27-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.2 8.2 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.02 2.57.12.17 1.76 2.68 4.26 3.76.6.26 1.06.41 1.42.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg>
+                <span class="label">WA</span><span class="num">+1 240 975 0431</span>
+              </div>
+              <div class="row">
+                <!-- Envelope icon -->
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 4h20c.55 0 1 .45 1 1v14c0 .55-.45 1-1 1H2c-.55 0-1-.45-1-1V5c0-.55.45-1 1-1zm10 9.5L3 7v11h18V7l-9 6.5zM21 5H3l9 6 9-6z"/></svg>
+                <span>admin@obiverse.net</span>
+              </div>
+              <div class="row">
+                <!-- Globe icon -->
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm7.93 9h-3.02a15.5 15.5 0 0 0-1.03-5.34A8.03 8.03 0 0 1 19.93 11zM12 4c.98 0 2.37 2.2 2.85 7H9.15C9.63 6.2 11.02 4 12 4zM4.07 11a8.03 8.03 0 0 1 4.05-5.34A15.5 15.5 0 0 0 7.09 11H4.07zM4.07 13h3.02c.14 1.96.5 3.78 1.03 5.34A8.03 8.03 0 0 1 4.07 13zM12 20c-.98 0-2.37-2.2-2.85-7h5.7C14.37 17.8 12.98 20 12 20zm3.88-1.66A15.5 15.5 0 0 0 16.91 13h3.02a8.03 8.03 0 0 1-4.05 5.34z"/></svg>
+                <span>obiverse.github.io</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="back-right">
+            <div class="qr">
+              <img src="qr-whatsapp.png" alt="WhatsApp Brian">
+            </div>
+            <div class="qr-label">Scan · Chat Now<em>opens WhatsApp</em></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <svg class="hizb back tl" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2 L18 10 L10 18 L2 10 Z"/><path d="M4 4 L16 4 L16 16 L4 16 Z"/><circle cx="10" cy="10" r="1"/></svg>
+    <svg class="hizb back tr" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2 L18 10 L10 18 L2 10 Z"/><path d="M4 4 L16 4 L16 16 L4 16 Z"/><circle cx="10" cy="10" r="1"/></svg>
+    <svg class="hizb back bl" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2 L18 10 L10 18 L2 10 Z"/><path d="M4 4 L16 4 L16 16 L4 16 Z"/><circle cx="10" cy="10" r="1"/></svg>
+    <svg class="hizb back br" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2 L18 10 L10 18 L2 10 Z"/><path d="M4 4 L16 4 L16 16 L4 16 Z"/><circle cx="10" cy="10" r="1"/></svg>
+    <div class="crop tl-h"></div><div class="crop tl-v"></div>
+    <div class="crop tr-h"></div><div class="crop tr-v"></div>
+    <div class="crop bl-h"></div><div class="crop bl-v"></div>
+    <div class="crop br-h"></div><div class="crop br-v"></div>
+  </div>
+</div>
+
+</body>
+</html>
