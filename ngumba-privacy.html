@@ -46,10 +46,11 @@
     <div class="legal-tldr">
       <p class="tldr-title">THE SHORT VERSION</p>
       <ul>
-        <li>Ngumba collects nothing, because it sends nothing anywhere</li>
+        <li>Ngumba collects nothing, and holds no permission to reach the network</li>
         <li>There is no account, no sign-up, and no server holding your papers</li>
         <li>Your documents, invoices and signature never leave the handset</li>
         <li>No analytics, no advertising identifiers, no crash reporting</li>
+        <li>Reading the text on a page happens on the handset, with no model to fetch</li>
         <li>Uninstalling the app removes everything it held</li>
       </ul>
     </div>
@@ -57,8 +58,10 @@
     <div class="legal-section">
       <div class="section-head"><span class="section-num">01</span><h2 class="section-title">WHAT WE COLLECT</h2></div>
       <div class="section-body">
-        <p><strong>Nothing.</strong> Ngumba has no network connection of any kind. It contains no code that can send data anywhere &mdash; no server calls, no analytics library, no advertising framework, no crash reporter. There is no account to create and nothing to log in to.</p>
-        <p>This is not a policy we could quietly change without shipping a different application. It is a property of how the app is built.</p>
+        <p><strong>Nothing.</strong> There is no account to create, nothing to log in to, and no server of ours for anything to be sent to.</p>
+        <p><strong>The app holds no permission to use the network.</strong> On Android it refuses <code>INTERNET</code> in its manifest, so nothing inside it can open a connection &mdash; not our code, and not a library's. On iOS it makes no network calls and links nothing that would.</p>
+        <p>That wording is careful because we got it wrong once. The text-recognition library we first used on Android brought Google's telemetry transport with it, and that transport asked for the internet permission. Nobody chose it, and this page meanwhile said the app had no network connection of any kind &mdash; which was true of what we had written and not of what we had shipped. The recognition model now travels inside the app instead, costing a few megabytes and needing nothing from anybody, and the permission is refused outright so that a library added years from now cannot quietly take it either.</p>
+        <p>A promise you can check is worth more than one you have to believe. An app that holds no network permission cannot send your documents anywhere, whatever its code intends.</p>
       </div>
     </div>
 
