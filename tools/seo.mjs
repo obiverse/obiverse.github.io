@@ -3,7 +3,7 @@
 //   node tools/seo.mjs [seo.config.mjs]          write everything
 //   node tools/seo.mjs [seo.config.mjs] --check  write nothing; exit 1 if anything is stale (pre-commit hook)
 //   node tools/seo.mjs --changed <git-ref>       print the URLs of pages changed since <ref> (deploy.sh → IndexNow);
-//                                                every page when the config changed
+//                                                (a config change that touches a head rewrote that page's file)
 // lastmod (Prop. 3) is never typed: seo.lock.json keeps a hash of each page without its seo block; when
 // the hash changes the page's lastmod becomes today. A page new to the lock starts from page.lastmod, then
 // its last git commit, then today. Commit seo.lock.json.
@@ -42,8 +42,7 @@ if (changedFrom) {
   const files = execFileSync('git', ['diff', '--name-only', changedFrom, 'HEAD', '--', '.'], { cwd: root, encoding: 'utf8' }).split('\n').filter(Boolean);
   const top = execFileSync('git', ['rev-parse', '--show-prefix'], { cwd: root, encoding: 'utf8' }).trim();
   const rel = new Set(files.map((f) => (f.startsWith(top) ? f.slice(top.length) : f)));
-  const all = rel.has(config.slice(root.length + 1));
-  for (const p of site.pages ?? []) if (!p.noindex && p.sitemap !== false && (all || rel.has(fileOf(p.path)))) console.log(site.origin + p.path);
+  for (const p of site.pages ?? []) if (!p.noindex && p.sitemap !== false && rel.has(fileOf(p.path))) console.log(site.origin + p.path);
   process.exit(0);
 }
 let stale = 0;
