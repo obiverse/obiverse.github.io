@@ -4,7 +4,7 @@
 //
 //   node packages/seo/cli.mjs audit <origin | sitemap-url> [--limit N] [--json] [--via http://localhost:3000]
 //   node packages/seo/cli.mjs build <seo.config.mjs> <outdir>
-//   node packages/seo/cli.mjs indexnow <origin> <key> [--since YYYY-MM-DD] [--dry-run]
+//   node packages/seo/cli.mjs indexnow <origin> <key> [url…] [--since YYYY-MM-DD] [--dry-run]
 //   node packages/seo/cli.mjs lint <seo.config.mjs> [--strict]
 //   node packages/seo/cli.mjs report <seo.config.mjs> [--days 28] [--property sc-domain:example.com]
 import { mkdir, writeFile } from 'node:fs/promises';
@@ -28,8 +28,9 @@ const USAGE = `usage:
   seo lint <seo.config.mjs> [--strict]                    check the description itself; --strict exits 1 on a warning
   seo report <seo.config.mjs> [--days 28] [--property P]  Search Console (GSC_KEY_FILE or GSC_TOKEN) and Bing (BING_KEY)
                                                           numbers per page, with what to do about them
-  seo indexnow <origin> <key> [--since YYYY-MM-DD] [--dry-run]
-                                                          tell the engines the sitemap's URLs changed (--since: lastmod ≥ day)`;
+  seo indexnow <origin> <key> [url…] [--since YYYY-MM-DD] [--dry-run]
+                                                          tell the engines these URLs changed; none given: the sitemap's
+                                                          (--since: only those whose lastmod ≥ day)`;
 
 /** @param {string} file @returns {Promise<import('./index.js').Site & { indexNowKey?: string }>} */
 const load = async (file) => { const mod = await import(pathToFileURL(resolve(file)).href); return mod.default ?? mod.site; };
@@ -79,9 +80,10 @@ async function main() {
     const key = indexNowKey(args[1]);
     const robots = await (await fetch(`${origin}/robots.txt`)).text().catch(() => '');
     const map = /^\s*sitemap:\s*(\S+)/im.exec(robots)?.[1] ?? `${origin}/sitemap.xml`;
-    const xml = await (await fetch(map)).text();
+    const given = args.slice(2);
+    const xml = given.length ? '' : await (await fetch(map)).text();
     const since = flagValue('--since');
-    const urls = since
+    const urls = given.length ? given : since
       ? [...xml.matchAll(/<url>([\s\S]*?)<\/url>/g)].map((m) => ({ loc: /<loc>\s*([^<\s]+)/.exec(m[1] ?? '')?.[1], mod: /<lastmod>\s*([^<\s]+)/.exec(m[1] ?? '')?.[1] ?? '' }))
         .filter((u) => u.loc && u.mod.slice(0, 10) >= since).map((u) => /** @type {string} */ (u.loc))
       : locsOf(xml);
@@ -91,7 +93,7 @@ async function main() {
     if (served !== key) process.stderr.write(`warning: ${body.keyLocation} does not serve the key; the engines will answer 403\n`);
     if (flags.has('--dry-run')) { process.stdout.write(`${JSON.stringify(body, null, 2)}\n`); return 0; }
     const r = await ping(origin, key, urls);
-    process.stdout.write(`IndexNow ${r.status}${r.ok ? ' ok' : ''}: ${r.sent} URLs from ${map}\n`);
+    process.stdout.write(`IndexNow ${r.status}${r.ok ? ' ok' : ''}: ${r.sent} URLs${given.length ? '' : ` from ${map}`}\n`);
     return r.ok ? 0 : 1;
   }
   process.stderr.write(`${USAGE}\n`);

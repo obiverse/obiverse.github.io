@@ -1,7 +1,9 @@
 // One command for a static site: lint the description, date each page by its content, write each head
 // between <!-- seo --> and <!-- /seo -->, and write robots.txt, sitemap.xml, llms.txt and the IndexNow key.
 //   node tools/seo.mjs [seo.config.mjs]          write everything
-//   node tools/seo.mjs [seo.config.mjs] --check  write nothing; exit 1 if anything is stale (CI)
+//   node tools/seo.mjs [seo.config.mjs] --check  write nothing; exit 1 if anything is stale (pre-commit hook)
+//   node tools/seo.mjs --changed <git-ref>       print the URLs of pages changed since <ref> (deploy.sh → IndexNow);
+//                                                every page when the config changed
 // lastmod (Prop. 3) is never typed: seo.lock.json keeps a hash of each page without its seo block; when
 // the hash changes the page's lastmod becomes today. A page new to the lock starts from page.lastmod, then
 // its last git commit, then today. Commit seo.lock.json.
@@ -13,7 +15,9 @@ import { dirname, join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { head, indexNowKey, langOf, lint, llmsTxt, pageUrls, robotsTxt, sitemapXml } from './seo/index.js';
 
-const config = resolve(process.argv.slice(2).find((a) => !a.startsWith('--')) ?? 'seo.config.mjs');
+const argv = process.argv.slice(2);
+const changedFrom = argv.includes('--changed') ? argv[argv.indexOf('--changed') + 1] : undefined;
+const config = resolve(argv.find((a, i) => !a.startsWith('--') && argv[i - 1] !== '--changed') ?? 'seo.config.mjs');
 const root = dirname(config);
 const site = (await import(pathToFileURL(config).href)).default;
 const check = process.argv.includes('--check');
@@ -34,6 +38,14 @@ const fileOf = (p) => {
   return /\.html?$/.test(rel) || !existsSync(join(root, `${rel}.html`)) ? rel : `${rel}.html`;
 };
 const gitDay = (file) => { try { return execFileSync('git', ['log', '-1', '--format=%ad', '--date=short', '--', file], { cwd: root, encoding: 'utf8' }).trim(); } catch { return ''; } };
+if (changedFrom) {
+  const files = execFileSync('git', ['diff', '--name-only', changedFrom, 'HEAD', '--', '.'], { cwd: root, encoding: 'utf8' }).split('\n').filter(Boolean);
+  const top = execFileSync('git', ['rev-parse', '--show-prefix'], { cwd: root, encoding: 'utf8' }).trim();
+  const rel = new Set(files.map((f) => (f.startsWith(top) ? f.slice(top.length) : f)));
+  const all = rel.has(config.slice(root.length + 1));
+  for (const p of site.pages ?? []) if (!p.noindex && p.sitemap !== false && (all || rel.has(fileOf(p.path)))) console.log(site.origin + p.path);
+  process.exit(0);
+}
 let stale = 0;
 const put = (file, body) => {
   const at = join(root, file);
