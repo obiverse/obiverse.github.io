@@ -1,0 +1,25 @@
+# OBIVERSE
+
+> OBIVERSE builds websites, mobile apps and business systems for businesses worldwide, launched in 7 days from $100, and makes its own apps: Obiverse (a Bitcoin Lightning wallet with Nostr identity), Ngumba (an offline scanner and invoice app) and oSalah (prayer times, Qibla and Quran).
+
+Obiverse LLC. Contact: admin@obiverse.net, WhatsApp +1 240 975 0431.
+
+## Services
+
+- [OBIVERSE](https://obiverse.github.io/): OBIVERSE builds professional websites, mobile apps, and business systems for businesses worldwide. Starting from $100. Designed, built, and launched in 7 days.
+
+## Apps
+
+- [Obiverse App: Bitcoin Lightning Wallet & Nostr Identity](https://obiverse.github.io/app.html): Your keys, your identity, your money. Obiverse is a sovereign Bitcoin Lightning wallet with Nostr identity, built for Africa.
+- [Ngumba: Document Scanner & Invoice App](https://obiverse.github.io/ngumba.html): The business centre in your pocket. Scan a page and it comes out straight, clean and small enough to send. Write an invoice in a minute. Everything stays on your phone.
+- [oSalah: Prayer Times, Qibla & Quran](https://obiverse.github.io/osalah.html): Your complete Muslim daily companion. Prayer times, Qibla compass, Quran reader, dhikr counter, zakat calculator, and 99 Names of Allah. Offline. No ads.
+
+## Support and policies
+
+- [Obiverse App Support](https://obiverse.github.io/support.html): Get help with the Obiverse app: answers to common questions, troubleshooting steps for wallet and identity, and how to reach the team.
+- [oSalah Support](https://obiverse.github.io/osalah-support.html): Get help with oSalah: prayer times, Qibla compass, Quran reader, dhikr counter and more. Answers to common questions and how to contact us.
+- [Privacy Policy](https://obiverse.github.io/privacy.html): How OBIVERSE protects your data: your keys, your data, your rules. What the Obiverse app stores, where it lives, and what never leaves your device.
+- [Terms of Service](https://obiverse.github.io/terms.html): The terms of service for the OBIVERSE platform and the Obiverse app. Sovereign computing: you hold your keys, and with them the responsibility.
+- [Ngumba Privacy Policy](https://obiverse.github.io/ngumba-privacy.html): Ngumba collects nothing. Your documents stay on your phone. There is no account and no server, so there is nothing of yours for anyone to hold.
+- [Ngumba Terms of Use](https://obiverse.github.io/ngumba-terms.html): The terms for using Ngumba, the offline scanner and invoice app. It is free, there is no account, and the documents you make are yours.
+- [oSalah Privacy Policy](https://obiverse.github.io/osalah-privacy.html): oSalah privacy policy. Your data stays on your device: no account, no tracking, no ads. Location is used only to work out prayer times and the Qibla.

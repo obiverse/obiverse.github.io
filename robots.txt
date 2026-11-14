@@ -1,0 +1,36 @@
+# OBIVERSE: written by packages/seo from one description of the site.
+
+# Let in by name (docs/SEO-ELEMENTS.md Prop. 4). Search: Googlebot, Bingbot, Applebot, Yandex, DuckDuckBot, Baiduspider, Yeti, SeznamBot, PetalBot.
+# Answer engines: OAI-SearchBot, ChatGPT-User, PerplexityBot, Perplexity-User, Claude-SearchBot, Claude-User, DuckAssistBot, MistralAI-User, Amazonbot.
+# Training: GPTBot, ClaudeBot, Google-Extended, Applebot-Extended, CCBot, Meta-ExternalAgent, Bytespider.
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: Applebot
+User-agent: Yandex
+User-agent: DuckDuckBot
+User-agent: Baiduspider
+User-agent: Yeti
+User-agent: SeznamBot
+User-agent: PetalBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: DuckAssistBot
+User-agent: MistralAI-User
+User-agent: Amazonbot
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: CCBot
+User-agent: Meta-ExternalAgent
+User-agent: Bytespider
+Allow: /
+
+User-agent: *
+Allow: /
+
+Sitemap: https://obiverse.github.io/sitemap.xml
