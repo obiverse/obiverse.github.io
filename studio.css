@@ -147,3 +147,38 @@ footer a:hover{color:var(--gold)}
   .ctas .btn,.ctas .bo{flex:1 1 100%}
   h1 br{display:none}
 }
+
+/* NeXT × macOS: one light source, real depth, motion you feel more than see.
+   NeXT gave us the discipline (hairlines, grids, nothing decorative); macOS the materials. */
+:root{--ease:cubic-bezier(.2,.8,.2,1);--hi:rgba(255,255,255,.06);--sh:0 1px 2px rgba(0,0,0,.25),0 14px 34px -14px rgba(0,0,0,.5);--sheen:rgba(212,146,42,.10)}
+:root[data-theme="light"]{--hi:rgba(255,255,255,.95);--sh:0 1px 2px rgba(60,40,10,.06),0 14px 34px -14px rgba(60,40,10,.22);--sheen:rgba(184,122,34,.08)}
+@supports (background:color-mix(in srgb,red,blue)){header{background:color-mix(in srgb,var(--bg) 70%,transparent)}}
+header{backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px)}
+.hero h1{background:linear-gradient(180deg,var(--tb) 35%,var(--gold2) 130%);-webkit-background-clip:text;background-clip:text;color:transparent}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+/* Buttons: lit from above, pressed like a key */
+.btn{background:linear-gradient(180deg,var(--gold2),var(--gold));box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 8px 20px -8px var(--ring)}
+.btn,.bo{transition:transform .25s var(--ease),background .2s,border-color .2s,box-shadow .25s var(--ease)}
+.btn:hover{background:linear-gradient(180deg,var(--gold2),var(--gold2));box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 12px 28px -8px var(--ring)}
+.btn:active,.bo:active{transform:scale(.97)}
+
+/* Cards: a material, not a box. The light follows your pointer. */
+.card{position:relative;isolation:isolate;border-radius:14px;box-shadow:inset 0 1px 0 var(--hi),var(--sh);transition:transform .45s var(--ease),border-color .3s,box-shadow .45s var(--ease)}
+.card::after{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;background:radial-gradient(420px circle at var(--mx,50%) var(--my,0),var(--sheen),transparent 60%);opacity:0;transition:opacity .4s;pointer-events:none}
+a.card:hover{transform:translateY(-4px)}a.card:hover::after{opacity:1}
+.quote{box-shadow:inset 0 1px 0 var(--hi),var(--sh)}
+
+/* Our work, shown in a window: the way you will see it */
+.win{display:block;margin-bottom:18px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--card2);box-shadow:0 12px 30px -14px rgba(0,0,0,.55)}
+.win::before{content:attr(data-url);display:block;height:26px;font:12px/26px var(--b);color:var(--td);text-align:center;border-bottom:1px solid var(--line);background:radial-gradient(circle at 14px 13px,#ff5f57 4.5px,transparent 5px),radial-gradient(circle at 30px 13px,#febc2e 4.5px,transparent 5px),radial-gradient(circle at 46px 13px,#28c840 4.5px,transparent 5px),var(--card2)}
+.win img{transition:transform .8s var(--ease)}
+a.card:hover .win img{transform:scale(1.025)}
+
+/* The phone message floats, like a notification that just arrived */
+.chat{box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 30px 70px -20px rgba(0,0,0,.55)}
+
+/* Arrival: each block rises once as it reaches you. Without JS, everything is simply there. */
+.rv [data-rv]{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv [data-rv].in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.card,.btn,.bo,.win img{transition:none}a.card:hover,a.card:hover .win img{transform:none}}
