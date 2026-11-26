@@ -29,7 +29,7 @@ export default {
   graph: [
     {
       '@type': 'Organization', '@id': '#org', name: 'OBIVERSE', legalName: 'Obiverse LLC', url: '/',
-      logo: '/icon-512.png', email: 'admin@obiverse.net', telephone: '+12409750431',
+      logo: '/icon-512.png', email: 'obiversellc@gmail.com', telephone: '+12409750431',
       sameAs: ['https://github.com/obiverse'],
     },
     { '@type': 'WebSite', '@id': '#website', name: 'OBIVERSE', url: '/', publisher: { '@id': '#org' } },
@@ -41,7 +41,7 @@ export default {
       parentOrganization: { '@id': '#org' }, image: '/icon-512.png',
       description: 'Systems that stop the leak for Africa\'s builders: FlowLedger, the stock, sales, debts and bank ledger that ranks every leak in naira, and websites live in 7 days.',
       slogan: 'Every naira has an address.', brand: { '@type': 'Brand', name: 'Kwatasoft' },
-      priceRange: '₦100,000 - ₦800,000', currenciesAccepted: 'NGN', knowsAbout: ['Inventory and stock control', 'Distributor accounts', 'Bank reconciliation', 'Website design', 'Search engine optimization'], email: 'admin@obiverse.net', telephone: '+12409750431',
+      priceRange: '₦100,000 - ₦800,000', currenciesAccepted: 'NGN', knowsAbout: ['Inventory and stock control', 'Distributor accounts', 'Bank reconciliation', 'Website design', 'Search engine optimization'], email: 'obiversellc@gmail.com', telephone: '+12409750431',
       address: { '@type': 'PostalAddress', addressCountry: 'US' }, areaServed: { '@type': 'Country', name: 'Nigeria' },
       hasOfferCatalog: {
         '@type': 'OfferCatalog', name: 'What we do',
@@ -215,7 +215,7 @@ export default {
 
   llms: {
     summary: 'OBIVERSE (Obiverse LLC, home of Kwatasoft) builds systems that stop the leak for Africa\'s builders: FlowLedger, a stock, sales, debts and bank ledger on the phone and WhatsApp for manufacturers and distributors in Nigeria, which ranks every leak in naira and starts with a ₦100,000 leak diagnostic; and business websites live in 7 days from ₦400,000. It also makes its own apps: Obiverse (a Bitcoin Lightning wallet with Nostr identity), BeeWallet (a self-custody Bitcoin and Lightning wallet), Ngumba (an offline scanner and invoice app) and oSalah (prayer times, Qibla and Quran).',
-    about: 'Obiverse LLC. Contact: admin@obiverse.net, WhatsApp +1 240 975 0431.\n\nWebsites we built that are live: ogaplastic.com (a water tank manufacturer in Nigeria), jawacard.com (a fuel card for drivers in Cameroon) and arteduxcel.com (technology procurement for businesses across Africa). Our own products include 9scroll.com (encrypted memory for AI).',
+    about: 'Obiverse LLC. Contact: obiversellc@gmail.com, WhatsApp +1 240 975 0431.\n\nWebsites we built that are live: ogaplastic.com (a water tank manufacturer in Nigeria), jawacard.com (a fuel card for drivers in Cameroon) and arteduxcel.com (technology procurement for businesses across Africa). Our own products include 9scroll.com (encrypted memory for AI).',
     sections: [
       { title: 'What we do', links: ['/', '/flowledger.html', '/website-design.html'] },
       { title: 'Apps', links: ['/app.html', '/beewallet.html', '/beewallet-android.html', '/ngumba.html', '/osalah.html'] },

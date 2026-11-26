@@ -1,7 +1,7 @@
 /* The quote form: WhatsApp first, email as the fallback. No server, no tracker.
    Any link with data-svc="…" chooses that service in the form and scrolls to it. */
 (function () {
-  var WA = '12409750431', MAIL = 'admin@obiverse.net';
+  var WA = '12409750431', MAIL = 'obiversellc@gmail.com';
   var $ = function (id) { return document.getElementById(id); };
 
   /* /?svc=business#quote from the service pages */
