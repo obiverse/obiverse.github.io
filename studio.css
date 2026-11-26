@@ -117,6 +117,10 @@ footer h4{font:700 13px var(--f);letter-spacing:.16em;text-transform:uppercase;c
 footer a{display:block;color:var(--t);text-decoration:none;padding:3px 0}
 footer a:hover{color:var(--gold)}
 
+/* Our own products: small cards, as many as fit */
+.products{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+.products .card{padding:18px}.products h3{font-size:19px}.products p{font-size:15px}
+
 /* The 2×2 grid: what we sell, and nothing else */
 .grid2x2{display:grid;grid-template-columns:170px 1fr 1fr;gap:16px;align-items:stretch}
 .grid2x2>.kind{margin:0;align-self:end}

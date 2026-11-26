@@ -4,6 +4,8 @@
 
 Obiverse LLC. Contact: admin@obiverse.net, WhatsApp +1 240 975 0431.
 
+Websites we built that are live: ogaplastic.com (a water tank manufacturer in Nigeria), jawacard.com (a fuel card for drivers in Cameroon) and arteduxcel.com (technology procurement for businesses across Africa). Our own products include 9scroll.com (encrypted memory for AI).
+
 ## What we do
 
 - [OBIVERSE](https://obiverse.github.io/): For Africa's builders: we read the records you already keep, show you where the money went, ranked in naira, and stop the leak. FlowLedger and websites, by Kwatasoft.
