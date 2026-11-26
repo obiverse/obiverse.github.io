@@ -12,6 +12,7 @@
 
 const IMG = { image: '/icon-512.png', imageWidth: 512, imageHeight: 512, imageAlt: 'The OBIVERSE mark' };
 const home = { name: 'OBIVERSE', path: '/' };
+const BEE = { image: '/beewallet-icon.png', imageWidth: 512, imageHeight: 512, imageAlt: 'The BeeWallet icon' };
 
 export default {
   origin: 'https://obiverse.github.io',
@@ -62,6 +63,14 @@ export default {
       description: 'Scan documents, write invoices, sign contracts and keep everything on your phone. Works offline. No account.',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }, publisher: { '@id': '#org' },
     },
+    beewallet: {
+      '@type': 'MobileApplication', '@id': '/beewallet.html#app', name: 'BeeWallet', url: '/beewallet.html',
+      operatingSystem: 'iOS, Android', applicationCategory: 'FinanceApplication',
+      description: 'Self-custody Bitcoin and Lightning wallet: a 12-word recovery phrase only you hold, a Mobinumber people can pay, amounts in your own currency.',
+      downloadUrl: ['https://apps.apple.com/us/app/beewallet-civil-hive/id6758224958', 'https://obiverse.github.io/beewallet-android.html'],
+      sameAs: ['https://apps.apple.com/us/app/beewallet-civil-hive/id6758224958'],
+      image: '/beewallet-icon.png', offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }, publisher: { '@id': '#org' },
+    },
     osalah: {
       '@type': 'MobileApplication', '@id': '/osalah.html#app', name: 'oSalah', url: '/osalah.html',
       operatingSystem: 'iOS', applicationCategory: 'LifestyleApplication',
@@ -71,6 +80,17 @@ export default {
   },
 
   pages: [
+    {
+      path: '/beewallet.html', query: 'beewallet bitcoin wallet', title: 'BeeWallet: Self-Custody Bitcoin & Lightning Wallet',
+      fullTitle: 'BeeWallet: Self-Custody Bitcoin & Lightning Wallet — OBIVERSE',
+      description: 'BeeWallet is a self-custody Bitcoin and Lightning wallet for iPhone and Android: your 12 words, a Mobinumber people can pay, amounts in your own currency.',
+      entities: ['beewallet'], crumbs: [home, { name: 'BeeWallet' }], ...BEE,
+    },
+    {
+      path: '/beewallet-android.html', query: 'beewallet android apk download', title: 'Download BeeWallet for Android (APK)',
+      description: 'Download the BeeWallet Android app: signed APKs for 64-bit and 32-bit phones, with SHA-256 checksums and the signing certificate to check before you install.',
+      entities: ['beewallet'], crumbs: [home, { name: 'BeeWallet', path: '/beewallet.html' }, { name: 'Android' }], ...BEE,
+    },
     {
       path: '/', query: 'website and app development for businesses', title: 'OBIVERSE', fullTitle: 'Websites, Apps & Business Systems in 7 Days — OBIVERSE',
       ogTitle: 'OBIVERSE — Digital Tools That Grow Your Business',
@@ -147,11 +167,11 @@ export default {
   ],
 
   llms: {
-    summary: 'OBIVERSE builds websites, mobile apps and business systems for businesses worldwide, launched in 7 days from $100, and makes its own apps: Obiverse (a Bitcoin Lightning wallet with Nostr identity), Ngumba (an offline scanner and invoice app) and oSalah (prayer times, Qibla and Quran).',
+    summary: 'OBIVERSE builds websites, mobile apps and business systems for businesses worldwide, launched in 7 days from $100, and makes its own apps: Obiverse (a Bitcoin Lightning wallet with Nostr identity), BeeWallet (a self-custody Bitcoin and Lightning wallet), Ngumba (an offline scanner and invoice app) and oSalah (prayer times, Qibla and Quran).',
     about: 'Obiverse LLC. Contact: admin@obiverse.net, WhatsApp +1 240 975 0431.',
     sections: [
       { title: 'Services', links: ['/'] },
-      { title: 'Apps', links: ['/app.html', '/ngumba.html', '/osalah.html'] },
+      { title: 'Apps', links: ['/app.html', '/beewallet.html', '/beewallet-android.html', '/ngumba.html', '/osalah.html'] },
       { title: 'Support and policies', links: ['/support.html', '/osalah-support.html', '/privacy.html', '/terms.html', '/ngumba-privacy.html', '/ngumba-terms.html', '/osalah-privacy.html'] },
     ],
   },

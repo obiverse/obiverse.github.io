@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- seo -->
+  <!-- /seo -->
+  <meta name="theme-color" content="#c97d1d">
+  <link rel="icon" href="beewallet-icon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=IBM+Plex+Sans:wght@400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=IBM+Plex+Sans:wght@400&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="style.css">
+  <script src="theme.js"></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="/" class="logo-link">
+      <picture><source srcset="logo-64.webp" type="image/webp"><img src="logo-64.png" alt="OBIVERSE" width="28" height="28"></picture>
+      <span class="logo-text">OBIVERSE</span>
+    </a>
+    <nav class="header-nav">
+      <a href="/" class="nav-link">Studio</a>
+      <a href="/app.html" class="nav-link">App</a>
+      <a href="/beewallet.html" class="nav-link">BeeWallet</a>
+      <a href="/ngumba.html" class="nav-link">Ngumba</a>
+      <button class="theme-toggle" onclick="obiThemeCycle()" aria-label="Toggle theme"><span class="theme-icon" aria-hidden="true">&#x25D0;</span></button>
+    </nav>
+  </header>
+
+  <main>
+  <section class="section" style="max-width:720px;margin:0 auto;padding:var(--phi-21)">
+    <div class="section-head"><span class="section-num">&#9679;</span><h1 class="section-title">Download BeeWallet for Android</h1></div>
+    <div class="section-body">
+      <p>BeeWallet {{VERSION}} for Android, a self-custody Bitcoin and Lightning wallet. Pick the file for your phone, open it, and allow installing from your browser when Android asks.</p>
+      <p style="display:flex;gap:8px;flex-wrap:wrap">
+        <a href="{{ARM64_URL}}" class="obi-btn">Most phones (64-bit, {{ARM64_SIZE}})</a>
+        <a href="{{ARM_URL}}" class="obi-btn-outline">Older 32-bit phones ({{ARM_SIZE}})</a>
+      </p>
+      <h2>Check what you install</h2>
+      <p>Each file is signed by BeeWallet. Before installing, you can confirm a file is exactly what we published: its SHA-256 checksum must match, and the signing certificate must match the fingerprint below on every release. The free AppVerifier app shows the certificate of an installed app.</p>
+      <p><strong>{{ARM64_FILE}}</strong><br><code style="word-break:break-all">{{ARM64_SHA256}}</code></p>
+      <p><strong>{{ARM_FILE}}</strong><br><code style="word-break:break-all">{{ARM_SHA256}}</code></p>
+      <p><strong>Signing certificate (SHA-256)</strong><br><code style="word-break:break-all">{{CERT_SHA256}}</code></p>
+      <h2>Updating</h2>
+      <p>Install a newer file over the app you have. Your wallet, PIN and balance stay as they are. Keep your 12-word recovery phrase written down, whatever phone you use.</p>
+      <p><a href="/beewallet.html">About BeeWallet</a> &middot; <a href="https://github.com/obiverse/obiverse.github.io/releases">All releases</a></p>
+    </div>
+  </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-left">
+      <a href="/"><img src="logo-64.png" alt="" width="16" height="16"></a>
+      <span>OBIVERSE LLC</span>
+    </div>
+    <div class="footer-right">
+      <a href="/">Studio</a>
+      <a href="/beewallet.html">BeeWallet</a>
+      <a href="/beewallet-android.html">Android</a>
+      <a href="mailto:support@beewallet.net">Support</a>
+    </div>
+  </footer>
+
+</body>
+</html>

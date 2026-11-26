@@ -1,6 +1,6 @@
 # OBIVERSE
 
-> OBIVERSE builds websites, mobile apps and business systems for businesses worldwide, launched in 7 days from $100, and makes its own apps: Obiverse (a Bitcoin Lightning wallet with Nostr identity), Ngumba (an offline scanner and invoice app) and oSalah (prayer times, Qibla and Quran).
+> OBIVERSE builds websites, mobile apps and business systems for businesses worldwide, launched in 7 days from $100, and makes its own apps: Obiverse (a Bitcoin Lightning wallet with Nostr identity), BeeWallet (a self-custody Bitcoin and Lightning wallet), Ngumba (an offline scanner and invoice app) and oSalah (prayer times, Qibla and Quran).
 
 Obiverse LLC. Contact: admin@obiverse.net, WhatsApp +1 240 975 0431.
 
@@ -11,6 +11,8 @@ Obiverse LLC. Contact: admin@obiverse.net, WhatsApp +1 240 975 0431.
 ## Apps
 
 - [Obiverse App: Bitcoin Lightning Wallet & Nostr Identity](https://obiverse.github.io/app.html): Your keys, your identity, your money. Obiverse is a sovereign Bitcoin Lightning wallet with Nostr identity, built for Africa.
+- [BeeWallet: Self-Custody Bitcoin & Lightning Wallet](https://obiverse.github.io/beewallet.html): BeeWallet is a self-custody Bitcoin and Lightning wallet for iPhone and Android: your 12 words, a Mobinumber people can pay, amounts in your own currency.
+- [Download BeeWallet for Android (APK)](https://obiverse.github.io/beewallet-android.html): Download the BeeWallet Android app: signed APKs for 64-bit and 32-bit phones, with SHA-256 checksums and the signing certificate to check before you install.
 - [Ngumba: Document Scanner & Invoice App](https://obiverse.github.io/ngumba.html): The business centre in your pocket. Scan a page and it comes out straight, clean and small enough to send. Write an invoice in a minute. Everything stays on your phone.
 - [oSalah: Prayer Times, Qibla & Quran](https://obiverse.github.io/osalah.html): Your complete Muslim daily companion. Prayer times, Qibla compass, Quran reader, dhikr counter, zakat calculator, and 99 Names of Allah. Offline. No ads.
 
