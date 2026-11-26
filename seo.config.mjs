@@ -12,6 +12,9 @@
 
 const IMG = { image: '/icon-512.png', imageWidth: 512, imageHeight: 512, imageAlt: 'The OBIVERSE mark' };
 const home = { name: 'OBIVERSE', path: '/' };
+const CARD = { image: '/og-obiverse.png', imageWidth: 1200, imageHeight: 630, imageAlt: 'Every naira has an address. OBIVERSE: leak diagnostic, FlowLedger, websites' };
+// FAQPage nodes: answer engines read them (Google shows no snippet). Keep each answer the page's visible text.
+const faq = (...qa) => ({ '@type': 'FAQPage', mainEntity: qa.map(([name, text]) => ({ '@type': 'Question', name, acceptedAnswer: { '@type': 'Answer', text } })) });
 const BEE = { image: '/beewallet-icon.png', imageWidth: 512, imageHeight: 512, imageAlt: 'The BeeWallet icon' };
 
 export default {
@@ -36,18 +39,35 @@ export default {
     studio: {
       '@type': 'ProfessionalService', '@id': '/#studio', name: 'OBIVERSE', url: '/',
       parentOrganization: { '@id': '#org' }, image: '/icon-512.png',
-      description: 'Professional websites, mobile apps and business systems, designed, built and launched in 7 days. From $100.',
-      priceRange: '$100 - $700', email: 'admin@obiverse.net', telephone: '+12409750431',
-      address: { '@type': 'PostalAddress', addressCountry: 'US' }, areaServed: 'Worldwide',
+      description: 'Systems that stop the leak for Africa\'s builders: FlowLedger, the stock, sales, debts and bank ledger that ranks every leak in naira, and websites live in 7 days.',
+      slogan: 'Every naira has an address.', brand: { '@type': 'Brand', name: 'Kwatasoft' },
+      priceRange: '₦100,000 - ₦800,000', currenciesAccepted: 'NGN', knowsAbout: ['Inventory and stock control', 'Distributor accounts', 'Bank reconciliation', 'Website design', 'Search engine optimization'], email: 'admin@obiverse.net', telephone: '+12409750431',
+      address: { '@type': 'PostalAddress', addressCountry: 'US' }, areaServed: { '@type': 'Country', name: 'Nigeria' },
       hasOfferCatalog: {
-        '@type': 'OfferCatalog', name: 'Digital Services',
+        '@type': 'OfferCatalog', name: 'What we do',
         itemListElement: [
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Business Launch Pack', description: 'Professional website in 7 days' }, price: '100', priceCurrency: 'USD' },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Business Desk', description: 'Invoices, inventory, and operations dashboard' }, price: '150', priceCurrency: 'USD' },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Managed Presence', description: 'Monthly digital management and support' }, price: '15', priceCurrency: 'USD' },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Institution Pack', description: 'Websites and portals for schools, churches, clinics' }, price: '200', priceCurrency: 'USD' },
+          { '@type': 'Offer', name: 'Leak diagnostic', itemOffered: { '@id': '/flowledger.html#service' }, price: '100000', priceCurrency: 'NGN' },
+          { '@type': 'Offer', name: 'Website', itemOffered: { '@id': '/website-design.html#service' }, price: '400000', priceCurrency: 'NGN' },
+          { '@type': 'Offer', name: 'Website with payments', itemOffered: { '@id': '/website-design.html#service' }, price: '800000', priceCurrency: 'NGN' },
+          { '@type': 'Offer', name: 'Website care', itemOffered: { '@id': '/website-design.html#service' }, price: '25000', priceCurrency: 'NGN', description: 'Monthly' },
         ],
       },
+    },
+    websites: {
+      '@type': 'Service', '@id': '/website-design.html#service', name: 'Website design', serviceType: 'Website design',
+      url: '/website-design.html', provider: { '@id': '/#studio' }, areaServed: { '@type': 'Country', name: 'Nigeria' },
+      description: 'Business websites designed, built and launched in 7 days, with SEO, Google Maps, a WhatsApp button and 30 days of support.',
+      offers: [
+        { '@type': 'Offer', name: 'Website', price: '400000', priceCurrency: 'NGN', description: 'Multi-page site, branding and logo, SEO, Google Maps, WhatsApp button, hosting setup' },
+        { '@type': 'Offer', name: 'Website with payments', price: '800000', priceCurrency: 'NGN', description: 'Custom design, payment integration, admin panel, analytics, priority support' },
+      ],
+    },
+    flowledger: {
+      '@type': 'Service', '@id': '/flowledger.html#service', name: 'FlowLedger', serviceType: 'Stock, sales, debts and bank ledger',
+      brand: { '@type': 'Brand', name: 'Kwatasoft' }, url: '/flowledger.html', provider: { '@id': '/#studio' },
+      areaServed: { '@type': 'Country', name: 'Nigeria' }, audience: { '@type': 'BusinessAudience', name: 'Manufacturers and distributors' },
+      description: 'A ledger on the phone and on WhatsApp that follows every kilogram and every naira, ranks each leak in naira and sends the owner a summary every night at 9pm.',
+      offers: { '@type': 'Offer', name: 'Leak diagnostic', price: '100000', priceCurrency: 'NGN', description: 'Credited in full toward setup within 30 days' },
     },
     obiverse: {
       '@type': 'MobileApplication', '@id': '/app.html#app', name: 'Obiverse', url: '/app.html',
@@ -92,10 +112,37 @@ export default {
       entities: ['beewallet'], crumbs: [home, { name: 'BeeWallet', path: '/beewallet.html' }, { name: 'Android' }], ...BEE,
     },
     {
-      path: '/', query: 'website and app development for businesses', title: 'OBIVERSE', fullTitle: 'Websites, Apps & Business Systems in 7 Days — OBIVERSE',
-      ogTitle: 'OBIVERSE — Digital Tools That Grow Your Business',
-      description: 'OBIVERSE builds professional websites, mobile apps, and business systems for businesses worldwide. Starting from $100. Designed, built, and launched in 7 days.',
-      entities: ['studio'], lastmod: '2026-08-19', priority: '1.0', ...IMG,
+      path: '/', query: 'kwatasoft obiverse', title: 'OBIVERSE',
+      fullTitle: 'Kwatasoft: Every Naira Has an Address — OBIVERSE',
+      ogTitle: 'Every naira has an address — OBIVERSE',
+      description: 'For Africa\'s builders: we read the records you already keep, show you where the money went, ranked in naira, and stop the leak. FlowLedger and websites, by Kwatasoft.',
+      entities: ['studio', 'flowledger', 'websites'], lastmod: '2026-08-19', priority: '1.0', ...CARD,
+      graph: [faq(
+        ['What is a leak diagnostic?', 'In 2–3 hours we go through the records you already keep (bank statements, sales, dispatches, stock and payments) and show you where money is leaking, ranked in naira, with the rows behind each finding. It costs ₦100,000 and is credited in full toward setup if you go ahead within 30 days.'],
+        ['Do my staff have to learn new software?', 'Not in week one. We import what your systems already produce: Excel, CSV or PDF. Later, staff can record on their phones or by WhatsApp message, one role at a time, and every entry is read back before it is saved.'],
+        ['How much does a website cost?', '₦400,000 for a multi-page site with branding, SEO, Google Maps and a WhatsApp button, live in 7 days. ₦800,000 adds a custom design, payments, an admin panel and analytics. Care is ₦25,000 a month. You pay 60% to start and 40% at go-live.'],
+        ['Do you give discounts?', 'No. If the budget is tight we reduce the scope, never the price, so what you get is always done properly.'],
+      )],
+    },
+    {
+      path: '/flowledger.html', query: 'kwatasoft flowledger stock sales and debts ledger', title: 'FlowLedger by Kwatasoft: Stock, Sales & Debts Ledger',
+      ogTitle: 'FlowLedger: know where every kilogram and every naira went',
+      description: 'The stock, sales, debts and bank ledger for manufacturers and distributors in Nigeria, on your phone and on WhatsApp. Every leak ranked in naira, every night at 9pm.',
+      entities: ['flowledger', 'studio'], crumbs: [home, { name: 'FlowLedger' }], priority: '0.9', ...CARD,
+      graph: [faq(
+        ['Who is FlowLedger for?', 'Businesses that turn inputs into outputs and sell them through others: manufacturers, and the distributors and shops they supply. If materials go in, goods go out and money comes back, FlowLedger can follow it.'],
+        ['Why not just tell me the price?', 'Because the price only makes sense next to the leak. The diagnostic tells you what the leak costs you each month. Then we give you two options, out loud, and you choose.'],
+      )],
+    },
+    {
+      path: '/website-design.html', query: 'website design for businesses in nigeria', title: 'Website Design for Businesses in Nigeria, Live in 7 Days',
+      description: 'Business websites found on Google and one tap from WhatsApp, designed, built and launched in 7 days: ₦400,000, or ₦800,000 with payments. 60% to start.',
+      entities: ['websites', 'studio'], crumbs: [home, { name: 'Website design' }], priority: '0.9', ...CARD,
+      graph: [faq(
+        ['How much does a website cost?', '₦400,000 for a multi-page business site with branding, SEO, Google Maps, a WhatsApp button and hosting setup. ₦800,000 adds a custom design, payments, an admin panel and analytics. Care after launch is ₦25,000 a month.'],
+        ['How long does it take?', 'Most websites are designed, built and launched in 7 days. Complex projects with custom features take 14 days.'],
+        ['How do I pay?', '60% to start and 40% at go-live, when the site is live and in use. Care is billed monthly in advance.'],
+      )],
     },
     {
       path: '/app.html', query: 'bitcoin lightning wallet africa', title: 'Obiverse App: Bitcoin Lightning Wallet & Nostr Identity',
@@ -167,10 +214,10 @@ export default {
   ],
 
   llms: {
-    summary: 'OBIVERSE builds websites, mobile apps and business systems for businesses worldwide, launched in 7 days from $100, and makes its own apps: Obiverse (a Bitcoin Lightning wallet with Nostr identity), BeeWallet (a self-custody Bitcoin and Lightning wallet), Ngumba (an offline scanner and invoice app) and oSalah (prayer times, Qibla and Quran).',
+    summary: 'OBIVERSE (Obiverse LLC, home of Kwatasoft) builds systems that stop the leak for Africa\'s builders: FlowLedger, a stock, sales, debts and bank ledger on the phone and WhatsApp for manufacturers and distributors in Nigeria, which ranks every leak in naira and starts with a ₦100,000 leak diagnostic; and business websites live in 7 days from ₦400,000. It also makes its own apps: Obiverse (a Bitcoin Lightning wallet with Nostr identity), BeeWallet (a self-custody Bitcoin and Lightning wallet), Ngumba (an offline scanner and invoice app) and oSalah (prayer times, Qibla and Quran).',
     about: 'Obiverse LLC. Contact: admin@obiverse.net, WhatsApp +1 240 975 0431.',
     sections: [
-      { title: 'Services', links: ['/'] },
+      { title: 'What we do', links: ['/', '/flowledger.html', '/website-design.html'] },
       { title: 'Apps', links: ['/app.html', '/beewallet.html', '/beewallet-android.html', '/ngumba.html', '/osalah.html'] },
       { title: 'Support and policies', links: ['/support.html', '/osalah-support.html', '/privacy.html', '/terms.html', '/ngumba-privacy.html', '/ngumba-terms.html', '/osalah-privacy.html'] },
     ],

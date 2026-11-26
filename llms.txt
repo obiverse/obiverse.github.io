@@ -1,12 +1,14 @@
 # OBIVERSE
 
-> OBIVERSE builds websites, mobile apps and business systems for businesses worldwide, launched in 7 days from $100, and makes its own apps: Obiverse (a Bitcoin Lightning wallet with Nostr identity), BeeWallet (a self-custody Bitcoin and Lightning wallet), Ngumba (an offline scanner and invoice app) and oSalah (prayer times, Qibla and Quran).
+> OBIVERSE (Obiverse LLC, home of Kwatasoft) builds systems that stop the leak for Africa's builders: FlowLedger, a stock, sales, debts and bank ledger on the phone and WhatsApp for manufacturers and distributors in Nigeria, which ranks every leak in naira and starts with a ₦100,000 leak diagnostic; and business websites live in 7 days from ₦400,000. It also makes its own apps: Obiverse (a Bitcoin Lightning wallet with Nostr identity), BeeWallet (a self-custody Bitcoin and Lightning wallet), Ngumba (an offline scanner and invoice app) and oSalah (prayer times, Qibla and Quran).
 
 Obiverse LLC. Contact: admin@obiverse.net, WhatsApp +1 240 975 0431.
 
-## Services
+## What we do
 
-- [OBIVERSE](https://obiverse.github.io/): OBIVERSE builds professional websites, mobile apps, and business systems for businesses worldwide. Starting from $100. Designed, built, and launched in 7 days.
+- [OBIVERSE](https://obiverse.github.io/): For Africa's builders: we read the records you already keep, show you where the money went, ranked in naira, and stop the leak. FlowLedger and websites, by Kwatasoft.
+- [FlowLedger by Kwatasoft: Stock, Sales & Debts Ledger](https://obiverse.github.io/flowledger.html): The stock, sales, debts and bank ledger for manufacturers and distributors in Nigeria, on your phone and on WhatsApp. Every leak ranked in naira, every night at 9pm.
+- [Website Design for Businesses in Nigeria, Live in 7 Days](https://obiverse.github.io/website-design.html): Business websites found on Google and one tap from WhatsApp, designed, built and launched in 7 days: ₦400,000, or ₦800,000 with payments. 60% to start.
 
 ## Apps
 
