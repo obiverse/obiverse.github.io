@@ -243,3 +243,49 @@ nav a.nl[aria-current="page"]{color:var(--tb)}
   nav .btn{padding:9px 12px;font-size:12px;margin-left:0}
 }
 @media(prefers-reduced-motion:reduce){.ind,.sheet,.sheet a.go-to,.menu i,.sheet .foot{transition:none}}
+
+/* Pictures first. One promise, one picture, three steps, one button; the rest folds under "The details".
+   Illustrations are Blender renders with transparent backgrounds (tools/art); the page adds their shadow. */
+.split{display:grid;grid-template-columns:1.02fr 1fr;gap:36px;align-items:center}
+.split .lead{margin-bottom:28px}
+.split .ctas{justify-content:flex-start}
+.hero .split h1{margin-bottom:18px}
+.ill{display:block;width:100%;height:auto;filter:drop-shadow(0 24px 26px rgba(40,24,6,.2))}
+:root[data-theme="dark"] .ill,:root:not([data-theme="light"]) .ill{filter:drop-shadow(0 26px 30px rgba(0,0,0,.5))}
+:root[data-theme="light"] .ill{filter:drop-shadow(0 24px 26px rgba(40,24,6,.2))}
+.stage{position:relative;aspect-ratio:7/5}
+.stage>img,.stage>canvas{position:absolute;inset:0;width:100%;height:100%}
+.stage>img{object-fit:contain;transition:opacity .8s ease .25s}
+.stage>canvas{opacity:0;transition:opacity .8s ease;filter:drop-shadow(0 26px 30px rgba(0,0,0,.25))}
+.stage.live>canvas{opacity:1}.stage.live>img{opacity:0}
+.tag{position:absolute;transform:translate(-50%,-110%);font:700 12px/1 var(--f);letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;padding:7px 11px;border-radius:99px;background:var(--card);color:var(--tb);border:1px solid var(--line);box-shadow:0 6px 18px rgba(0,0,0,.12);pointer-events:none}
+.tag.red{color:#e5534b;border-color:rgba(229,83,75,.45)}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;counter-reset:t}
+.trio figure{margin:0;text-align:center}
+.trio img{max-width:300px;margin:0 auto 10px}
+.trio h3{font-size:22px}
+.trio h3::before{counter-increment:t;content:counter(t);display:inline-grid;place-items:center;width:28px;height:28px;margin-right:10px;border-radius:50%;background:var(--gold);color:var(--btn-text);font-size:15px;vertical-align:3px}
+.trio p{color:var(--td);max-width:300px;margin:0 auto}
+.door{display:flex;flex-direction:column;text-decoration:none}
+.door img{max-height:230px;object-fit:contain;margin:-6px auto 6px}
+.door h3{font-size:26px}
+.door p{color:var(--t)}
+.door .go{margin-top:auto;padding-top:14px}
+.chip{display:inline-block;align-self:flex-start;font:600 13px/1 var(--b);padding:8px 12px;border-radius:99px;background:var(--card2);color:var(--tb);margin-top:14px}
+.big-line{font:700 clamp(24px,3.4vw,34px)/1.2 var(--f);color:var(--tb);max-width:760px}
+details.more{border:0;margin-top:8px}
+details.more>summary{display:inline-flex;gap:10px;align-items:center;font:700 15px var(--f);letter-spacing:.12em;text-transform:uppercase;color:var(--gold);padding:12px 18px;border:1px solid var(--line);border-radius:99px;cursor:pointer}
+details.more>summary::after{content:"+";position:static;font-size:18px;transform:none}
+details.more[open]>summary::after{content:"\2212"}
+details.more>.wrap,details.more>div{margin-top:28px}
+@media(max-width:860px){
+  .split{grid-template-columns:1fr;gap:18px}
+  .split .art{order:-1;max-width:560px;margin:0 auto;width:100%}
+  .trio{grid-template-columns:1fr;gap:34px}
+  .trio img{max-width:240px}
+}
+@media(max-width:620px){.door img{max-height:190px}.tag{font-size:10px;padding:5px 8px}}
+.tag{z-index:2}
+.split h1{font-size:clamp(36px,5.2vw,60px)}
+.trio img{height:230px;width:100%;object-fit:contain}
+@media(max-width:860px){.trio img{height:200px}}

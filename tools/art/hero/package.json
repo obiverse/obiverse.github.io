@@ -1,0 +1,1 @@
+{"name":"obiverse-hero","private":true,"type":"module","scripts":{"build":"esbuild hero.js --bundle --minify --format=esm --target=es2020 --outfile=../../../js/hero.js"},"dependencies":{"esbuild":"^0.24.0","three":"^0.170.0"}}

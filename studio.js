@@ -137,3 +137,15 @@
   });
   matchMedia('(min-width:901px)').addEventListener('change', function (m) { if (m.matches) set(false); to(current); });
 })();
+
+/* The live hero: three.js, only once the page has finished, and only where it costs the visitor nothing they'd miss. */
+(function () {
+  var st = document.querySelector('.stage[data-model]');
+  if (!st) return;
+  var c = navigator.connection || {};
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || c.saveData || /2g/.test(c.effectiveType || '') ||
+      (navigator.deviceMemory && navigator.deviceMemory < 4)) return;   // the still picture says the same thing
+  function go() { import('/js/hero.js').then(function (m) { return m.default(st); }).catch(function () {}); }
+  function idle() { (window.requestIdleCallback || function (f) { setTimeout(f, 600); })(go, { timeout: 2500 }); }
+  if (document.readyState === 'complete') idle(); else addEventListener('load', idle);
+})();
