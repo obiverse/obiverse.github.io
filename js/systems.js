@@ -33,6 +33,7 @@
     b.addEventListener('click', function () {
       var f = b.dataset.filter;
       fs.forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      var g = document.querySelector('.work-grid'); if (g) g.setAttribute('data-f', f);
       document.querySelectorAll('.work-grid .work-card').forEach(function (c) { c.hidden = f !== 'all' && c.dataset.cat !== f; });
     });
   });

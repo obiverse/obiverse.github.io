@@ -665,3 +665,91 @@ nav.crumbs{display:block;margin-bottom:22px;max-width:100%}
 @keyframes here{70%{box-shadow:0 0 0 6px rgba(26,16,6,0)}100%{box-shadow:0 0 0 0 rgba(26,16,6,0)}}
 @media(max-width:620px){.crumbs a{padding:7px 9px;letter-spacing:.1em}.crumbs a img+span{display:none}.crumbs li+li::before{width:16px}}
 @media(prefers-reduced-motion:reduce){.crumbs li,.crumbs li+li::before,.crumbs [aria-current] span::before{animation:none}}
+
+/* ── Final pass: every component gets the same care as the breadcrumbs ─────────────────── */
+
+/* Work cards: a lit stage for each system, in its own colour. Dark on any page, like a screen. */
+.work-card[href*="ogaplastic"]{--acc:46,170,110}.work-card[href*="jawacard"]{--acc:40,170,190}.work-card[href*="styledevie"]{--acc:212,170,90}
+.work-card[href*="arteduxcel"]{--acc:227,165,72}.work-card[href*="kwataverse"]{--acc:232,128,40}.work-card[href*="9scroll"]{--acc:60,180,140}
+.work-grid{counter-reset:w}
+.work-card{counter-increment:w;--acc:212,146,42;padding:0;display:flex;flex-direction:column;border-radius:20px;overflow:hidden;color:#b9ad96;
+  background-image:radial-gradient(90% 70% at 50% 0%,rgba(var(--acc),.34),transparent 70%),linear-gradient(180deg,#0f1f38,#08121f),radial-gradient(300px circle at var(--mx,50%) var(--my,-40%),rgba(var(--acc),1),rgba(240,228,204,.1) 70%);
+  background-clip:padding-box,padding-box,border-box;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.work-card::before{content:counter(w,decimal-leading-zero);position:absolute;top:16px;right:20px;font:700 15px var(--f);letter-spacing:.14em;color:rgba(240,228,204,.35);z-index:2}
+.work-card img{width:100%;max-height:none;height:230px;object-fit:contain;margin:0;padding:22px 22px 0;filter:drop-shadow(0 26px 30px rgba(0,0,0,.6));transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+a.work-card:hover img{transform:translateY(-10px) rotate(-1.2deg) scale(1.04)}
+.work-card .kind{order:-1;align-self:flex-start;margin:18px 0 0 20px;padding:7px 11px;border-radius:99px;background:rgba(var(--acc),.16);border:1px solid rgba(var(--acc),.35);color:rgb(var(--acc));font-size:11px;letter-spacing:.14em;position:relative;z-index:2}
+.work-card h3,.work-card p:not(.kind),.work-card .live-dot{margin-left:24px;margin-right:24px}
+.work-card h3{color:#f5ecda;font-size:26px;margin-top:6px}
+.work-card p:not(.kind){color:#9f957f;font-size:15px}
+.work-card .live-dot{color:#d8ccb5}
+.work-card .go{display:flex;align-items:center;justify-content:space-between;margin:auto 0 0;padding:16px 24px;border-top:1px solid rgba(240,228,204,.08);color:#e3a548}
+.work-card .go::after{content:'\2192';display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:rgba(var(--acc),.18);color:#fff;font-size:16px;transition:transform .4s cubic-bezier(.2,.8,.2,1),background .3s}
+a.work-card:hover .go::after{transform:rotate(-45deg);background:rgb(var(--acc))}
+.work-card .go{font-size:0}.work-card .go::before{content:'See the work';font:700 13px var(--f);letter-spacing:.14em;text-transform:uppercase}
+/* the portfolio: a bento, the first and fourth wide, the last tile is yours */
+.work-grid.feature{grid-template-columns:repeat(3,1fr)}
+.work-grid.feature .work-card:nth-child(1),.work-grid.feature .work-card:nth-child(4){grid-column:span 2}
+.work-grid.feature .work-card:nth-child(1) img,.work-grid.feature .work-card:nth-child(4) img{height:300px}
+.work-grid.feature[data-f]:not([data-f="all"]) .work-card{grid-column:auto}
+.work-grid.feature[data-f]:not([data-f="all"]) .yours{display:none}
+.yours{display:flex;flex-direction:column;justify-content:center;gap:12px;padding:28px;border-radius:20px;text-decoration:none;color:var(--t);border:1.5px dashed var(--gold);background:radial-gradient(80% 60% at 50% 0%,var(--glow),transparent 70%);transition:transform .45s cubic-bezier(.2,.8,.2,1),border-color .3s}
+.yours:hover{transform:translateY(-4px);border-style:solid}
+.yours .plus{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font:700 30px var(--f);color:var(--btn-text);background:linear-gradient(180deg,var(--gold2),var(--gold));box-shadow:0 0 0 8px var(--glow);animation:here 2.2s ease-out infinite}
+.yours h3{font-size:26px}
+@media(max-width:860px){.work-grid.feature{grid-template-columns:1fr 1fr}.work-grid.feature .work-card:nth-child(4){grid-column:auto}}
+@media(max-width:620px){.work-grid.feature{grid-template-columns:1fr}.work-grid.feature .work-card:nth-child(1){grid-column:auto}.work-card img,.work-grid.feature .work-card img{height:210px}}
+
+/* Feature cards: numbered, with a gold edge of light on top */
+.grid.g4{counter-reset:f}
+.grid.g4>.card{counter-increment:f;padding-top:58px;overflow:hidden}
+.grid.g4>.card::before{content:counter(f,decimal-leading-zero);position:absolute;top:20px;left:26px;font:700 15px var(--f);letter-spacing:.14em;color:var(--gold)}
+.grid.g4>.card{background-image:linear-gradient(90deg,transparent,var(--gold2),transparent);background-size:60% 2px;background-repeat:no-repeat;background-position:-100% 0;transition:background-position .8s cubic-bezier(.2,.8,.2,1),transform .45s cubic-bezier(.2,.8,.2,1)}
+.grid.g4>.card:hover{background-position:200% 0;transform:translateY(-4px)}
+.grid.g4>.card.in{background-position:50% 0}
+
+/* Section labels: a gold rule leads the eye in */
+.eyebrow{display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:'';width:26px;height:2px;border-radius:2px;background:linear-gradient(90deg,transparent,currentColor);flex:none}
+.center .eyebrow,.center.eyebrow{justify-content:center}
+.center .eyebrow::after{content:'';width:26px;height:2px;border-radius:2px;background:linear-gradient(90deg,currentColor,transparent)}
+
+/* A rotating edge of light around the things that matter most: the form, the recommended plan */
+@property --ang{syntax:'<angle>';inherits:false;initial-value:0deg}
+.quote,.price.best{border:1.5px solid transparent;background:linear-gradient(var(--card),var(--card)) padding-box,conic-gradient(from var(--ang),var(--line) 0 70%,var(--gold2) 82%,#fff3d6 86%,var(--gold2) 90%,var(--line)) border-box;animation:edge 6s linear infinite}
+.price.best{background:linear-gradient(var(--card2),var(--card2)) padding-box,conic-gradient(from var(--ang),var(--line) 0 70%,var(--gold2) 82%,#fff3d6 86%,var(--gold2) 90%,var(--line)) border-box}
+@keyframes edge{to{--ang:360deg}}
+.fi{transition:border-color .2s,box-shadow .3s,background .2s}
+.fi:hover{border-color:var(--gold-d)}
+.fi:focus{box-shadow:0 0 0 4px var(--ring),0 10px 30px -12px var(--ring)}
+
+/* Questions: rows that open like drawers */
+details:not(.more){padding:0;border-top:1px solid var(--line);interpolate-size:allow-keywords}
+details:not(.more)>summary{padding:22px 4px;align-items:center;transition:color .25s}
+details:not(.more)>summary:hover{color:var(--gold)}
+details:not(.more)>summary::after{content:'+';flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);font:400 22px/1 var(--b);color:var(--gold);transition:transform .4s cubic-bezier(.2,.8,.2,1),background .3s,color .3s,border-color .3s}
+details:not(.more)[open]>summary::after{content:'+';transform:rotate(135deg);background:var(--gold);border-color:var(--gold);color:var(--btn-text)}
+details:not(.more)>p{margin:0 0 22px;padding:0 54px 0 4px;color:var(--t)}
+details:not(.more)::details-content{height:0;overflow:hidden;transition:height .45s cubic-bezier(.2,.8,.2,1),content-visibility .45s allow-discrete}
+details:not(.more)[open]::details-content{height:auto}
+
+/* Buttons: a sheen crosses on hover */
+.btn{position:relative;overflow:hidden}
+.btn::after{content:'';position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-18deg);transition:left .7s cubic-bezier(.2,.8,.2,1);pointer-events:none}
+.btn:hover::after{left:130%}
+.chip{background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line)}
+
+/* The footer: the night closes the page, and the name signs it */
+footer{--bg:#050d18;--line:rgba(240,228,204,.1);--t:#b9ad96;--tb:#f5ecda;--td:#8f8572;--gold:#d4922a;position:relative;overflow:hidden;background:#050d18;color:var(--t);padding:64px 0 clamp(120px,19vw,250px);border-top:0}
+footer::before{content:'';position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,#d4922a,transparent)}
+footer::after{content:'OBIVERSE';position:absolute;left:50%;bottom:-.2em;transform:translateX(-50%);font:700 clamp(84px,21vw,290px)/1 var(--f);letter-spacing:.04em;white-space:nowrap;color:transparent;-webkit-text-stroke:1px rgba(212,146,42,.28);background:linear-gradient(180deg,rgba(212,146,42,.16),transparent 75%);-webkit-background-clip:text;background-clip:text;pointer-events:none}
+footer a{transition:color .2s,transform .3s cubic-bezier(.2,.8,.2,1)}
+footer a:hover{color:#e3a548;transform:translateX(4px)}
+footer .logo:hover{transform:none}
+footer h4{color:#e3a548}
+
+@media(prefers-reduced-motion:reduce){
+  .quote,.price.best,.yours .plus{animation:none}
+  .mq-track>*,.mq-dup>*{font-size:clamp(26px,4vw,44px)}
+  details:not(.more)::details-content{transition:none}
+}
