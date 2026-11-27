@@ -142,7 +142,6 @@ footer a:hover{color:var(--gold)}
   .hero{padding:56px 0 44px}
   .g2,.g3,.g4,.fg,.grid2x2{grid-template-columns:1fr}
   .grid2x2>.kind{display:none}
-  nav a.nl{display:none}
   .quote{padding:24px 18px}
   .ctas .btn,.ctas .bo{flex:1 1 100%}
   h1 br{display:none}
@@ -204,3 +203,43 @@ a.card:hover .win img{transform:scale(1.025)}
 .tldr+h2{margin-top:40px}
 .appfoot{padding:26px 0;border-top:1px solid var(--line)}
 .appfoot b{color:var(--tb);font-weight:600}
+
+/* Navigation (studio.js builds the menu from each page's own nav).
+   Desktop: a gold line glides to the link you point at and rests on the page you are on.
+   Phone and tablet: one button opens a full-screen sheet; nothing is ever hidden without a way in. */
+nav{position:relative}
+nav a.nl[aria-current="page"]{color:var(--tb)}
+.ind{position:absolute;bottom:2px;height:2px;border-radius:2px;background:var(--gold);left:0;width:0;opacity:0;pointer-events:none;transition:left .32s cubic-bezier(.2,.8,.2,1),width .32s cubic-bezier(.2,.8,.2,1),opacity .2s}
+.menu{display:none;position:relative;width:44px;height:44px;margin-left:6px;border:1px solid var(--line);border-radius:50%;background:none;cursor:pointer;color:var(--tb)}
+.menu i{position:absolute;left:13px;right:13px;height:2px;border-radius:2px;background:currentColor;transition:transform .35s cubic-bezier(.2,.8,.2,1),top .35s cubic-bezier(.2,.8,.2,1)}
+.menu i:first-child{top:17px}.menu i:last-child{top:25px}
+.menu-open .menu i:first-child{top:21px;transform:rotate(45deg)}
+.menu-open .menu i:last-child{top:21px;transform:rotate(-45deg)}
+.sheet{position:fixed;inset:60px 0 0;z-index:49;background:var(--bg);display:flex;flex-direction:column;justify-content:space-between;padding:20px 22px calc(24px + env(safe-area-inset-bottom));overflow-y:auto;opacity:0;visibility:hidden;transform:translateY(-10px);transition:opacity .28s ease,transform .38s cubic-bezier(.2,.8,.2,1),visibility 0s .38s}
+.sheet nav{display:block}
+.sheet::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 60% at 85% 0%,var(--glow),transparent 60%);pointer-events:none}
+.menu-open .sheet{opacity:1;visibility:visible;transform:none;transition:opacity .28s ease,transform .38s cubic-bezier(.2,.8,.2,1)}
+.menu-open,.menu-open body{overflow:hidden}
+.sheet a.go-to{position:relative;display:grid;grid-template-columns:44px 1fr auto;align-items:baseline;gap:0 4px;padding:18px 4px;border-bottom:1px solid var(--line);text-decoration:none;opacity:0;transform:translateY(14px);transition:opacity .4s ease,transform .5s cubic-bezier(.2,.8,.2,1)}
+.menu-open .sheet a.go-to{opacity:1;transform:none}
+.sheet .n{font:700 14px var(--f);letter-spacing:.12em;color:var(--gold)}
+.sheet .t{font:700 clamp(30px,8.5vw,42px)/1.05 var(--f);color:var(--tb);letter-spacing:-.01em}
+.sheet .d{grid-column:2;font-size:15px;color:var(--td);margin-top:4px}
+.sheet .arr{grid-row:1;grid-column:3;color:var(--gold);font-size:22px;transition:transform .2s}
+.sheet a.go-to:active .arr,.sheet a.go-to:hover .arr{transform:translateX(4px)}
+.sheet a.go-to[aria-current="page"] .t{color:var(--gold)}
+.sheet .foot{position:relative;display:flex;gap:10px;align-items:center;margin-top:28px;opacity:0;transition:opacity .4s ease .25s}
+.menu-open .sheet .foot{opacity:1}
+.sheet .foot .btn{flex:1}
+.sheet .foot .bo{padding:15px 18px}
+.sheet .foot .theme{width:50px;height:50px;flex:none;margin:0}
+@media(max-width:900px){
+  nav a.nl,header nav>.theme,.ind{display:none}
+  .menu{display:inline-block}
+}
+@media(min-width:901px){.sheet{display:none}}
+@media(max-width:400px){
+  .logo{letter-spacing:.14em;font-size:15px}
+  nav .btn{padding:9px 12px;font-size:12px;margin-left:0}
+}
+@media(prefers-reduced-motion:reduce){.ind,.sheet,.sheet a.go-to,.menu i,.sheet .foot{transition:none}}
