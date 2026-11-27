@@ -9,9 +9,19 @@
   var pre = KEYS[new URLSearchParams(location.search).get('svc')];
   if (pre && $('qs')) $('qs').value = pre;
 
+  /* the last question fits what they chose */
+  var ASK = {
+    'Leak diagnostic': 'Money you couldn\u2019t account for, stock that didn\u2019t add up\u2026',
+    'Website': 'Your business, what you sell, and who should find you\u2026',
+    'Website with payments': 'What you sell, and how customers should pay\u2026',
+    'Not sure yet': 'What is slowing your business down?'
+  };
+  function ask() { if ($('qs') && $('qm') && ASK[$('qs').value]) $('qm').placeholder = ASK[$('qs').value]; }
+  if ($('qs')) { $('qs').addEventListener('change', ask); ask(); }
+
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('[data-svc]');
-    if (a && $('qs')) $('qs').value = a.getAttribute('data-svc');
+    if (a && $('qs')) { $('qs').value = a.getAttribute('data-svc'); ask(); }
   });
 
   function form() {

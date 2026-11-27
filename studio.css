@@ -301,3 +301,8 @@ details.more>.wrap,details.more>div{margin-top:28px}
 .chips>*{font:600 15px/1 var(--b);padding:11px 16px;border-radius:99px;border:1px solid var(--line);background:var(--card);color:var(--tb);text-decoration:none}
 .chips>a{border-color:var(--gold)}.chips>a::after{content:" \2192";color:var(--gold)}
 .chips>a:hover{background:var(--card2);color:var(--tb)}
+/* Why it is safe to start: three facts beside the form */
+.safe{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0 26px;padding:0}
+.safe li{font-size:14px;color:var(--td);padding:14px 16px;border-radius:12px;background:var(--card2)}
+.safe b{display:block;color:var(--tb);font:700 17px/1.2 var(--f);margin-bottom:4px}
+@media(max-width:860px){.safe{grid-template-columns:1fr}}
