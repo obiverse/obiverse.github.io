@@ -152,7 +152,7 @@ function page(cat) {
 <section class="hero center">
   <div class="wrap">
     <p class="eyebrow">Obiverse Apps</p>
-    <h1>Our apps.<br>One place.</h1>
+    <h1>Our apps. <br>One place.</h1>
     <p class="lead">Install Obiverse Apps once. After that every app installs with a tap, updates with a tap, and is checked against its maker&rsquo;s signature before it touches your phone.</p>
     <div class="ctas">
       ${storeApk ? `<a href="${esc(storeApk.url)}" class="btn">Get Obiverse Apps for Android &middot; ${mb(storeApk.size)}</a>` : ''}
