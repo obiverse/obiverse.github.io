@@ -219,7 +219,7 @@ export default {
   verify: {},   // { google: '<Search Console HTML-tag token>', bing: '<msvalidate.01 token>' } → home page
   presence: [   // Prop. 7, the work no tag does: add `url` as each is done; `node tools/seo.mjs` lists the rest
     { name: 'Google Search Console', url: 'https://search.google.com/search-console?resource_id=https%3A%2F%2Fobiverse.github.io%2F', note: 'verified 2026-11-14 by google90d55d1a2c34c119.html (never delete it)' },
-    { name: 'Bing Webmaster Tools', note: 'import from Search Console; feeds ChatGPT search, Copilot, DuckDuckGo' },
+    { name: 'Bing Webmaster Tools', url: 'https://www.bing.com/webmasters/home?siteUrl=https://obiverse.github.io/', note: 'imported from Search Console 2026-11-27; feeds ChatGPT search, Copilot, DuckDuckGo' },
     { name: 'GitHub', url: 'https://github.com/obiverse' },
     { name: 'Obiverse on the App Store', url: 'https://apps.apple.com/us/app/obiverse/id6759511100' },
     { name: 'Obiverse on Google Play', url: 'https://play.google.com/store/apps/details?id=com.obiverse.obiverse' },
