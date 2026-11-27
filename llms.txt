@@ -11,6 +11,7 @@ Websites we built that are live: ogaplastic.com (a water tank manufacturer in Ni
 - [OBIVERSE](https://obiverse.github.io/): For Africa's builders: we read the records you already keep, show you where the money went and stop the leak. FlowLedger, websites and apps, by Kwatasoft.
 - [FlowLedger by Kwatasoft: Stock, Sales & Debts Ledger](https://obiverse.github.io/flowledger.html): The stock, sales, debts and bank ledger for manufacturers and distributors in Nigeria, on your phone and on WhatsApp. Every leak ranked in naira, every night at 9pm.
 - [Website Design for Businesses in Nigeria, Live in 7 Days](https://obiverse.github.io/website-design.html): Business websites found on Google and one tap from WhatsApp, built and launched in 7 days: ₦400,000 in Nigeria, $1,000 elsewhere. 60% to start.
+- [How Much Does a Website Cost in Nigeria? 2026 Prices](https://obiverse.github.io/website-cost.html): A business website costs ₦400,000 with us, ₦800,000 with online payments, and ₦25,000 a month to run. What that buys, and what to ask before you pay.
 
 ## Apps
 

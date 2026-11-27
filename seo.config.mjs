@@ -30,7 +30,7 @@ export default {
     {
       '@type': 'Organization', '@id': '#org', name: 'OBIVERSE', legalName: 'Obiverse LLC', url: '/',
       logo: '/icon-512.png', email: 'obiversellc@gmail.com', telephone: '+12409750431',
-      sameAs: ['https://github.com/obiverse'],
+      sameAs: ['https://github.com/obiverse', 'https://play.google.com/store/apps/developer?id=Obiverse'],
     },
     { '@type': 'WebSite', '@id': '#website', name: 'OBIVERSE', url: '/', publisher: { '@id': '#org' } },
   ],
@@ -162,7 +162,19 @@ export default {
       )],
     },
     {
-      path: '/app.html', query: 'bitcoin lightning wallet africa', title: 'Obiverse App: Bitcoin Lightning Wallet & Nostr Identity',
+      path: '/website-cost.html', query: 'how much does a website cost in nigeria', title: 'How Much Does a Website Cost in Nigeria? 2026 Prices',
+      ogTitle: 'How much does a website cost in Nigeria?',
+      description: 'A business website costs ₦400,000 with us, ₦800,000 with online payments, and ₦25,000 a month to run. What that buys, and what to ask before you pay.',
+      entities: ['websites', 'studio'], crumbs: [home, { name: 'Website design', path: '/website-design.html' }, { name: 'Website prices' }], priority: '0.9', ...CARD,
+      graph: [faq(
+        ['How much does a website cost in Nigeria?', 'With us, ₦400,000 for a multi-page business website, ₦800,000 with online payments, and ₦25,000 a month for hosting, domain, monthly updates and support.'],
+        ['How long does it take to build?', 'Most websites are designed, built and launched in 7 days. Complex projects with custom features take 14 days.'],
+        ['Can a website cost less than ₦400,000?', 'We never discount, but we can reduce the scope. Tell us what you need and we quote the smaller job.'],
+        ['Are there yearly costs?', 'Hosting and the domain renew every year. Our care plan covers hosting, domain, monthly updates and support for ₦25,000 a month.'],
+      )],
+    },
+    {
+      path: '/app.html', query: 'obiverse app bitcoin lightning wallet', title: 'Obiverse App: Bitcoin Lightning Wallet & Nostr Identity',
       ogTitle: 'Obiverse App — Sovereign Identity & Wallet',
       description: 'Your keys, your identity, your money. Obiverse is a sovereign Bitcoin Lightning wallet with Nostr identity, built for Africa.',
       entities: ['obiverse'], crumbs: [home, { name: 'Obiverse App' }], lastmod: '2026-08-19', ...IMG,
@@ -183,7 +195,7 @@ export default {
       crumbs: [home, { name: 'Terms of Service' }], lastmod: '2026-04-10', ...IMG,
     },
     {
-      path: '/ngumba.html', query: 'document scanner and invoice app', title: 'Ngumba: Document Scanner & Invoice App',
+      path: '/ngumba.html', query: 'ngumba document scanner and invoice app', title: 'Ngumba: Document Scanner & Invoice App',
       fullTitle: 'Ngumba: Document Scanner & Invoice App — OBIVERSE', ogTitle: 'Ngumba — Scan, invoice, sign, keep',
       description: 'The business centre in your pocket. Scan a page and it comes out straight, clean and small enough to send. Write an invoice in a minute. Everything stays on your phone.',
       entities: ['ngumba'], crumbs: [home, { name: 'Ngumba' }], lastmod: '2026-08-19', ...IMG,
@@ -236,7 +248,7 @@ export default {
     summary: 'OBIVERSE (Obiverse LLC, home of Kwatasoft) builds systems that stop the leak for Africa\'s builders: FlowLedger, a stock, sales, debts and bank ledger on the phone and WhatsApp for manufacturers and distributors in Nigeria, which ranks every leak in naira and starts with a ₦100,000 leak diagnostic; and business websites for businesses anywhere, live in 7 days, from ₦400,000 in Nigeria or $1,000 elsewhere. It also makes its own apps: BeeWallet (a self-custody Bitcoin wallet), Obiverse (identity with a Lightning wallet inside), Ngumba (an offline scanner and invoice app) and oSalah (prayer times, Qibla and Quran), on the App Store and Google Play, and for Android from Obiverse Apps, its own store: install once, then every app installs and updates with a tap, each file checked against its signature.',
     about: 'Obiverse LLC. Contact: obiversellc@gmail.com, WhatsApp +1 240 975 0431.\n\nWebsites we built that are live: ogaplastic.com (a water tank manufacturer in Nigeria), jawacard.com (a fuel card for drivers in Cameroon) and arteduxcel.com (technology procurement for businesses across Africa). Our own products include 9scroll.com (encrypted memory for AI).',
     sections: [
-      { title: 'What we do', links: ['/', '/flowledger.html', '/website-design.html'] },
+      { title: 'What we do', links: ['/', '/flowledger.html', '/website-design.html', '/website-cost.html'] },
       { title: 'Apps', links: ['/apps/', '/beewallet.html', '/app.html', '/ngumba.html', '/osalah.html'] },
       { title: 'Support and policies', links: ['/support.html', '/osalah-support.html', '/privacy.html', '/terms.html', '/ngumba-privacy.html', '/ngumba-terms.html', '/osalah-privacy.html'] },
     ],
