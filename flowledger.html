@@ -50,7 +50,7 @@
 </header>
 
 <main>
-<section class="hero">
+<section class="hero night deep">
   <div class="wrap split">
     <div>
       <p class="crumbs"><a href="/">OBIVERSE</a> / FlowLedger</p>
@@ -63,6 +63,43 @@
       </div>
     </div>
     <div class="art"><img class="ill" src="/art/hero-960.webp" srcset="/art/hero-480.webp 480w, /art/hero-960.webp 960w" sizes="(max-width:860px) 92vw, 520px" alt="Money flows on gold lanes from a shop to a bank; one lane leaks, found under a magnifying glass" width="960" height="686" decoding="async"></div>
+  </div>
+</section>
+
+<section class="night">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow">What you see</p>
+      <h2>Every row checked. Every leak ranked.</h2>
+      <p class="lead">Sales, stock and bank side by side. What doesn&rsquo;t match rises to the top, ranked in naira, with the rows behind it. At 9pm, the summary arrives on WhatsApp.</p>
+      <p class="muted small">Example screen; the numbers are invented.</p>
+    </div>
+    <div class="os-stage" data-solo>
+        <div class="os-panel" id="os-money" role="img" aria-label="An example FlowLedger screen: sales, bank and stock matched, one payment flagged as not in the bank">
+          <div class="win2">
+            <div class="bar2"><i></i><i></i><i></i><span>FlowLedger &middot; Your business</span><em>Live</em></div>
+            <div class="dash">
+              <div class="kpis">
+                <div><span>Sales this month</span><b data-to="29.2">&#8358;29.2M</b></div>
+                <div><span>In the bank</span><b data-to="28.0">&#8358;28.0M</b></div>
+                <div class="warn"><span>Not accounted for</span><b data-to="1.2">&#8358;1.2M</b></div>
+              </div>
+              <div class="lanes">
+                <div><span>Stock out</span><i style="--w:100%"></i></div>
+                <div><span>Sales</span><i style="--w:96%"></i></div>
+                <div><span>Bank</span><i style="--w:92%"></i><em style="--at:92%"></em></div>
+              </div>
+              <ul class="feed">
+                <li><span>Invoice 1042 &middot; Distributor B</span><b>&#8358;420,000</b><i class="ok">Matched</i></li>
+                <li><span>Waybill 3381 &middot; 40 bags</span><b>&#8358;310,000</b><i class="ok">Matched</i></li>
+                <li class="bad"><span>Paid, per the book &middot; Customer K</span><b>&#8358;1,200,000</b><i>Not in bank</i></li>
+                <li><span>Transfer &middot; Distributor A</span><b>&#8358;860,000</b><i class="ok">Matched</i></li>
+              </ul>
+            </div>
+          </div>
+          <div class="pop"><b>Your Business &middot; 9:00 pm</b>Needs you: &#8358;1.2M recorded as paid, not in the bank. Rows attached.</div>
+        </div>
+    </div>
   </div>
 </section>
 
@@ -182,5 +219,6 @@
   </div>
 </footer>
 <script src="studio.js" defer></script>
+<script src="/js/systems.js" defer></script>
 </body>
 </html>

@@ -150,7 +150,7 @@ function page(cat) {
 </header>
 
 <main>
-<section class="hero">
+<section class="hero night deep">
   <div class="wrap split">
     <div>
       <p class="eyebrow">Obiverse Apps</p>
