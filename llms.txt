@@ -1,6 +1,6 @@
 # OBIVERSE
 
-> OBIVERSE (Obiverse LLC, home of Kwatasoft) builds systems that stop the leak for Africa's builders: FlowLedger, a stock, sales, debts and bank ledger on the phone and WhatsApp for manufacturers and distributors in Nigeria, which ranks every leak in naira and starts with a ₦100,000 leak diagnostic; and business websites live in 7 days from ₦400,000. It also makes its own apps: Obiverse (a Bitcoin Lightning wallet with Nostr identity), BeeWallet (a self-custody Bitcoin and Lightning wallet), Ngumba (an offline scanner and invoice app) and oSalah (prayer times, Qibla and Quran).
+> OBIVERSE (Obiverse LLC, home of Kwatasoft) builds systems that stop the leak for Africa's builders: FlowLedger, a stock, sales, debts and bank ledger on the phone and WhatsApp for manufacturers and distributors in Nigeria, which ranks every leak in naira and starts with a ₦100,000 leak diagnostic; and business websites for businesses anywhere, live in 7 days, from ₦400,000 in Nigeria or $1,000 elsewhere. It also makes its own apps: BeeWallet (a self-custody Bitcoin wallet), Obiverse (identity with a Lightning wallet inside), Ngumba (an offline scanner and invoice app) and oSalah (prayer times, Qibla and Quran), on the App Store and Google Play, and for Android from Obiverse Apps, its own store: install once, then every app installs and updates with a tap, each file checked against its signature.
 
 Obiverse LLC. Contact: obiversellc@gmail.com, WhatsApp +1 240 975 0431.
 
@@ -8,15 +8,15 @@ Websites we built that are live: ogaplastic.com (a water tank manufacturer in Ni
 
 ## What we do
 
-- [OBIVERSE](https://obiverse.github.io/): For Africa's builders: we read the records you already keep, show you where the money went, ranked in naira, and stop the leak. FlowLedger and websites, by Kwatasoft.
+- [OBIVERSE](https://obiverse.github.io/): For Africa's builders: we read the records you already keep, show you where the money went and stop the leak. FlowLedger, websites and apps, by Kwatasoft.
 - [FlowLedger by Kwatasoft: Stock, Sales & Debts Ledger](https://obiverse.github.io/flowledger.html): The stock, sales, debts and bank ledger for manufacturers and distributors in Nigeria, on your phone and on WhatsApp. Every leak ranked in naira, every night at 9pm.
-- [Website Design for Businesses in Nigeria, Live in 7 Days](https://obiverse.github.io/website-design.html): Business websites found on Google and one tap from WhatsApp, designed, built and launched in 7 days: ₦400,000, or ₦800,000 with payments. 60% to start.
+- [Website Design for Businesses in Nigeria, Live in 7 Days](https://obiverse.github.io/website-design.html): Business websites found on Google and one tap from WhatsApp, built and launched in 7 days: ₦400,000 in Nigeria, $1,000 elsewhere. 60% to start.
 
 ## Apps
 
-- [Obiverse App: Bitcoin Lightning Wallet & Nostr Identity](https://obiverse.github.io/app.html): Your keys, your identity, your money. Obiverse is a sovereign Bitcoin Lightning wallet with Nostr identity, built for Africa.
+- [Obiverse Apps: Our Android Apps, One Tap, Checked](https://obiverse.github.io/apps/): Get BeeWallet, Obiverse, Ngumba and oSalah for Android from one place. Install once; every app then installs and updates with a tap, checked against its signature.
 - [BeeWallet: Self-Custody Bitcoin & Lightning Wallet](https://obiverse.github.io/beewallet.html): BeeWallet is a self-custody Bitcoin and Lightning wallet for iPhone and Android: your 12 words, a Mobinumber people can pay, amounts in your own currency.
-- [Download BeeWallet for Android (APK)](https://obiverse.github.io/beewallet-android.html): Download the BeeWallet Android app: signed APKs for 64-bit and 32-bit phones, with SHA-256 checksums and the signing certificate to check before you install.
+- [Obiverse App: Bitcoin Lightning Wallet & Nostr Identity](https://obiverse.github.io/app.html): Your keys, your identity, your money. Obiverse is a sovereign Bitcoin Lightning wallet with Nostr identity, built for Africa.
 - [Ngumba: Document Scanner & Invoice App](https://obiverse.github.io/ngumba.html): The business centre in your pocket. Scan a page and it comes out straight, clean and small enough to send. Write an invoice in a minute. Everything stays on your phone.
 - [oSalah: Prayer Times, Qibla & Quran](https://obiverse.github.io/osalah.html): Your complete Muslim daily companion. Prayer times, Qibla compass, Quran reader, dhikr counter, zakat calculator, and 99 Names of Allah. Offline. No ads.
 

@@ -1,0 +1,78 @@
+{
+  "v": 1,
+  "apps": [
+    {
+      "id": "apps",
+      "package": "net.obiverse.apps",
+      "name": "Obiverse Apps",
+      "line": "Our apps in one place, checked before they install.",
+      "icon": "https://obiverse.github.io/apps/icons/apps.png",
+      "page": "https://obiverse.github.io/apps/",
+      "apk": {
+        "universal": {
+          "code": 1,
+          "url": "https://github.com/obiverse/obiverse.github.io/releases/download/apps-v1.0.0/apps-1.0.0-universal.apk",
+          "sha256": "6530aabfa6ab5405d05b91655916c46e88840c701418b98587747d972926d586",
+          "size": 49452
+        }
+      },
+      "cert": "d9890cebc953d0b255d824f937e4d6c1cb617df25ee9818e4398db81079d61a4",
+      "version": "1.0.0"
+    },
+    {
+      "id": "beewallet",
+      "package": "com.obiverse.beewallet",
+      "name": "BeeWallet",
+      "line": "For money. A Bitcoin wallet with a number people can pay.",
+      "icon": "https://obiverse.github.io/apps/icons/beewallet.png",
+      "page": "https://obiverse.github.io/beewallet.html",
+      "ios": "https://apps.apple.com/us/app/beewallet-civil-hive/id6758224958",
+      "apk": {
+        "arm64-v8a": {
+          "code": 1042001,
+          "url": "https://github.com/obiverse/obiverse.github.io/releases/download/beewallet-v1.4.0/beewallet-1.4.0-arm64-v8a.apk",
+          "sha256": "06ade1700571c86926288dd073821d11f304ce581b1e3ba95e172dfd1dabd28d",
+          "size": 63537563
+        },
+        "armeabi-v7a": {
+          "code": 1041001,
+          "url": "https://github.com/obiverse/obiverse.github.io/releases/download/beewallet-v1.4.0/beewallet-1.4.0-armeabi-v7a.apk",
+          "sha256": "994657b67f62f9148886d8c65b65f6d0501217b02cbf2cd2ebfee859afe63cd5",
+          "size": 51231757
+        }
+      },
+      "cert": "2cb297af5a7e36f25dc025d5fdad163d0ca9fadc773ef6346294a4a7878f7864",
+      "version": "1.4.0"
+    },
+    {
+      "id": "obiverse",
+      "package": "com.obiverse.obiverse",
+      "name": "Obiverse",
+      "line": "Your identity, with a wallet inside. Sign in by scanning a code.",
+      "icon": "https://obiverse.github.io/apps/icons/obiverse.png",
+      "page": "https://obiverse.github.io/app.html",
+      "ios": "https://apps.apple.com/us/app/obiverse/id6759511100",
+      "play": "https://play.google.com/store/apps/details?id=com.obiverse.obiverse"
+    },
+    {
+      "id": "ngumba",
+      "package": "net.obiverse.ngumba",
+      "name": "Ngumba",
+      "line": "Scan, invoice, sign: the business centre in your pocket.",
+      "icon": "https://obiverse.github.io/apps/icons/ngumba.png",
+      "page": "https://obiverse.github.io/ngumba.html",
+      "ios": "https://apps.apple.com/us/app/ngumba/id6800842876",
+      "play": "https://play.google.com/store/apps/details?id=net.obiverse.ngumba"
+    },
+    {
+      "id": "osalah",
+      "package": "net.obiverse.osalah",
+      "name": "oSalah",
+      "line": "Prayer times, Qibla and Quran. No ads, no tracking.",
+      "icon": "https://obiverse.github.io/apps/icons/osalah.png",
+      "page": "https://obiverse.github.io/osalah.html",
+      "ios": "https://apps.apple.com/us/app/osalah/id6761698261",
+      "play": "https://play.google.com/store/apps/details?id=net.obiverse.osalah"
+    }
+  ]
+}

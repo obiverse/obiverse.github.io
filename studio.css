@@ -182,3 +182,8 @@ a.card:hover .win img{transform:scale(1.025)}
 .rv [data-rv]{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
 .rv [data-rv].in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.card,.btn,.bo,.win img{transition:none}a.card:hover,a.card:hover .win img{transform:none}}
+
+/* Currency switch (price.js) */
+.cur{display:flex;gap:6px;justify-content:center;margin:0 0 32px}
+.cur button{font:600 13px/1 var(--b);padding:8px 14px;border-radius:99px;border:1px solid var(--line);background:none;color:var(--td);cursor:pointer}
+.cur button[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:var(--btn-text)}

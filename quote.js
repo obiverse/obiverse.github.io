@@ -5,7 +5,7 @@
   var $ = function (id) { return document.getElementById(id); };
 
   /* /?svc=business#quote from the service pages */
-  var KEYS = { diagnostic: 'Leak diagnostic (₦100,000)', website: 'Website (₦400,000)', payments: 'Website with payments (₦800,000)' };
+  var KEYS = { diagnostic: 'Leak diagnostic', website: 'Website', payments: 'Website with payments' };
   var pre = KEYS[new URLSearchParams(location.search).get('svc')];
   if (pre && $('qs')) $('qs').value = pre;
 
@@ -16,7 +16,8 @@
 
   function form() {
     var v = function (id) { return $(id) ? $(id).value.trim() : ''; };
-    return { name: v('qn'), phone: v('qp'), business: v('qb'), service: v('qs'), details: v('qm') };
+    var qs = $('qs'), svc = qs && qs.value ? qs.options[qs.selectedIndex].text : '';   /* with the price, in the money shown */
+    return { name: v('qn'), phone: v('qp'), business: v('qb'), service: svc, details: v('qm') };
   }
   function check(d) {
     return !d.name ? 'Please enter your name.' : !d.phone ? 'Please enter your WhatsApp or phone number.' : !d.service ? 'Please choose what you need.' : '';
