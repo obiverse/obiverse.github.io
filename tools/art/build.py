@@ -31,7 +31,7 @@ def reset(w=1200, h=1000, scale=7.0, target=(0, 0, 0.4)):
     prefs.compute_device_type = 'METAL'
     prefs.get_devices()
     for d in prefs.devices: d.use = True
-    s.cycles.device = 'GPU'
+    s.cycles.device = 'CPU' if os.environ.get('OBI_CPU') else 'GPU'   # OBI_CPU=1 if the GPU hangs
     s.cycles.samples = 160
     s.cycles.use_denoising = True
     s.render.film_transparent = True
@@ -89,7 +89,8 @@ def screen_mat(img):
     n = m.node_tree.nodes; l = m.node_tree.links
     n.clear()
     out = n.new('ShaderNodeOutputMaterial')
-    tex = n.new('ShaderNodeTexImage'); tex.image = bpy.data.images.load(os.path.join(HERE, 'screens', img))
+    tex = n.new('ShaderNodeTexImage')
+    tex.image = bpy.data.images.load(img if os.path.isabs(img) else os.path.join(HERE, 'screens', img))
     em = n.new('ShaderNodeEmission'); em.inputs[1].default_value = 1.0
     gl = n.new('ShaderNodeBsdfGlossy'); gl.inputs['Roughness'].default_value = 0.08
     mix = n.new('ShaderNodeMixShader'); mix.inputs[0].default_value = 0.06
@@ -190,6 +191,32 @@ def rod(a, b, r, m):
     o = cyl('rod', r, (b - a).length, (a + b) / 2, m, bevel=.015)
     o.rotation_mode = 'QUATERNION'; o.rotation_quaternion = (b - a).to_track_quat('Z', 'Y')
     return o
+
+
+def laptop(loc, yaw, img, size=1.0):
+    """Base, a lid opened to 105 degrees, the site on its screen."""
+    w, d = 2.0 * size, 1.35 * size
+    root = bpy.data.objects.new('laptop', None); bpy.context.scene.collection.objects.link(root)
+    base = box('base', (w, d, .07 * size), (0, 0, .035 * size), NAVY(), bevel=.03 * size)
+    box('pad', (w * .32, d * .3, .004), (0, -d * .28, .072 * size), mat('pad', '#1b2f4d', rough=.5), bevel=0).parent = base
+    lid = box('lid', (w, .05 * size, d * .92), (0, 0, 0), NAVY(), bevel=.03 * size)
+    bpy.ops.mesh.primitive_plane_add(size=1, location=(0, -.026 * size, 0), rotation=(math.radians(90), 0, 0))
+    scr = bpy.context.object; scr.scale = (w * .92, d * .92 * .9, 1); bpy.ops.object.transform_apply(scale=True)
+    scr.data.materials.append(screen_mat(img)); scr.parent = lid
+    lid.location = (0, d / 2 - .03 * size, .07 * size + d * .46 * math.cos(math.radians(15)))
+    lid.location.y += d * .46 * math.sin(math.radians(15))
+    lid.rotation_euler = (math.radians(-15), 0, 0)
+    base.parent = root; lid.parent = root
+    root.rotation_euler = (0, 0, math.radians(yaw)); root.location = loc
+    return root
+
+
+def tile(c, img, size=.5):
+    """An app icon: a rounded tile facing the viewer, the icon on its face."""
+    t = box('tile', (size, size, .1), c, NAVY(), bevel=size * .2, rot=FACE)
+    bpy.ops.mesh.primitive_plane_add(size=size * .96, location=at(c, 0, 0, .052), rotation=[math.radians(a) for a in FACE])
+    f = bpy.context.object; f.data.materials.append(screen_mat(img))
+    return t
 
 
 def magnifier(over, lift=1.05, size=1.0):
@@ -338,7 +365,34 @@ def export_glb():
     print('EXPORTED', path, os.path.getsize(path))
 
 
-SCENES = {'hero': scene_hero, 'records': scene_records, 'leak': scene_leak, 'message': scene_message, 'web': scene_web, 'apps': scene_apps}
+def scene_case(site):
+    """A client's site, built by us: the laptop and the phone, side by side."""
+    reset(1200, 900, 6.0, (.15, -.1, .65))
+    box('ground', (4.6, 2.9, .22), (0, 0, .11), CREAM(), bevel=.12)
+    laptop((-.35, .25, .22), 8, os.path.join(SITE, 'work-%s.webp' % site), 1.0)
+    phone((1.45, -.55, .22 + .79 * .95), 32, 'm-%s.png' % site, .95)
+
+
+def scene_app(app):
+    """The app's own screen on a phone, its icon beside it."""
+    reset(1000, 1000, 3.6, (0, 0, 1.0))
+    cyl('dock', .95, .08, (0, 0, .04), CREAM(), bevel=.03)
+    phone((0, 0, 1.02), 40, 'app-%s.png' % app, 1.2)
+    tile(at((0, 0, 1.0), .8, .5, .45), os.path.join(SITE, 'apps', 'icons', '%s.png' % app), .55)
+
+
+def scene_price():
+    """Three prices: two stacks paid once, a thin one paid each month."""
+    reset(1100, 800, 4.6, (0, 0, .5))
+    box('ground', (3.8, 2.0, .2), (0, 0, .1), CREAM(), bevel=.1)
+    stack(-1.15, 0, 5, .2); stack(-.05, 0, 9, .2)
+    for i in range(3): coin((1.05 + i * .08, -.1 + i * .1, .25 + i * .01), tilt=0)
+
+
+SCENES = {'price': scene_price, 'hero': scene_hero, 'records': scene_records, 'leak': scene_leak, 'message': scene_message, 'web': scene_web, 'apps': scene_apps}
 for name in [a for a in sys.argv[sys.argv.index('--') + 1:] if not a.startswith('--')]:
-    SCENES[name]()
+    kind, _, arg = name.partition('-')
+    if kind == 'case': scene_case(arg)
+    elif kind == 'app': scene_app(arg)
+    else: SCENES[name]()
     export_glb() if LOW else render(name)

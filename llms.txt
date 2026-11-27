@@ -13,6 +13,12 @@ Websites we built that are live: ogaplastic.com (a water tank manufacturer in Ni
 - [Website Design for Businesses in Nigeria, Live in 7 Days](https://obiverse.github.io/website-design.html): Business websites found on Google and one tap from WhatsApp, built and launched in 7 days: ₦400,000 in Nigeria, $1,000 elsewhere. 60% to start.
 - [How Much Does a Website Cost in Nigeria? 2026 Prices](https://obiverse.github.io/website-cost.html): A business website costs ₦400,000 with us, ₦800,000 with online payments, and ₦25,000 a month to run. What that buys, and what to ask before you pay.
 
+## Our work
+
+- [Website for a Water Tank Manufacturer in Nigeria](https://obiverse.github.io/work/ogaplastic.html): The website we built for OGA PLASTIC, a water tank and waste bin maker in Cross River State: products, factory, 23 distributors, quotes on WhatsApp.
+- [Bilingual Website for a Fuel Card in Cameroon](https://obiverse.github.io/work/jawacard.html): The website we built for Jawa, a fuel card for drivers in Cameroon: French and English, how the card works, a statement for every fill-up, a member area.
+- [Website for a Technology Distributor in Africa](https://obiverse.github.io/work/arteduxcel.html): The website we built for Arteduxcel: U.S. technology sourced for businesses across Africa, four steps from enquiry to delivery, quotes on WhatsApp.
+
 ## Apps
 
 - [Obiverse Apps: Our Android Apps, One Tap, Checked](https://obiverse.github.io/apps/): Get BeeWallet, Obiverse, Ngumba and oSalah for Android from one place. Install once; every app then installs and updates with a tap, checked against its signature.

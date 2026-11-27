@@ -174,6 +174,24 @@ export default {
       )],
     },
     {
+      path: '/work/ogaplastic.html', query: 'website for a manufacturer in nigeria', title: 'Website for a Water Tank Manufacturer in Nigeria',
+      description: 'The website we built for OGA PLASTIC, a water tank and waste bin maker in Cross River State: products, factory, 23 distributors, quotes on WhatsApp.',
+      entities: ['websites', 'studio'], crumbs: [home, { name: 'Website design', path: '/website-design.html' }, { name: 'OGA PLASTIC' }], priority: '0.8',
+      image: '/art/case-ogaplastic-960.webp', imageWidth: 960, imageHeight: 720, imageAlt: 'The ogaplastic.com website we built, on a laptop and a phone',
+    },
+    {
+      path: '/work/jawacard.html', query: 'bilingual website french english cameroon', title: 'Bilingual Website for a Fuel Card in Cameroon',
+      description: 'The website we built for Jawa, a fuel card for drivers in Cameroon: French and English, how the card works, a statement for every fill-up, a member area.',
+      entities: ['websites', 'studio'], crumbs: [home, { name: 'Website design', path: '/website-design.html' }, { name: 'Jawa' }], priority: '0.8',
+      image: '/art/case-jawacard-960.webp', imageWidth: 960, imageHeight: 720, imageAlt: 'The jawacard.com website we built, on a laptop and a phone',
+    },
+    {
+      path: '/work/arteduxcel.html', query: 'website for a technology distributor in africa', title: 'Website for a Technology Distributor in Africa',
+      description: 'The website we built for Arteduxcel: U.S. technology sourced for businesses across Africa, four steps from enquiry to delivery, quotes on WhatsApp.',
+      entities: ['websites', 'studio'], crumbs: [home, { name: 'Website design', path: '/website-design.html' }, { name: 'Arteduxcel' }], priority: '0.8',
+      image: '/art/case-arteduxcel-960.webp', imageWidth: 960, imageHeight: 720, imageAlt: 'The arteduxcel.com website we built, on a laptop and a phone',
+    },
+    {
       path: '/app.html', query: 'obiverse app bitcoin lightning wallet', title: 'Obiverse App: Bitcoin Lightning Wallet & Nostr Identity',
       ogTitle: 'Obiverse App — Sovereign Identity & Wallet',
       description: 'Your keys, your identity, your money. Obiverse is a sovereign Bitcoin Lightning wallet with Nostr identity, built for Africa.',
@@ -249,6 +267,7 @@ export default {
     about: 'Obiverse LLC. Contact: obiversellc@gmail.com, WhatsApp +1 240 975 0431.\n\nWebsites we built that are live: ogaplastic.com (a water tank manufacturer in Nigeria), jawacard.com (a fuel card for drivers in Cameroon) and arteduxcel.com (technology procurement for businesses across Africa). Our own products include 9scroll.com (encrypted memory for AI).',
     sections: [
       { title: 'What we do', links: ['/', '/flowledger.html', '/website-design.html', '/website-cost.html'] },
+      { title: 'Our work', links: ['/work/ogaplastic.html', '/work/jawacard.html', '/work/arteduxcel.html'] },
       { title: 'Apps', links: ['/apps/', '/beewallet.html', '/app.html', '/ngumba.html', '/osalah.html'] },
       { title: 'Support and policies', links: ['/support.html', '/osalah-support.html', '/privacy.html', '/terms.html', '/ngumba-privacy.html', '/ngumba-terms.html', '/osalah-privacy.html'] },
     ],
