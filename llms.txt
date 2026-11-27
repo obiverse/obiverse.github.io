@@ -4,7 +4,7 @@
 
 Obiverse LLC. Contact: obiversellc@gmail.com, WhatsApp +1 240 975 0431.
 
-Websites we built that are live: ogaplastic.com (a water tank manufacturer in Nigeria) and arteduxcel.com (technology procurement for businesses across Africa). We also built the platform behind jawacard.com (a fuel card for drivers in Cameroon), whose site was designed by JUJUMAKE. Our own products include 9scroll.com (encrypted memory for AI).
+Websites we built that are live: ogaplastic.com (a water tank manufacturer in Nigeria) and arteduxcel.com (technology procurement for businesses across Africa). We also built the platform behind jawacard.com (a fuel card for drivers in Cameroon), whose site was designed by JUJUMAKE. We built the platform behind styledevie.net (a Pan-African membership network for diplomacy and investment). Our own products include kwataverse.com (a marketplace: sell from your WhatsApp status, get paid in seconds) and 9scroll.com (encrypted memory for AI).
 
 ## What we do
 
@@ -17,9 +17,13 @@ Websites we built that are live: ogaplastic.com (a water tank manufacturer in Ni
 
 ## Our work
 
+- [Our Work: Websites and Platforms, Live Today](https://obiverse.github.io/work/): Six systems we built, all live: websites for OGA PLASTIC and Arteduxcel, the platforms behind Jawa and Style De Vie, and our own kwataverse and 9scroll.
 - [Website for a Water Tank Manufacturer in Nigeria](https://obiverse.github.io/work/ogaplastic.html): The website we built for OGA PLASTIC, a water tank and waste bin maker in Cross River State: products, factory, 23 distributors, quotes on WhatsApp.
 - [The Platform Behind a Fuel Card in Cameroon](https://obiverse.github.io/work/jawacard.html): Jawa, a fuel card for drivers in Cameroon, runs on the platform we built: French and English, how the card works, a statement for every fill-up, a member area.
+- [Membership Platform for a Pan-African Network](https://obiverse.github.io/work/styledevie.html): The platform we built for Style De Vie, where diplomacy meets investment: membership applications, a member sign-in, a journal and sponsorship enquiries.
 - [Website for a Technology Distributor in Africa](https://obiverse.github.io/work/arteduxcel.html): The website we built for Arteduxcel: U.S. technology sourced for businesses across Africa, four steps from enquiry to delivery, quotes on WhatsApp.
+- [kwataverse: Sell From Your WhatsApp Status](https://obiverse.github.io/work/kwataverse.html): kwataverse, our own marketplace: make a stall from a photo, a price and your number, get paid in seconds, with a receipt nobody can fake.
+- [9scroll: Encrypted Memory for AI](https://obiverse.github.io/work/9scroll.html): 9scroll, our own product: a lasting memory for AI, sealed with a key only you hold. Works with Claude, ChatGPT and whatever comes next.
 
 ## Apps
 

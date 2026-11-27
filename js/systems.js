@@ -27,6 +27,64 @@
     c.addEventListener('pointerleave', function () { c.style.removeProperty('--rx'); c.style.removeProperty('--ry'); });
   });
 
+  /* Our work: filter the portfolio without leaving the page */
+  var fs = [].slice.call(document.querySelectorAll('[data-filter]'));
+  fs.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var f = b.dataset.filter;
+      fs.forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      document.querySelectorAll('.work-grid .work-card').forEach(function (c) { c.hidden = f !== 'all' && c.dataset.cat !== f; });
+    });
+  });
+
+  /* Six leaks: tick the ones that happen; the WhatsApp message carries the list */
+  var lk = document.querySelector('[data-leaks]');
+  if (lk) {
+    var ticks = [].slice.call(lk.querySelectorAll('.tick')), dots = [].slice.call(lk.querySelectorAll('.tally .dots i'));
+    var n = lk.querySelector('.tally .n'), say = lk.querySelector('.tally .say'), wa = lk.querySelector('.wa-leaks');
+    var SAY = ['Each one you tick is money you can find.', 'One leak is enough to pay for the diagnostic many times over.', 'Leaks travel together: where there are two, there are usually more.'];
+    ticks.forEach(function (t) {
+      t.addEventListener('click', function () {
+        var on = t.getAttribute('aria-pressed') !== 'true';
+        t.setAttribute('aria-pressed', String(on)); t.closest('.leak').classList.toggle('on', on);
+        var got = ticks.filter(function (x) { return x.getAttribute('aria-pressed') === 'true'; });
+        dots.forEach(function (d, i) { d.classList.toggle('on', i < got.length); });
+        n.textContent = got.length ? got.length + ' of 6 happen to you.' : 'Tick the ones that happen to you.';
+        say.textContent = SAY[Math.min(got.length, 2)];
+        var names = got.map(function (x) { return x.closest('.leak').querySelector('h3').textContent; });
+        wa.href = 'https://wa.me/12409750431?text=' + encodeURIComponent(names.length ? 'Hi Obiverse, I checked the six month-end leaks. These happen to us: ' + names.join(', ') + '. ' : 'Hi Obiverse, I was reading about month-end leaks. ');
+      });
+    });
+  }
+
+  /* Build your price: the plan, care, and the money; the bill follows */
+  var bl = document.querySelector('[data-build]');
+  if (bl) {
+    var plans = [].slice.call(bl.querySelectorAll('[data-plan]')), care = bl.querySelector('#care');
+    var K = function (k) { return bl.querySelector('[data-k="' + k + '"]'); };
+    var cur = function () { var b = document.querySelector('[data-cur][aria-pressed="true"]'); return b ? b.dataset.cur : 'NGN'; };
+    var fmt = function (v, c) { return (c === 'USD' ? '$' : '\u20a6') + Math.round(v).toLocaleString('en-US'); };
+    var put = function (k, t) { var el = K(k); if (el.textContent !== t) { el.textContent = t; el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash'); } };
+    var draw = function () {
+      var c = cur(), p = plans.filter(function (b) { return b.getAttribute('aria-checked') === 'true'; })[0];
+      var v = +p.getAttribute(c === 'USD' ? 'data-p-usd' : 'data-p-ngn');
+      put('now', fmt(v * 0.6, c)); put('live', fmt(v * 0.4, c)); put('total', fmt(v, c));
+      put('care', fmt(c === 'USD' ? 50 : 25000, c)); K('care').closest('.row').hidden = !care.checked;
+      K('go').href = '/?svc=' + p.dataset.plan + '#start';
+      K('go').textContent = p.dataset.plan === 'payments' ? 'Start this website, with payments' : 'Start this website';
+    };
+    plans.forEach(function (b) { b.addEventListener('click', function () { plans.forEach(function (x) { x.setAttribute('aria-checked', String(x === b)); }); draw(); }); });
+    care.addEventListener('change', draw);
+    document.addEventListener('click', function (e) { if (e.target.closest && e.target.closest('[data-cur]')) setTimeout(draw, 0); });
+    draw();
+  }
+
+  /* the floating WhatsApp button steps aside while a page's own call to action is on screen */
+  var own = document.querySelector('[data-leaks] .tally, [data-build] .bill');
+  if (own && 'IntersectionObserver' in window) new IntersectionObserver(function (e) {
+    var f = document.querySelector('.wa-float'); if (f) f.classList.toggle('hide', e[0].isIntersecting);
+  }).observe(own);
+
   var runs = [], visible = false;
   function later(f, ms) { runs.push(setTimeout(f, ms)); }
   function clear() { runs.forEach(clearTimeout); runs = []; }
@@ -55,8 +113,7 @@
       show();
       if (still) return;
       later(function () { stage.classList.remove('wait'); }, 700);
-      later(function () { k = 1; show(); }, 3200);
-      later(function () { k = 2; show(); }, 6000);
+      for (var j = 1; j < imgs.length; j++) (function (j) { later(function () { k = j; show(); }, 400 + j * 2800); })(j);
       return true;
     },
     'os-plat': function (p, stage) {

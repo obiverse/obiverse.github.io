@@ -24,6 +24,10 @@ CARDS = {
     'ogaplastic': ('case-ogaplastic', 'Our work · Nigeria', 'The website that sells OGA PLASTIC’s water tanks.', 'ogaplastic.com · built by Obiverse'),
     'arteduxcel': ('case-arteduxcel', 'Our work · Africa', 'Quote requests from across Africa.', 'arteduxcel.com · built by Obiverse'),
     'jawacard': ('case-jawacard', 'Our work · Cameroon', 'The platform behind a bilingual fuel card.', 'jawacard.com · platform by Obiverse'),
+    'work': ('case-styledevie', 'Our work', 'Systems we built, live today.', 'Websites · Platforms · Our products'),
+    'styledevie': ('case-styledevie', 'Our work · Pan-African', 'The platform behind Style De Vie.', 'styledevie.net · platform by Obiverse'),
+    'kwataverse': ('case-kwataverse', 'Our product', 'The WhatsApp status that pays you.', 'kwataverse.com · built by Obiverse'),
+    '9scroll': ('case-9scroll', 'Our product', 'Memory for AI, in a vault only you can open.', '9scroll.com · built by Obiverse'),
     'apps': ('apps', 'Obiverse Apps', 'Our apps. One place.', 'Android & iPhone · free'),
 }
 
@@ -46,7 +50,10 @@ h1{{margin:14px 0 0;font:700 {size}px/1.04 Rajdhani;letter-spacing:-.01em}}
 <div class="art"><img src="file://{render}"></div>'''
 
 os.makedirs(OUT, exist_ok=True)
+import sys
+ONLY = sys.argv[1:]
 for name, (render, eb, h1, chip) in CARDS.items():
+    if ONLY and name not in ONLY: continue
     src = os.path.join(HERE, 'out', render + '.png')
     size = 72 if len(h1) < 34 else 62 if len(h1) < 48 else 54
     page = os.path.join(HERE, 'out', f'card-{name}.html')

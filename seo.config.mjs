@@ -196,6 +196,34 @@ export default {
       image: '/art/og/arteduxcel.jpg', imageWidth: 1200, imageHeight: 630, imageAlt: 'The arteduxcel.com website, built by Obiverse, on a laptop and a phone',
     },
     {
+      path: '/work/', query: 'websites and platforms built by obiverse', title: 'Our Work: Websites and Platforms, Live Today',
+      ogTitle: 'Systems we built, live today',
+      description: 'Six systems we built, all live: websites for OGA PLASTIC and Arteduxcel, the platforms behind Jawa and Style De Vie, and our own kwataverse and 9scroll.',
+      entities: ['websites', 'studio'], crumbs: [home, { name: 'Our work' }], priority: '0.9',
+      image: '/art/og/work.jpg', imageWidth: 1200, imageHeight: 630, imageAlt: 'Systems we built, live today: six websites and platforms by Obiverse',
+    },
+    {
+      path: '/work/styledevie.html', query: 'membership platform for an african network', title: 'Membership Platform for a Pan-African Network',
+      ogTitle: 'The platform behind Style De Vie',
+      description: 'The platform we built for Style De Vie, where diplomacy meets investment: membership applications, a member sign-in, a journal and sponsorship enquiries.',
+      entities: ['studio'], crumbs: [home, { name: 'Our work', path: '/work/' }, { name: 'Style De Vie' }], priority: '0.8',
+      image: '/art/og/styledevie.jpg', imageWidth: 1200, imageHeight: 630, imageAlt: 'The styledevie.net platform, built by Obiverse, on a laptop and a phone',
+    },
+    {
+      path: '/work/kwataverse.html', query: 'sell from whatsapp status', title: 'kwataverse: Sell From Your WhatsApp Status',
+      ogTitle: 'kwataverse: the WhatsApp status that pays you',
+      description: 'kwataverse, our own marketplace: make a stall from a photo, a price and your number, get paid in seconds, with a receipt nobody can fake.',
+      entities: ['studio'], crumbs: [home, { name: 'Our work', path: '/work/' }, { name: 'kwataverse' }], priority: '0.7',
+      image: '/art/og/kwataverse.jpg', imageWidth: 1200, imageHeight: 630, imageAlt: 'The kwataverse.com marketplace, built by Obiverse, on a laptop and a phone',
+    },
+    {
+      path: '/work/9scroll.html', query: 'encrypted memory for ai', title: '9scroll: Encrypted Memory for AI',
+      ogTitle: '9scroll: memory for AI, in a vault only you can open',
+      description: '9scroll, our own product: a lasting memory for AI, sealed with a key only you hold. Works with Claude, ChatGPT and whatever comes next.',
+      entities: ['studio'], crumbs: [home, { name: 'Our work', path: '/work/' }, { name: '9scroll' }], priority: '0.7',
+      image: '/art/og/9scroll.jpg', imageWidth: 1200, imageHeight: 630, imageAlt: 'The 9scroll.com site, built by Obiverse, on a laptop and a phone',
+    },
+    {
       path: '/website-designer-calabar.html', query: 'website designer in calabar', title: 'Website Designer in Calabar: Live in 7 Days',
       ogTitle: 'A website for your Calabar business, live in 7 days',
       description: 'Websites for businesses in Calabar and Cross River, found on Google and Google Maps and one tap from WhatsApp. From ₦400,000, live in 7 days.',
@@ -293,10 +321,10 @@ export default {
 
   llms: {
     summary: 'OBIVERSE (Obiverse LLC, home of Kwatasoft) builds systems that stop the leak for Africa\'s builders: FlowLedger, a stock, sales, debts and bank ledger on the phone and WhatsApp for manufacturers and distributors in Nigeria, which ranks every leak in naira and starts with a ₦100,000 leak diagnostic; and business websites for businesses anywhere, live in 7 days, from ₦400,000 in Nigeria or $1,000 elsewhere. It also makes its own apps: BeeWallet (a self-custody Bitcoin wallet), Obiverse (identity with a Lightning wallet inside), Ngumba (an offline scanner and invoice app) and oSalah (prayer times, Qibla and Quran), on the App Store and Google Play, and for Android from Obiverse Apps, its own store: install once, then every app installs and updates with a tap, each file checked against its signature.',
-    about: 'Obiverse LLC. Contact: obiversellc@gmail.com, WhatsApp +1 240 975 0431.\n\nWebsites we built that are live: ogaplastic.com (a water tank manufacturer in Nigeria) and arteduxcel.com (technology procurement for businesses across Africa). We also built the platform behind jawacard.com (a fuel card for drivers in Cameroon), whose site was designed by JUJUMAKE. Our own products include 9scroll.com (encrypted memory for AI).',
+    about: 'Obiverse LLC. Contact: obiversellc@gmail.com, WhatsApp +1 240 975 0431.\n\nWebsites we built that are live: ogaplastic.com (a water tank manufacturer in Nigeria) and arteduxcel.com (technology procurement for businesses across Africa). We also built the platform behind jawacard.com (a fuel card for drivers in Cameroon), whose site was designed by JUJUMAKE. We built the platform behind styledevie.net (a Pan-African membership network for diplomacy and investment). Our own products include kwataverse.com (a marketplace: sell from your WhatsApp status, get paid in seconds) and 9scroll.com (encrypted memory for AI).',
     sections: [
       { title: 'What we do', links: ['/', '/flowledger.html', '/month-end-leaks.html', '/website-design.html', '/website-cost.html', '/website-designer-calabar.html'] },
-      { title: 'Our work', links: ['/work/ogaplastic.html', '/work/jawacard.html', '/work/arteduxcel.html'] },
+      { title: 'Our work', links: ['/work/', '/work/ogaplastic.html', '/work/jawacard.html', '/work/styledevie.html', '/work/arteduxcel.html', '/work/kwataverse.html', '/work/9scroll.html'] },
       { title: 'Apps', links: ['/apps/', '/beewallet.html', '/app.html', '/ngumba.html', '/osalah.html'] },
       { title: 'Support and policies', links: ['/support.html', '/osalah-support.html', '/privacy.html', '/terms.html', '/ngumba-privacy.html', '/ngumba-terms.html', '/osalah-privacy.html'] },
     ],

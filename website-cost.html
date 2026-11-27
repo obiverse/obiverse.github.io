@@ -42,7 +42,7 @@
       <a href="/flowledger.html" class="nl">FlowLedger</a>
       <a href="/website-design.html" class="nl">Websites</a>
       <a href="/apps/" class="nl">Apps</a>
-      <a href="/#work" class="nl">Work</a>
+      <a href="/work/" class="nl">Work</a>
       <a href="/?svc=website#start" class="btn">Talk to us</a>
       <button class="theme" onclick="obiThemeCycle()" aria-label="Change theme" title="Change theme"><span class="theme-icon" aria-hidden="true">&#x25D0;</span></button>
     </nav>
@@ -72,6 +72,31 @@
       <div class="card"><p class="kind">Every month</p><h3>Care &middot; &#8358;25,000</h3><p>Hosting, domain, monthly updates and support, billed monthly in advance. The first 30 days of help after launch are free.</p></div>
     </div>
     <p class="muted small" style="margin-top:18px">Outside Nigeria the same work is $1,000, $2,000 and $50 a month. You pay 60% to start and 40% at go-live.</p>
+  </div>
+</section>
+
+<section id="build" class="night" data-build>
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow">Build your price</p>
+      <h2>Choose. See the total. No call needed.</h2>
+      <div class="pick" role="radiogroup" aria-label="Which website">
+        <button type="button" role="radio" aria-checked="true" data-plan="website" data-p-ngn="400000" data-p-usd="1000"><b>Website</b><span>Multi-page, your brand and logo, SEO, Google Maps, a WhatsApp button.</span></button>
+        <button type="button" role="radio" aria-checked="false" data-plan="payments" data-p-ngn="800000" data-p-usd="2000"><b>With payments</b><span>Everything in Website, plus a custom design, payments, an admin panel and analytics.</span></button>
+      </div>
+      <label class="tog"><input type="checkbox" id="care" checked><span><b>Care</b> &middot; hosting, domain, monthly updates and support</span></label>
+      <div class="cur" style="justify-content:flex-start;margin:18px 0 0"><button type="button" data-cur="NGN" aria-pressed="true">&#8358; Naira</button><button type="button" data-cur="USD" aria-pressed="false">$ Dollars</button></div>
+    </div>
+    <div class="bill" aria-live="polite">
+      <p class="kind">Your website</p>
+      <div class="row"><span>Today, to start (60%)</span><b data-k="now">&#8358;240,000</b></div>
+      <div class="row"><span>When it is live and in use (40%)</span><b data-k="live">&#8358;160,000</b></div>
+      <div class="row total"><span>Total, once</span><b data-k="total">&#8358;400,000</b></div>
+      <div class="row care"><span>Then care, every month</span><b data-k="care">&#8358;25,000</b></div>
+      <ol class="when"><li><b>Day 1</b>You pay 60%; we start</li><li><b>Day 7</b>Live, for most sites</li><li><b>Then</b>40% once it is in use</li></ol>
+      <a href="/?svc=website#start" class="btn" data-k="go" style="width:100%">Start this website</a>
+      <p class="muted small" style="margin-top:12px">The first 30 days of help after launch are free. Complex projects take 14 days.</p>
+    </div>
   </div>
 </section>
 
@@ -139,11 +164,13 @@
 <footer>
   <div class="wrap">
     <div><a href="/" class="logo" style="margin-bottom:10px"><img src="logo-64.png" alt="" width="26" height="26">OBIVERSE</a><p class="muted small">Obiverse LLC, home of Kwatasoft: systems that stop the leak.</p></div>
-    <div><h4>What we do</h4><a href="/flowledger.html">FlowLedger</a><a href="/website-design.html">Websites</a><a href="/?svc=diagnostic#start">Book a diagnostic</a></div>
+    <div><h4>What we do</h4><a href="/flowledger.html">FlowLedger</a><a href="/website-design.html">Websites</a><a href="/work/">Our work</a><a href="/?svc=diagnostic#start">Book a diagnostic</a></div>
     <div><h4>Our apps</h4><a href="/apps/">Obiverse Apps</a><a href="/app.html">Obiverse</a><a href="/beewallet.html">BeeWallet</a><a href="/ngumba.html">Ngumba</a><a href="/osalah.html">oSalah</a></div>
     <div><h4>Contact</h4><a href="https://wa.me/12409750431" target="_blank" rel="noopener">WhatsApp</a><a href="mailto:obiversellc@gmail.com">obiversellc@gmail.com</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a></div>
   </div>
 </footer>
+<script src="/price.js" defer></script>
 <script src="studio.js" defer></script>
+<script src="/js/systems.js" defer></script>
 </body>
 </html>

@@ -34,11 +34,11 @@
     '/flowledger.html': 'Know where every naira went',
     '/website-design.html': 'A website that brings customers',
     '/apps/': 'Our apps, checked and one tap away',
-    '/#work': 'Live sites we built'
+    '/work/': 'Six systems we built, live today'
   };
   function path(a) { return a.getAttribute('href').replace(/^https?:\/\/[^/]+/, ''); }
   function isHere(p) {
-    return p === here || (p === '/website-design.html' && here === '/website-cost.html') || (p === '/apps/' && APPS.test(here));
+    return p === here || (p === '/website-design.html' && here === '/website-cost.html') || (p === '/apps/' && APPS.test(here)) || (p === '/work/' && here.indexOf('/work/') === 0);
   }
   var current = null;
   links.forEach(function (a) { if (isHere(path(a))) { a.setAttribute('aria-current', 'page'); current = a; } });
