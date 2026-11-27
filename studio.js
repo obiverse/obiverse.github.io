@@ -165,3 +165,69 @@
   if (form && 'IntersectionObserver' in window)
     new IntersectionObserver(function (e) { a.classList.toggle('hide', e[0].isIntersecting); }).observe(form);
 })();
+
+/* Words that light as you read: [data-lit] splits into words; scroll moves the light through them */
+(function () {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('[data-lit]').forEach(function (el) {
+  (function split(node) {
+    [].slice.call(node.childNodes).forEach(function (n) {
+      if (n.nodeType === 3) {
+        var f = document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(function (t) {
+          if (!t) return;
+          if (/^\s+$/.test(t)) { f.appendChild(document.createTextNode(t)); return; }
+          var s = document.createElement('span'); s.className = 'w'; s.textContent = t; f.appendChild(s);
+        });
+        n.parentNode.replaceChild(f, n);
+      } else if (n.nodeType === 1) split(n);
+    });
+  })(el);
+  var ws = el.querySelectorAll('.w'), raf = 0;
+  el.classList.add('on');
+  function paint() {
+    raf = 0;
+    var r = el.getBoundingClientRect(), h = innerHeight;
+    var p = Math.min(1, Math.max(0, (h * 0.85 - r.top) / (r.height + h * 0.35)));
+    var n = Math.round(p * ws.length);
+    for (var i = 0; i < ws.length; i++) ws[i].classList.toggle('l', i < n);
+  }
+  addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(paint); }, { passive: true });
+  paint();
+  });
+})();
+
+/* A cursor with presence, and buttons with pull. Only where there is a mouse, never with reduced motion. */
+(function () {
+  if (!matchMedia('(pointer: fine)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var root = document.documentElement;
+  var dot = document.createElement('div'), ring = document.createElement('div');
+  dot.className = 'cur-dot'; ring.className = 'cur-ring';
+  dot.setAttribute('aria-hidden', 'true'); ring.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(dot); document.body.appendChild(ring);
+  var x = -99, y = -99, rx = -99, ry = -99, run = false;
+  function loop() {
+    rx += (x - rx) * 0.18; ry += (y - ry) * 0.18;
+    dot.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0)';
+    ring.style.transform = 'translate3d(' + rx + 'px,' + ry + 'px,0)';
+    if (Math.abs(x - rx) + Math.abs(y - ry) > 0.2) requestAnimationFrame(loop); else run = false;
+  }
+  var HOT = 'a,button,summary,select,input,textarea,label,[role=tab]';
+  addEventListener('pointermove', function (e) {
+    if (e.pointerType !== 'mouse') return;
+    x = e.clientX; y = e.clientY;
+    root.classList.add('cur-on');
+    root.classList.toggle('cur-hot', !!(e.target.closest && e.target.closest(HOT)));
+    if (!run) { run = true; requestAnimationFrame(loop); }
+  }, { passive: true });
+  document.addEventListener('mouseleave', function () { root.classList.remove('cur-on'); });
+
+  /* magnetic: a button leans toward the pointer, then settles */
+  document.querySelectorAll('.btn,.bo').forEach(function (b) {
+    b.addEventListener('pointermove', function (e) {
+      var r = b.getBoundingClientRect();
+      b.style.transform = 'translate(' + ((e.clientX - r.left) / r.width - 0.5) * 10 + 'px,' + ((e.clientY - r.top) / r.height - 0.5) * 8 + 'px)';
+    });
+    b.addEventListener('pointerleave', function () { b.style.transform = ''; });
+  });
+})();
