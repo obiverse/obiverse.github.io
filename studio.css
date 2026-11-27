@@ -643,3 +643,25 @@ body::after{content:'';position:fixed;inset:0;z-index:100;pointer-events:none;op
 }
 @media(max-width:620px){.bento{grid-template-columns:1fr 1fr;gap:12px}.tile:not(.t-big):not(.t-wide){padding:18px}.tile:not(.t-big):not(.t-wide) img{max-height:110px}.tile:not(.t-big):not(.t-wide) h3{font-size:19px}.tile:not(.t-big):not(.t-wide) p{font-size:14px}.tile .chip{font-size:12px}.t-stat .num{font-size:72px}}
 .big-line[data-lit] em{font-style:normal;color:var(--gold)}
+
+/* Breadcrumbs: a trail of light. Glass pill, gold chevrons with a spark running through them,
+   the page you are on lit gold with a pulse. Each step arrives a beat after the last. */
+nav.crumbs{display:block;margin-bottom:22px;max-width:100%}
+.crumbs ol{list-style:none;display:inline-flex;align-items:center;gap:2px;max-width:100%;padding:5px;border-radius:99px;background:rgba(13,27,49,.55);border:1px solid rgba(240,228,204,.12);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 10px 30px -12px rgba(0,0,0,.6);backdrop-filter:blur(12px) saturate(150%);-webkit-backdrop-filter:blur(12px) saturate(150%);overflow-x:auto;scrollbar-width:none;position:relative}
+.crumbs ol::-webkit-scrollbar{display:none}
+:root[data-theme="light"] .crumbs ol{background:rgba(255,253,249,.7);border-color:var(--line);box-shadow:0 8px 24px -14px rgba(60,40,10,.3)}
+:root[data-theme="light"] .night .crumbs ol{background:rgba(13,27,49,.55);border-color:rgba(240,228,204,.12)}
+.crumbs li{display:flex;align-items:center;flex:none;animation:crumb .6s cubic-bezier(.2,.8,.2,1) both}
+.crumbs li:nth-child(2){animation-delay:.12s}.crumbs li:nth-child(3){animation-delay:.24s}.crumbs li:nth-child(4){animation-delay:.36s}
+@keyframes crumb{from{opacity:0;transform:translateX(-10px);filter:blur(6px)}}
+.crumbs li+li::before{content:'';width:22px;height:12px;flex:none;background:linear-gradient(90deg,transparent 0 35%,#fff 50%,transparent 65% 100%) no-repeat -30px 0/30px 100%,var(--gold2);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 12'%3E%3Cpath d='M2 6h12M10 2l4 4-4 4' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 12'%3E%3Cpath d='M2 6h12M10 2l4 4-4 4' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;animation:spark 3.2s ease-in-out infinite;opacity:.9}
+.crumbs li:nth-child(3)::before{animation-delay:.4s}.crumbs li:nth-child(4)::before{animation-delay:.8s}
+@keyframes spark{0%,55%{background-position:-30px 0,0 0}85%,100%{background-position:30px 0,0 0}}
+.crumbs a{display:inline-flex;align-items:center;gap:7px;padding:7px 12px;border-radius:99px;font:700 12px/1 var(--f);letter-spacing:.14em;text-transform:uppercase;color:var(--t);text-decoration:none;white-space:nowrap;transition:background .25s,color .25s}
+.crumbs a img{width:16px;height:16px}
+.crumbs a:hover{background:rgba(212,146,42,.14);color:var(--gold2)}
+.crumbs [aria-current] span{display:inline-flex;align-items:center;gap:8px;padding:7px 14px 7px 11px;border-radius:99px;font:700 12px/1 var(--f);letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;color:#1a1006;background:linear-gradient(180deg,#f0c27a,#c97d1d);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 0 18px rgba(212,146,42,.35)}
+.crumbs [aria-current] span::before{content:'';width:6px;height:6px;border-radius:50%;background:#1a1006;box-shadow:0 0 0 0 rgba(26,16,6,.5);animation:here 1.8s ease-out infinite}
+@keyframes here{70%{box-shadow:0 0 0 6px rgba(26,16,6,0)}100%{box-shadow:0 0 0 0 rgba(26,16,6,0)}}
+@media(max-width:620px){.crumbs a{padding:7px 9px;letter-spacing:.1em}.crumbs a img+span{display:none}.crumbs li+li::before{width:16px}}
+@media(prefers-reduced-motion:reduce){.crumbs li,.crumbs li+li::before,.crumbs [aria-current] span::before{animation:none}}
