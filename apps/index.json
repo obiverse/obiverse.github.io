@@ -29,20 +29,20 @@
       "ios": "https://apps.apple.com/us/app/beewallet-civil-hive/id6758224958",
       "apk": {
         "arm64-v8a": {
-          "code": 1042001,
-          "url": "https://github.com/obiverse/obiverse.github.io/releases/download/beewallet-v1.4.0/beewallet-1.4.0-arm64-v8a.apk",
-          "sha256": "06ade1700571c86926288dd073821d11f304ce581b1e3ba95e172dfd1dabd28d",
-          "size": 63537563
+          "code": 1052001,
+          "url": "https://github.com/obiverse/obiverse.github.io/releases/download/beewallet-v1.5.0/beewallet-1.5.0-arm64-v8a.apk",
+          "sha256": "b2027c469592ec1c49078e3f0bdca18bfd24142d9852d0ee0884dcbc977d974c",
+          "size": 63472751
         },
         "armeabi-v7a": {
-          "code": 1041001,
-          "url": "https://github.com/obiverse/obiverse.github.io/releases/download/beewallet-v1.4.0/beewallet-1.4.0-armeabi-v7a.apk",
-          "sha256": "994657b67f62f9148886d8c65b65f6d0501217b02cbf2cd2ebfee859afe63cd5",
-          "size": 51231757
+          "code": 1051001,
+          "url": "https://github.com/obiverse/obiverse.github.io/releases/download/beewallet-v1.5.0/beewallet-1.5.0-armeabi-v7a.apk",
+          "sha256": "7de70896d54c502a6d1bf4a4b3eea65a45a148a266f6fdc9b6dcd532cfb98c88",
+          "size": 51150561
         }
       },
       "cert": "2cb297af5a7e36f25dc025d5fdad163d0ca9fadc773ef6346294a4a7878f7864",
-      "version": "1.4.0"
+      "version": "1.5.0"
     },
     {
       "id": "obiverse",
