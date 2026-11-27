@@ -202,3 +202,5 @@ a.card:hover .win img{transform:scale(1.025)}
 .tldr{padding:26px 30px}
 .tldr ul{margin:0;padding-left:20px}
 .tldr+h2{margin-top:40px}
+.appfoot{padding:26px 0;border-top:1px solid var(--line)}
+.appfoot b{color:var(--tb);font-weight:600}
