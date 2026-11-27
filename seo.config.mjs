@@ -192,6 +192,31 @@ export default {
       image: '/art/case-arteduxcel-960.webp', imageWidth: 960, imageHeight: 720, imageAlt: 'The arteduxcel.com website we built, on a laptop and a phone',
     },
     {
+      path: '/website-designer-calabar.html', query: 'website designer in calabar', title: 'Website Designer in Calabar: Live in 7 Days',
+      ogTitle: 'A website for your Calabar business, live in 7 days',
+      description: 'Websites for businesses in Calabar and Cross River, found on Google and Google Maps and one tap from WhatsApp. From ₦400,000, live in 7 days.',
+      entities: ['websites', 'studio'], crumbs: [home, { name: 'Website design', path: '/website-design.html' }, { name: 'Calabar' }], priority: '0.8',
+      image: '/art/case-ogaplastic-960.webp', imageWidth: 960, imageHeight: 720, imageAlt: 'ogaplastic.com, the website we built for a manufacturer in Ugep, Cross River',
+      graph: [faq(
+        ['Do you work with businesses in Calabar?', 'Yes. We build for businesses in Calabar and across Cross River State; OGA PLASTIC in Ugep is one. We work with you on WhatsApp and by phone.'],
+        ['How long does it take?', 'Most websites are designed, built and launched in 7 days. Complex projects with custom features take 14 days.'],
+        ['Will people find my business on Google?', 'Every website includes SEO and Google Maps, so people searching for what you sell can find you.'],
+        ['How do I pay?', '60% to start and 40% at go-live, when the site is live and in use. Care is ₦25,000 a month, billed in advance.'],
+      )],
+    },
+    {
+      path: '/month-end-leaks.html', query: 'stock and sales not matching', title: 'Stock, Sales and Bank Not Matching? Find the Leak',
+      ogTitle: 'Stock, sales and bank don\'t match? Here is where it went',
+      description: 'Why stock, sales and the bank don\'t match at month-end: the six places the difference goes, and how to check each one yourself this week.',
+      entities: ['flowledger', 'studio'], crumbs: [home, { name: 'FlowLedger', path: '/flowledger.html' }, { name: 'Month-end leaks' }], priority: '0.8',
+      image: '/art/leak-960.webp', imageWidth: 960, imageHeight: 864, imageAlt: 'A magnifying glass over a broken gold lane where coins fall through',
+      graph: [faq(
+        ["Why don't my stock and sales match at month-end?", 'Because something broke one of two laws: every kilogram goes somewhere, and every naira goes somewhere. Usually it is one of six things: material given away, material unexplained, stock that moved, money owed too long, money that never arrived, or sales with no paper.'],
+        ['Is it theft?', 'Not always. Products heavier than standard, sales with no paper and payments recorded but never banked all look like missing money too. The checks above tell you which it is.'],
+        ['How long does a leak diagnostic take?', '2–3 hours with the records you already keep: bank statements, sales, dispatches, stock and payments. It costs ₦100,000 and is credited in full toward setup if you go ahead within 30 days.'],
+      )],
+    },
+    {
       path: '/app.html', query: 'obiverse app bitcoin lightning wallet', title: 'Obiverse App: Bitcoin Lightning Wallet & Nostr Identity',
       ogTitle: 'Obiverse App — Sovereign Identity & Wallet',
       description: 'Your keys, your identity, your money. Obiverse is a sovereign Bitcoin Lightning wallet with Nostr identity, built for Africa.',
@@ -266,7 +291,7 @@ export default {
     summary: 'OBIVERSE (Obiverse LLC, home of Kwatasoft) builds systems that stop the leak for Africa\'s builders: FlowLedger, a stock, sales, debts and bank ledger on the phone and WhatsApp for manufacturers and distributors in Nigeria, which ranks every leak in naira and starts with a ₦100,000 leak diagnostic; and business websites for businesses anywhere, live in 7 days, from ₦400,000 in Nigeria or $1,000 elsewhere. It also makes its own apps: BeeWallet (a self-custody Bitcoin wallet), Obiverse (identity with a Lightning wallet inside), Ngumba (an offline scanner and invoice app) and oSalah (prayer times, Qibla and Quran), on the App Store and Google Play, and for Android from Obiverse Apps, its own store: install once, then every app installs and updates with a tap, each file checked against its signature.',
     about: 'Obiverse LLC. Contact: obiversellc@gmail.com, WhatsApp +1 240 975 0431.\n\nWebsites we built that are live: ogaplastic.com (a water tank manufacturer in Nigeria) and arteduxcel.com (technology procurement for businesses across Africa). We also built the platform behind jawacard.com (a fuel card for drivers in Cameroon), whose site was designed by JUJUMAKE. Our own products include 9scroll.com (encrypted memory for AI).',
     sections: [
-      { title: 'What we do', links: ['/', '/flowledger.html', '/website-design.html', '/website-cost.html'] },
+      { title: 'What we do', links: ['/', '/flowledger.html', '/month-end-leaks.html', '/website-design.html', '/website-cost.html', '/website-designer-calabar.html'] },
       { title: 'Our work', links: ['/work/ogaplastic.html', '/work/jawacard.html', '/work/arteduxcel.html'] },
       { title: 'Apps', links: ['/apps/', '/beewallet.html', '/app.html', '/ngumba.html', '/osalah.html'] },
       { title: 'Support and policies', links: ['/support.html', '/osalah-support.html', '/privacy.html', '/terms.html', '/ngumba-privacy.html', '/ngumba-terms.html', '/osalah-privacy.html'] },
