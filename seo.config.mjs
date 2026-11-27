@@ -180,10 +180,10 @@ export default {
       image: '/art/case-ogaplastic-960.webp', imageWidth: 960, imageHeight: 720, imageAlt: 'The ogaplastic.com website we built, on a laptop and a phone',
     },
     {
-      path: '/work/jawacard.html', query: 'bilingual website french english cameroon', title: 'Bilingual Website for a Fuel Card in Cameroon',
-      description: 'The website we built for Jawa, a fuel card for drivers in Cameroon: French and English, how the card works, a statement for every fill-up, a member area.',
+      path: '/work/jawacard.html', query: 'fuel card platform cameroon', title: 'The Platform Behind a Fuel Card in Cameroon',
+      description: 'Jawa, a fuel card for drivers in Cameroon, runs on the platform we built: French and English, how the card works, a statement for every fill-up, a member area.',
       entities: ['websites', 'studio'], crumbs: [home, { name: 'Website design', path: '/website-design.html' }, { name: 'Jawa' }], priority: '0.8',
-      image: '/art/case-jawacard-960.webp', imageWidth: 960, imageHeight: 720, imageAlt: 'The jawacard.com website we built, on a laptop and a phone',
+      image: '/art/case-jawacard-960.webp', imageWidth: 960, imageHeight: 720, imageAlt: 'The jawacard.com website, running on the platform we built, on a laptop and a phone',
     },
     {
       path: '/work/arteduxcel.html', query: 'website for a technology distributor in africa', title: 'Website for a Technology Distributor in Africa',
@@ -264,7 +264,7 @@ export default {
 
   llms: {
     summary: 'OBIVERSE (Obiverse LLC, home of Kwatasoft) builds systems that stop the leak for Africa\'s builders: FlowLedger, a stock, sales, debts and bank ledger on the phone and WhatsApp for manufacturers and distributors in Nigeria, which ranks every leak in naira and starts with a ₦100,000 leak diagnostic; and business websites for businesses anywhere, live in 7 days, from ₦400,000 in Nigeria or $1,000 elsewhere. It also makes its own apps: BeeWallet (a self-custody Bitcoin wallet), Obiverse (identity with a Lightning wallet inside), Ngumba (an offline scanner and invoice app) and oSalah (prayer times, Qibla and Quran), on the App Store and Google Play, and for Android from Obiverse Apps, its own store: install once, then every app installs and updates with a tap, each file checked against its signature.',
-    about: 'Obiverse LLC. Contact: obiversellc@gmail.com, WhatsApp +1 240 975 0431.\n\nWebsites we built that are live: ogaplastic.com (a water tank manufacturer in Nigeria), jawacard.com (a fuel card for drivers in Cameroon) and arteduxcel.com (technology procurement for businesses across Africa). Our own products include 9scroll.com (encrypted memory for AI).',
+    about: 'Obiverse LLC. Contact: obiversellc@gmail.com, WhatsApp +1 240 975 0431.\n\nWebsites we built that are live: ogaplastic.com (a water tank manufacturer in Nigeria) and arteduxcel.com (technology procurement for businesses across Africa). We also built the platform behind jawacard.com (a fuel card for drivers in Cameroon), whose site was designed by JUJUMAKE. Our own products include 9scroll.com (encrypted memory for AI).',
     sections: [
       { title: 'What we do', links: ['/', '/flowledger.html', '/website-design.html', '/website-cost.html'] },
       { title: 'Our work', links: ['/work/ogaplastic.html', '/work/jawacard.html', '/work/arteduxcel.html'] },

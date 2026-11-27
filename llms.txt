@@ -4,7 +4,7 @@
 
 Obiverse LLC. Contact: obiversellc@gmail.com, WhatsApp +1 240 975 0431.
 
-Websites we built that are live: ogaplastic.com (a water tank manufacturer in Nigeria), jawacard.com (a fuel card for drivers in Cameroon) and arteduxcel.com (technology procurement for businesses across Africa). Our own products include 9scroll.com (encrypted memory for AI).
+Websites we built that are live: ogaplastic.com (a water tank manufacturer in Nigeria) and arteduxcel.com (technology procurement for businesses across Africa). We also built the platform behind jawacard.com (a fuel card for drivers in Cameroon), whose site was designed by JUJUMAKE. Our own products include 9scroll.com (encrypted memory for AI).
 
 ## What we do
 
@@ -16,7 +16,7 @@ Websites we built that are live: ogaplastic.com (a water tank manufacturer in Ni
 ## Our work
 
 - [Website for a Water Tank Manufacturer in Nigeria](https://obiverse.github.io/work/ogaplastic.html): The website we built for OGA PLASTIC, a water tank and waste bin maker in Cross River State: products, factory, 23 distributors, quotes on WhatsApp.
-- [Bilingual Website for a Fuel Card in Cameroon](https://obiverse.github.io/work/jawacard.html): The website we built for Jawa, a fuel card for drivers in Cameroon: French and English, how the card works, a statement for every fill-up, a member area.
+- [The Platform Behind a Fuel Card in Cameroon](https://obiverse.github.io/work/jawacard.html): Jawa, a fuel card for drivers in Cameroon, runs on the platform we built: French and English, how the card works, a statement for every fill-up, a member area.
 - [Website for a Technology Distributor in Africa](https://obiverse.github.io/work/arteduxcel.html): The website we built for Arteduxcel: U.S. technology sourced for businesses across Africa, four steps from enquiry to delivery, quotes on WhatsApp.
 
 ## Apps
